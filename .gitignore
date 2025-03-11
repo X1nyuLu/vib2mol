@@ -1,0 +1,32 @@
+# ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints
+*/.ipynb_checkpoints
+
+# ignore data and checkpoints
+datasets/
+checkpoints/
+results/
+scripts/
+.vscode/
+SI/
+appendix/
+# ignore temporary files
+tmp.*
+
+# ignore png files
+*.png
+
+# ignore npy files
+*.npy
+
+# ignore log files
+logs/
+runs/
+hostfile
+
+# ignore __pycache__ directories
+__pycache__/
+*/__pycache__/
+
+# ignore DS_Store files
+*.DS_Store
