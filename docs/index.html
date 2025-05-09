@@ -181,17 +181,19 @@
             margin: 2rem 0;
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* 移除边框和阴影 */
+            /* border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
             width: 100%;
-            height: 600px; /* Fixed height */
+            height: 100%; /* Fixed height */
         }
+
         
         .carousel img {
             width: 100%;
             height: 100%;
             object-fit: contain; /* Maintain aspect ratio */
-            background: white;
+            background: rgba(255, 255, 255, 0);
         }
         
         /* New styles for navigation buttons */
@@ -251,7 +253,7 @@
         }
 
         footer a {
-            color: var(--accent);
+            color: rgb(136, 126, 126);
             text-decoration: none;
         }
 
@@ -295,12 +297,12 @@
                     <h1 class="title">Vib2Mol: a generalized deep learning model for elucidation molecular structures based on vibrational spectroscopy</h1>
                     <div class="authors">
                         <a href="https://x1nyulu.github.io">Xinyu Lu</a><sup>1,2</sup>,
-                        <a href="">Hao Ma</a><sup>1,*</sup>,
-                        <a href="">Hui Li</a><sup>3</sup>,
-                        <a href="">Jia Li</a><sup>4</sup>,
-                        <a href="">Tong Zhu</a><sup>2,5</sup>,
-                        <a href="">Guokun Liu</a><sup>6,*</sup>,
-                        <a href="">Bin Ren</a><sup>1,2,*</sup>
+                        <a href="https://chem.xmu.edu.cn/info/1258/116465.htm">Hao Ma</a><sup>1,*</sup>,
+                        <a href="https://lihui.info/">Hui Li</a><sup>3</sup>,
+                        <a >Jia Li</a><sup>4</sup>,
+                        <a href="https://faculty.ecnu.edu.cn/_s34/zt2_en/main.psp">Tong Zhu</a><sup>2,5</sup>,
+                        <a href="https://team.xmu.edu.cn/liugkgroup/en/index.htm">Guokun Liu</a><sup>6,*</sup>,
+                        <a href="https://bren.xmu.edu.cn/">Bin Ren</a><sup>1,2,*</sup>
                     </div>
                     <div class="institution">
                         <sup>1</sup>College of Chemistry and Chemical Engineering, Xiamen University &nbsp;&nbsp;
@@ -357,8 +359,7 @@
         </section>
 
 
-        <!-- Benchmark Section -->
-        <section class="section">
+        <!-- <section class="section">
             <div class="container">
                 <h2 class="section-title fade-up">Workflow of Vib2Mol</h2>
                 <div class="content fade-up">
@@ -368,23 +369,21 @@
                     </p>
                 </div>
             </div>
-        </section>
+        </section> -->
 
-        <!-- Sample Spectra Section -->
-        <!-- <section class="section">
+        <!-- Results Section -->
+        <section class="section">
             <div class="container">
-                <h2 class="section-title fade-up">Sample Spectra</h2>
+                <!-- <h2 class="section-title fade-up">Sample Spectra</h2> -->
                 <div id="spectra-carousel" class="carousel fade-up">
-                    Carousel content would go here
-                    <img src="static/images/1_1.png" alt="Example molecule sample represented as SMILES">
-                    <div class="carousel-caption">Example molecule sample represented as SMILES</div>
+
                 </div>                
             </div>
-        </section> -->
+        </section>
 
         <section class="section">
                 <div class="container fade-up">
-                    <h2 class="title is-3">Data Overview</h2>
+                    <h2 class="section-title fade-up">Overview of Datasets</h2>
                     <div class="columns is-centered">
                         <div class="content">
                             <table>
@@ -442,7 +441,7 @@
 
 
         <!-- How to Use Section -->
-        <section class="section">
+        <!-- <section class="section">
             <div class="container">
                 
                 <h2 class="section-title fade-up">How to Use</h2>
@@ -461,16 +460,22 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Citation Section -->
         <section class="section">
             <div class="container">
                 <h2 class="section-title fade-up">Citation</h2>
-                <div class="citation fade-up">
-                    bibtex here
+                    If you find our work useful, please consider citing our paper:
+                    <div class="citation">
+                        @article{lu2025vib2mol,<br>
+                            title={Vib2Mol: from vibrational spectra to molecular structures-a versatile deep learning model}, <br>
+                            author={Xinyu Lu, Hao Ma, Hui Li, Jia Li, Tong Zhu, Guokun Liu, Bin Ren},<br>
+                            year={2025},<br>
+                            url={https://arxiv.org/abs/2503.07014}, 
+                      }
                 </div>
-            </div>
+                This work was supported by the National Natural Science Foundation (Grant No: 22227802, 22021001, 22474117, 22272139) of China and the Fundamental Research Funds for the Central Universities (20720220009) and Shanghai Innovation Institute.<br>
         </section>
 
         <!-- Footer -->
@@ -509,13 +514,13 @@
             constructor(element) {
                 this.element = element;
                 this.images = [
-                    { src: "static/images/1_1.png", caption: "Example molecule sample represented as SMILES" },
-                    { src: "static/images/1_2.png", caption: "Infrared Spectrum of the molecule" },
-                    { src: "static/images/1_4.png", caption: "Simulated ¹H-NMR of the molecule" },
-                    { src: "static/images/1_3.png", caption: "Simulated ¹³C-NMR of the molecule" },
-                    { src: "static/images/1_5.png", caption: "Simulated HSQC-NMR of the molecule" },
-                    { src: "static/images/1_6.png", caption: "Mass spectrum simulated in the positive three difference energy levels" },
-                    { src: "static/images/1_7.png", caption: "Mass spectrum simulated in the negative three difference energy levels" }
+                    { src: "Figure1.svg", caption: "Figure 1. (A-B) The architecture of Vib2Mol for pretraining" , title: "Workflow of Vib2Mol"},
+                    { src: "Figure2.svg", caption: "Figure 1. (C-F) The application to four spectrum-to-structure tasks.", title: "Key tasks of spectrum-to-structure"},
+                    { src: "Figure3.svg", caption: "Figure 2. (A) Performance of single-task models and Vib2Mol (red region) on 10 test sets. Blue, purple, and green regions represent retrieval, conditional generation, or de novo generation tasks, respectively. Ablation experiments of multi-task learning for (B) retrieval, (C) conditional generation, and (D) de novo generation.", title: "Performance on ViBench"},
+                    { src: "Figure4.svg", caption: "Figure 3. (A) Joint distribution of molecular similarity and spectral similarity. Visualization of (B) molecular and (C) spectral embeddings using t-SNE. (D) Molecular structure and related Raman spectra of selected molecules. Similarity matrices of molecular (E) and spectral (F) embeddings.", title: "Interpretation and visualization"}
+
+
+
                 ];
                 this.currentIndex = 0;
                 this.autoPlayInterval = null;
@@ -524,7 +529,7 @@
         
             init() {
                 this.render();
-                this.startAutoPlay();
+                // this.startAutoPlay();
                 this.addButtons();
             }
         
@@ -543,12 +548,16 @@
                 this.element.appendChild(prevButton);
                 this.element.appendChild(nextButton);
             }
-        
+            
+
+
             render() {
                 const current = this.images[this.currentIndex];
                 const content = `
+                    <h2 class="section-title fade-up">${current.title}</h2>
                     <img src="${current.src}" alt="${current.caption}">
-                    <div class="carousel-caption">${current.caption}</div>
+                    <p style="text-align: center; color: var(--secondary);">${current.caption}</p>
+
                 `;
                 // Only update the content, preserving the buttons
                 const existingButtons = this.element.querySelectorAll('.carousel-button');
