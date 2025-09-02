@@ -11,6 +11,7 @@
 
 
 
+import uuid
 import re
 import os
 import time
@@ -18,40 +19,31 @@ import json
 import torch
 import logging
 import argparse
-import config
+import yaml
 
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 
 from utils.base import seed_everything, load_state
 
-from models import build_model
-from models import PretrainModel_CL, PretrainModel_MLM, PretrainModel_LM
-from models import PretrainModel_CL_MLM, PretrainModel_CL_LM, PretrainModel_ALL, PretrainModel_Phase
+import models
+import trainers
+import warnings
 
-from trainers import launch_training
 
+warnings.simplefilter("ignore", FutureWarning)
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-'''
-CL,         PretrainModel_CL,       vib2mol_cl
-MLM,        PretrainModel_MLM,      vib2mol_mlm
-LM,         PretrainModel_LM,       vib2mol_lm
-CL_MLM,     PretrainModel_CL_MLM,   vib2mol_cl_mlm
-CL_LM,      PretrainModel_CL_LM,    vib2mol_cl_lm
-CL_MLM_LM   PretrainModel_ALL       vib2mol_all
-SPT,        PretrainMdeol_Phase,    vib2mol_phase
-'''
 
 def get_args_parser():
     parser = argparse.ArgumentParser('vib2mol', add_help=False)
 
     # basic params
-    parser.add_argument('--model', default='vib2mol_phase',
+    parser.add_argument('--model', default='vib2mol',
                         help="Choose network")
-    parser.add_argument('--launch', default='cl',
+    parser.add_argument('--launch', default='matching',
                         help="Choose losses for training")
-    parser.add_argument('--ds', default='nist_ir',
+    parser.add_argument('--ds', default='mols',
                         help="Choose dataset")
     parser.add_argument('--task', default='raman-kekule_smiles',
                         help='Chose the task of this dataset')
@@ -67,6 +59,7 @@ def get_args_parser():
     parser.add_argument('--device', default='cpu',
                         help="Choose GPU device")
     parser.add_argument('--base_model_path', 
+                        # default='',
                         help="Choose base model for fine-tune")
     parser.add_argument('--test_model_path',
                         help="Choose timestamp for test")
@@ -86,34 +79,38 @@ def get_args_parser():
     parser.add_argument('--mask_prob',
                         default=0.45,
                         help="mask probability")
-    parser.add_argument('--mix_ratio', # only for rxn model
+    parser.add_argument('--smiles_augment', action='store_true',
                         default=False,
-                        help="Minimum percentage of products")
-    parser.add_argument('--phase', # only for rxn model
-                        default=1,
-                        help="select phase for training")
+                        help="augment smiles or not")
+    parser.add_argument('--spectra_augment', action='store_true',
+                        default=False,
+                        help="augment spectra or not")                        
+    parser.add_argument('--frozen_encoder', action='store_true',
+                        default=False,
+                        help="frozen encoders or not")
+    parser.add_argument('--use_yield', action='store_true',
+                        default=False,
+                        help="introducing yield of product")
+    parser.add_argument('--use_residue', action='store_true',
+                        default=False,
+                        help="introducing residue for tokenization")
+    
     args = parser.parse_args()
     return args
 
 
-def init_logs():
+def init_logs(local_rank):
 
     os.makedirs(f'logs/{args.ds}/{args.task}/{args.model}', exist_ok=True)
 
-    if args.train or args.debug:
-        mode = "train"
-    elif args.test:
-        mode = "test"
+    if local_rank == 0:
+        logging.basicConfig(
+            filename=f'logs/{args.ds}/{args.task}/{args.model}/{ts}-{random_id}.log',
+            format='%(levelname)s:%(message)s',
+            level=logging.INFO)
 
-    os.makedirs(f'logs/{args.ds}/{args.task}/{args.model}', exist_ok=True)
-    logging.basicConfig(
-        filename=f'logs/{args.ds}/{args.task}/{args.model}/{ts}_{mode}.log',
-        format='%(levelname)s:%(message)s',
-        level=logging.INFO)
-
-    logging.info({k: v for k, v in args.__dict__.items() if v})
-    return mode
-
+        logging.info({k: v for k, v in args.__dict__.items() if v})
+        print(f'logging save path: ./logs/{args.ds}/{args.task}/{args.model}/{ts}-{random_id}.log')
 
 def init_device():
     if args.ddp:   # set up distributed device
@@ -124,33 +121,35 @@ def init_device():
         return args.device
     
         
-def init_model():
-    if args.launch == 'spt':
-        phase = 2  
-    elif args.launch == 'rxn':
-        phase = float(args.phase)
-    else:
-        phase = 1
+def init_model(local_rank):
+    phase = 2  if 'spt' in args.launch else 1
+    args.launch = 'rxn' if 'rxn' in args.launch else args.launch
     
     if args.train:
-        os.makedirs(f"checkpoints/{args.ds}/{args.task}/{args.model}/{ts}", exist_ok=True)
+        if local_rank == 0:
+            os.makedirs(f"checkpoints/{args.ds}/{args.task}/{args.model}/{ts}-{random_id}", exist_ok=True)
 
-    params = {'net': config.NET,
-              'strategy': config.STRATEGY['train'] if args.train or args.debug else config.STRATEGY['tune']}
+    with open('config.yaml', "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+        
+    defaults = config.pop('defaults')
+    task_config = config[args.launch]
+    params = defaults.copy()
+    params.update(task_config)
 
     if args.batch_size:
-        params['strategy']['batch_size'] = int(args.batch_size)
+        params['batch_size'] = int(args.batch_size)
     if args.epoch:
-        params['strategy']['epoch'] = int(args.epoch)
+        params['epoch'] = int(args.epoch)
     if args.lr:
-        params['strategy']['Adam_params']["lr"] = float(args.lr)
+        params["lr"] = float(args.lr)
     
     if 'ir' in args.task and 'raman' in args.task:
         spectral_channel = 2
     else:
         spectral_channel = 1
     
-    model = build_model(args.model, spectral_channel=spectral_channel, mask_prob=float(args.mask_prob), phase=phase)
+    model = models.build_model(args.model, spectral_channel=spectral_channel, mask_prob=float(args.mask_prob), phase=phase)
         
     if 'cuda' in args.device and not args.ddp:
         model = model.to(device)
@@ -161,7 +160,7 @@ def init_model():
         ckpt = {k.replace('module.', ''): v for k, v in ckpt.items()}
         model.load_state_dict(ckpt, strict=False)
     
-    if phase == 2:
+    if phase == 2 and args.frozen_encoder:
         frozen_modules = [model.spectral_encoding, model.molecular_encoding, model.spectral_encoder, model.molecular_encoder]
         for module in frozen_modules:
             for name, param in module.named_parameters():
@@ -191,11 +190,11 @@ def catch_exception():
 
     traceback.print_exc()
     
-    if os.path.exists(f'logs/{args.ds}/{args.task}/{args.model}/{ts}_{mode}.log'):
-        os.remove(f'logs/{args.ds}/{args.task}/{args.model}/{ts}_{mode}.log') 
+    if os.path.exists(f'logs/{args.ds}/{args.task}/{args.model}/{ts}-{random_id}.log'):
+        os.remove(f'logs/{args.ds}/{args.task}/{args.model}/{ts}-{random_id}.log') 
         print('unexpected log has been deleted')
-    if os.path.exists(f'runs/{args.ds}/{args.task}/{args.model}/{ts}'):
-        shutil.rmtree(f'runs/{args.ds}/{args.task}/{args.model}/{ts}')
+    if os.path.exists(f'runs/{args.ds}/{args.task}/{args.model}/{ts}-{random_id}'):
+        shutil.rmtree(f'runs/{args.ds}/{args.task}/{args.model}/{ts}-{random_id}')
         print('unexpected tensorboard record has been deleted')
 
 
@@ -206,20 +205,24 @@ if __name__ == "__main__":
     local_rank = 0 if not args.ddp else int(os.environ["LOCAL_RANK"])
 
     seed_everything(int(args.seed))
-    ts = time.strftime('%Y-%m-%d_%H:%M', time.localtime())
-    model_save_path = f"checkpoints/{args.ds}/{args.task}/{args.model}/{ts}"
-
-    mode = init_logs()
+    
+    ts = time.strftime('%Y-%m-%d-%H-%M', time.localtime())
+    random_id = uuid.uuid4().hex[:6]
+    
+    model_save_path = f"checkpoints/{args.ds}/{args.task}/{args.model}/{ts}-{random_id}"
     
     try:
-        model, params, phase = init_model()
-        mix_ratio = eval(args.mix_ratio) if type(args.mix_ratio) == str else args.mix_ratio
-        tokenizer_path = './models/MolTokenizer' if 'sequence' not in args.task else './models/PepTokenizer'
+        model, params, phase = init_model(local_rank)
+        init_logs(local_rank)
+        logging.info({k: v for k, v in params.items()})
+
+        tokenizer_path = './models/MolTokenizer' if 'sequence' not in args.task else './models/MolTokenizer'
         if args.train or args.debug:
-            launch_training(args.launch, model=model, lmdb_path=args.ds, task=args.task, 
+            trainers.launch_training(args.launch, model=model, lmdb_path=args.ds, task=args.task, 
                             tokenizer_path=tokenizer_path, data_dir='./datasets/vibench',
-                            model_save_path=model_save_path, device=device, ddp=args.ddp, rank=local_rank, config=params['strategy'],
-                            mix_ratio=mix_ratio, phase=phase)
+                            model_save_path=model_save_path, device=device, ddp=args.ddp, rank=local_rank, config=params,
+                            phase=phase, smiles_augment=args.smiles_augment, spectra_augment=args.spectra_augment, 
+                            use_yield=args.use_yield, use_residue=args.use_residue)
         
         elif args.test:
             raise 'use notebook for evaluation'
