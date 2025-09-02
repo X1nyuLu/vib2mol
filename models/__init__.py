@@ -20,3 +20,7 @@ def get_model_class(model):
 def build_model(model, **kwargs):
     """build_model"""
     return get_model_class(model)(**kwargs)
+
+
+from .vib2mol import *
+

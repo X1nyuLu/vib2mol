@@ -1,6 +1,3 @@
-import sys 
-sys.path.append('../')
-
 import os
 import math
 import numpy as np
@@ -9,7 +6,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from models.modules import clip_loss, subsequent_mask
+from models.modules import cl_loss, subsequent_mask
 from models.modules import LayerNorm, PositionalEncoding, LearnableClassEmbedding
 from utils.base import seed_everything
 
@@ -50,6 +47,21 @@ class MolecularEncoding(nn.Module):
         input_embeds = self.positional_encoding(input_embeds)
         return input_embeds
 
+
+class FormulaEncoding(nn.Module):
+    def __init__(self, d_model=768, num_embeddings=512, dropout=0.1):
+
+        super().__init__()
+        self.d_model = d_model
+        self.formula_embedding = nn.Embedding(num_embeddings=num_embeddings, embedding_dim=d_model, padding_idx=1)
+        self.class_encoding = LearnableClassEmbedding(d_model, dropout)
+        self.positional_encoding = PositionalEncoding(d_model, dropout)
+
+    def forward(self, input_ids):
+        input_embeds = self.formula_embedding(input_ids)
+        input_embeds = self.positional_encoding(input_embeds)
+        return input_embeds
+    
 
 class BaseModel(nn.Module):
     def __init__(self, 
@@ -109,7 +121,7 @@ class BaseModel(nn.Module):
         loss = F.cross_entropy(pred.contiguous().view(-1, pred.size(-1)), target.contiguous().view(-1), ignore_index=1)
         return loss
     
-    def compute_clip_loss(self, molecular_output, spectral_output):
+    def compute_cl_loss(self, molecular_output, spectral_output):
         molecular_output = F.normalize(molecular_output, p=2, dim=1)
         spectral_output = F.normalize(spectral_output, p=2, dim=1)
 
@@ -117,7 +129,7 @@ class BaseModel(nn.Module):
         logits_per_smiles = torch.matmul(
             molecular_output, spectral_output.t()) * logit_scale
         logits_per_spectrum = logits_per_smiles.T
-        loss = clip_loss(logits_per_spectrum)
+        loss = cl_loss(logits_per_spectrum)
         return loss
     
     def _init_weights(self):
@@ -149,7 +161,7 @@ class BaseModel(nn.Module):
         molecular_embeds = self.molecular_encoding(molecular_input_ids, use_cls_token=use_cls_token)
         if use_cls_token:
             molecular_attention_mask = torch.cat([torch.ones(molecular_embeds.size(0), 1).to(molecular_attention_mask.device), molecular_attention_mask], dim=1)
-        molecular_output = self.molecular_encoder(molecular_embeds, molecular_attention_mask)
+        molecular_output = self.molecular_encoder(molecular_embeds, mask=molecular_attention_mask)
         return molecular_output
     
     def infer_mlm(self, input):
@@ -271,6 +283,7 @@ class BaseModel(nn.Module):
         for b in range(batch_size):
             final_outputs[b] = sorted(final_outputs[b], key=lambda x: x[0], reverse=True)[:beam_size]
         result_dict = {'pred_ids': [[output[1] for output in outputs] for outputs in final_outputs],
-                       'score':[[output[0] for output in outputs] for outputs in final_outputs]} 
+                       'score':[[output[0] for output in outputs] for outputs in final_outputs],}  # 提取序列
 
         return result_dict
+    
