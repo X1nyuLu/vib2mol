@@ -1,0 +1,2002 @@
+INFO:{'model': 'vib2mol_matching_shared', 'launch': 'matching', 'ds': 'mols', 'task': 'ir-kekule_smiles', 'train': True, 'debug': 1, 'device': 'cuda:0', 'seed': 624, 'ddp': True, 'mask_prob': 0.45}
+INFO:{'batch_size': 256, 'epoch': 1000, 'patience': 1000, 'lr': '1e-4', 'lr_sched': 'cosine', 'min_lr': '1e-6', 'warmup_lr': '1e-6', 'warmup_epochs': 0}
+INFO:Epoch   0, train loss:6.270394
+INFO:Epoch   0, eval loss:4.794250, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000053, valid acc:0.666667
+INFO:Epoch   1, train loss:6.180849
+INFO:Epoch   1, eval loss:4.794353, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000053, valid acc:0.666667
+INFO:Epoch   2, train loss:6.180510
+INFO:Epoch   2, eval loss:4.794250, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000053, valid acc:0.666667
+INFO:Epoch   3, train loss:6.180298
+INFO:Epoch   3, eval loss:4.794322, smiles_to_spectrum_recall:0.000106, spectrum_to_smiles_recall:0.000053, valid acc:0.666667
+INFO:Epoch   4, train loss:6.179973
+INFO:Epoch   4, eval loss:4.794283, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000106, valid acc:0.666667
+INFO:Epoch   5, train loss:6.179838
+INFO:Epoch   5, eval loss:4.794227, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000053, valid acc:0.666667
+INFO:Epoch   6, train loss:6.180299
+INFO:Epoch   6, eval loss:4.794349, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000053, valid acc:0.666667
+INFO:Epoch   7, train loss:6.180021
+INFO:Epoch   7, eval loss:4.794283, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000053, valid acc:0.666667
+INFO:Epoch   8, train loss:6.180015
+INFO:Epoch   8, eval loss:4.794251, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000053, valid acc:0.666667
+INFO:Epoch   9, train loss:6.179697
+INFO:Epoch   9, eval loss:4.794243, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000000, valid acc:0.666667
+INFO:Epoch  10, train loss:6.179347
+INFO:Epoch  10, eval loss:4.794183, smiles_to_spectrum_recall:0.000053, spectrum_to_smiles_recall:0.000053, valid acc:0.666667
+INFO:Epoch  11, train loss:6.081143
+INFO:Epoch  11, eval loss:4.549526, smiles_to_spectrum_recall:0.000160, spectrum_to_smiles_recall:0.000160, valid acc:0.666667
+INFO:Epoch  12, train loss:5.564199
+INFO:Epoch  12, eval loss:4.074329, smiles_to_spectrum_recall:0.000373, spectrum_to_smiles_recall:0.000213, valid acc:0.662444
+INFO:Epoch  13, train loss:5.243701
+INFO:Epoch  13, eval loss:3.807724, smiles_to_spectrum_recall:0.000426, spectrum_to_smiles_recall:0.000532, valid acc:0.667820
+INFO:Epoch  14, train loss:4.879077
+INFO:Epoch  14, eval loss:3.491481, smiles_to_spectrum_recall:0.000586, spectrum_to_smiles_recall:0.001011, valid acc:0.674847
+INFO:Epoch  15, train loss:4.647892
+INFO:Epoch  15, eval loss:3.233359, smiles_to_spectrum_recall:0.001224, spectrum_to_smiles_recall:0.000798, valid acc:0.688190
+INFO:Epoch  16, train loss:4.430795
+INFO:Epoch  16, eval loss:3.035176, smiles_to_spectrum_recall:0.001544, spectrum_to_smiles_recall:0.001970, valid acc:0.735264
+INFO:Epoch  17, train loss:4.239370
+INFO:Epoch  17, eval loss:2.942404, smiles_to_spectrum_recall:0.002608, spectrum_to_smiles_recall:0.002928, valid acc:0.748767
+INFO:Epoch  18, train loss:4.085704
+INFO:Epoch  18, eval loss:2.782301, smiles_to_spectrum_recall:0.002768, spectrum_to_smiles_recall:0.002715, valid acc:0.777015
+INFO:Epoch  19, train loss:3.920233
+INFO:Epoch  19, eval loss:2.570820, smiles_to_spectrum_recall:0.005163, spectrum_to_smiles_recall:0.004684, valid acc:0.813922
+INFO:Epoch  20, train loss:3.772912
+INFO:Epoch  20, eval loss:2.449195, smiles_to_spectrum_recall:0.007931, spectrum_to_smiles_recall:0.005749, valid acc:0.819440
+INFO:Epoch  21, train loss:3.649195
+INFO:Epoch  21, eval loss:2.386136, smiles_to_spectrum_recall:0.006281, spectrum_to_smiles_recall:0.007665, valid acc:0.826857
+INFO:Epoch  22, train loss:3.520161
+INFO:Epoch  22, eval loss:2.214826, smiles_to_spectrum_recall:0.010167, spectrum_to_smiles_recall:0.010007, valid acc:0.856791
+INFO:Epoch  23, train loss:3.412895
+INFO:Epoch  23, eval loss:2.131633, smiles_to_spectrum_recall:0.011072, spectrum_to_smiles_recall:0.011871, valid acc:0.869176
+INFO:Epoch  24, train loss:3.305014
+INFO:Epoch  24, eval loss:2.046387, smiles_to_spectrum_recall:0.014106, spectrum_to_smiles_recall:0.011764, valid acc:0.877214
+INFO:Epoch  25, train loss:3.211667
+INFO:Epoch  25, eval loss:1.969712, smiles_to_spectrum_recall:0.017779, spectrum_to_smiles_recall:0.014532, valid acc:0.884293
+INFO:Epoch  26, train loss:3.119292
+INFO:Epoch  26, eval loss:1.882045, smiles_to_spectrum_recall:0.016182, spectrum_to_smiles_recall:0.017140, valid acc:0.899198
+INFO:Epoch  27, train loss:3.032523
+INFO:Epoch  27, eval loss:1.849523, smiles_to_spectrum_recall:0.021399, spectrum_to_smiles_recall:0.019749, valid acc:0.893768
+INFO:Epoch  28, train loss:2.953727
+INFO:Epoch  28, eval loss:1.749025, smiles_to_spectrum_recall:0.025764, spectrum_to_smiles_recall:0.023422, valid acc:0.905568
+INFO:Epoch  29, train loss:2.877333
+INFO:Epoch  29, eval loss:1.686470, smiles_to_spectrum_recall:0.026243, spectrum_to_smiles_recall:0.025125, valid acc:0.912257
+INFO:Epoch  30, train loss:2.814699
+INFO:Epoch  30, eval loss:1.717383, smiles_to_spectrum_recall:0.026722, spectrum_to_smiles_recall:0.026722, valid acc:0.893520
+INFO:Epoch  31, train loss:2.740636
+INFO:Epoch  31, eval loss:1.613526, smiles_to_spectrum_recall:0.028053, spectrum_to_smiles_recall:0.031673, valid acc:0.918752
+INFO:Epoch  32, train loss:2.676400
+INFO:Epoch  32, eval loss:1.540417, smiles_to_spectrum_recall:0.033961, spectrum_to_smiles_recall:0.033695, valid acc:0.922123
+INFO:Epoch  33, train loss:2.609154
+INFO:Epoch  33, eval loss:1.505701, smiles_to_spectrum_recall:0.036410, spectrum_to_smiles_recall:0.038593, valid acc:0.922708
+INFO:Epoch  34, train loss:2.546585
+INFO:Epoch  34, eval loss:1.450327, smiles_to_spectrum_recall:0.036623, spectrum_to_smiles_recall:0.041307, valid acc:0.926452
+INFO:Epoch  35, train loss:2.487498
+INFO:Epoch  35, eval loss:1.381153, smiles_to_spectrum_recall:0.045566, spectrum_to_smiles_recall:0.043437, valid acc:0.934632
+INFO:Epoch  36, train loss:2.426061
+INFO:Epoch  36, eval loss:1.341870, smiles_to_spectrum_recall:0.048387, spectrum_to_smiles_recall:0.050623, valid acc:0.934810
+INFO:Epoch  37, train loss:2.367918
+INFO:Epoch  37, eval loss:1.270058, smiles_to_spectrum_recall:0.054562, spectrum_to_smiles_recall:0.054296, valid acc:0.945882
+INFO:Epoch  38, train loss:2.314156
+INFO:Epoch  38, eval loss:1.254995, smiles_to_spectrum_recall:0.056478, spectrum_to_smiles_recall:0.051634, valid acc:0.941375
+INFO:Epoch  39, train loss:2.255563
+INFO:Epoch  39, eval loss:1.202625, smiles_to_spectrum_recall:0.064782, spectrum_to_smiles_recall:0.060790, valid acc:0.944799
+INFO:Epoch  40, train loss:2.201832
+INFO:Epoch  40, eval loss:1.163947, smiles_to_spectrum_recall:0.067816, spectrum_to_smiles_recall:0.064037, valid acc:0.949714
+INFO:Epoch  41, train loss:2.155283
+INFO:Epoch  41, eval loss:1.148323, smiles_to_spectrum_recall:0.068189, spectrum_to_smiles_recall:0.067710, valid acc:0.944178
+INFO:Epoch  42, train loss:2.101209
+INFO:Epoch  42, eval loss:1.093722, smiles_to_spectrum_recall:0.072767, spectrum_to_smiles_recall:0.074790, valid acc:0.949679
+INFO:Epoch  43, train loss:2.049774
+INFO:Epoch  43, eval loss:1.051809, smiles_to_spectrum_recall:0.078942, spectrum_to_smiles_recall:0.079208, valid acc:0.952039
+INFO:Epoch  44, train loss:1.998208
+INFO:Epoch  44, eval loss:1.078686, smiles_to_spectrum_recall:0.076653, spectrum_to_smiles_recall:0.078622, valid acc:0.944409
+INFO:Epoch  45, train loss:1.947881
+INFO:Epoch  45, eval loss:1.034523, smiles_to_spectrum_recall:0.080805, spectrum_to_smiles_recall:0.083626, valid acc:0.946698
+INFO:Epoch  46, train loss:1.898656
+INFO:Epoch  46, eval loss:0.956212, smiles_to_spectrum_recall:0.092090, spectrum_to_smiles_recall:0.088257, valid acc:0.958391
+INFO:Epoch  47, train loss:1.851980
+INFO:Epoch  47, eval loss:0.917510, smiles_to_spectrum_recall:0.099702, spectrum_to_smiles_recall:0.104014, valid acc:0.954576
+INFO:Epoch  48, train loss:1.801589
+INFO:Epoch  48, eval loss:0.897996, smiles_to_spectrum_recall:0.102470, spectrum_to_smiles_recall:0.101033, valid acc:0.958497
+INFO:Epoch  49, train loss:1.759289
+INFO:Epoch  49, eval loss:0.874192, smiles_to_spectrum_recall:0.102843, spectrum_to_smiles_recall:0.111785, valid acc:0.956652
+INFO:Epoch  50, train loss:1.710632
+INFO:Epoch  50, eval loss:0.836716, smiles_to_spectrum_recall:0.108379, spectrum_to_smiles_recall:0.113968, valid acc:0.958639
+INFO:Epoch  51, train loss:1.669609
+INFO:Epoch  51, eval loss:0.822386, smiles_to_spectrum_recall:0.113702, spectrum_to_smiles_recall:0.120462, valid acc:0.959349
+INFO:Epoch  52, train loss:1.617300
+INFO:Epoch  52, eval loss:0.776033, smiles_to_spectrum_recall:0.122165, spectrum_to_smiles_recall:0.128660, valid acc:0.962224
+INFO:Epoch  53, train loss:1.574717
+INFO:Epoch  53, eval loss:0.754105, smiles_to_spectrum_recall:0.132599, spectrum_to_smiles_recall:0.131694, valid acc:0.961035
+INFO:Epoch  54, train loss:1.532842
+INFO:Epoch  54, eval loss:0.726072, smiles_to_spectrum_recall:0.134196, spectrum_to_smiles_recall:0.137549, valid acc:0.964069
+INFO:Epoch  55, train loss:1.485972
+INFO:Epoch  55, eval loss:0.747022, smiles_to_spectrum_recall:0.127914, spectrum_to_smiles_recall:0.138188, valid acc:0.955499
+INFO:Epoch  56, train loss:1.444065
+INFO:Epoch  56, eval loss:0.700381, smiles_to_spectrum_recall:0.143831, spectrum_to_smiles_recall:0.150804, valid acc:0.960148
+INFO:Epoch  57, train loss:1.396859
+INFO:Epoch  57, eval loss:0.637787, smiles_to_spectrum_recall:0.160119, spectrum_to_smiles_recall:0.167997, valid acc:0.966021
+INFO:Epoch  58, train loss:1.354432
+INFO:Epoch  58, eval loss:0.643070, smiles_to_spectrum_recall:0.163047, spectrum_to_smiles_recall:0.158256, valid acc:0.963466
+INFO:Epoch  59, train loss:1.322091
+INFO:Epoch  59, eval loss:0.626897, smiles_to_spectrum_recall:0.162248, spectrum_to_smiles_recall:0.174758, valid acc:0.963572
+INFO:Epoch  60, train loss:1.276010
+INFO:Epoch  60, eval loss:0.574717, smiles_to_spectrum_recall:0.187054, spectrum_to_smiles_recall:0.178590, valid acc:0.968487
+INFO:Epoch  61, train loss:1.237788
+INFO:Epoch  61, eval loss:0.578137, smiles_to_spectrum_recall:0.181305, spectrum_to_smiles_recall:0.186522, valid acc:0.964974
+INFO:Epoch  62, train loss:1.197407
+INFO:Epoch  62, eval loss:0.563660, smiles_to_spectrum_recall:0.182530, spectrum_to_smiles_recall:0.184126, valid acc:0.966127
+INFO:Epoch  63, train loss:1.160319
+INFO:Epoch  63, eval loss:0.527864, smiles_to_spectrum_recall:0.201640, spectrum_to_smiles_recall:0.212605, valid acc:0.968079
+INFO:Epoch  64, train loss:1.115606
+INFO:Epoch  64, eval loss:0.498619, smiles_to_spectrum_recall:0.218407, spectrum_to_smiles_recall:0.219099, valid acc:0.970226
+INFO:Epoch  65, train loss:1.084494
+INFO:Epoch  65, eval loss:0.490612, smiles_to_spectrum_recall:0.214309, spectrum_to_smiles_recall:0.226711, valid acc:0.970333
+INFO:Epoch  66, train loss:1.057008
+INFO:Epoch  66, eval loss:0.460741, smiles_to_spectrum_recall:0.231289, spectrum_to_smiles_recall:0.231396, valid acc:0.971681
+INFO:Epoch  67, train loss:1.015532
+INFO:Epoch  67, eval loss:0.445716, smiles_to_spectrum_recall:0.244331, spectrum_to_smiles_recall:0.242840, valid acc:0.973012
+INFO:Epoch  68, train loss:0.985636
+INFO:Epoch  68, eval loss:0.454805, smiles_to_spectrum_recall:0.241723, spectrum_to_smiles_recall:0.229479, valid acc:0.968398
+INFO:Epoch  69, train loss:0.944082
+INFO:Epoch  69, eval loss:0.413098, smiles_to_spectrum_recall:0.265197, spectrum_to_smiles_recall:0.249068, valid acc:0.973988
+INFO:Epoch  70, train loss:0.915358
+INFO:Epoch  70, eval loss:0.443772, smiles_to_spectrum_recall:0.239966, spectrum_to_smiles_recall:0.243479, valid acc:0.964814
+INFO:Epoch  71, train loss:0.889377
+INFO:Epoch  71, eval loss:0.391733, smiles_to_spectrum_recall:0.269456, spectrum_to_smiles_recall:0.269775, valid acc:0.971362
+INFO:Epoch  72, train loss:0.857432
+INFO:Epoch  72, eval loss:0.381510, smiles_to_spectrum_recall:0.274353, spectrum_to_smiles_recall:0.283669, valid acc:0.971592
+INFO:Epoch  73, train loss:0.824928
+INFO:Epoch  73, eval loss:0.387186, smiles_to_spectrum_recall:0.273395, spectrum_to_smiles_recall:0.279038, valid acc:0.968061
+INFO:Epoch  74, train loss:0.797751
+INFO:Epoch  74, eval loss:0.370336, smiles_to_spectrum_recall:0.279410, spectrum_to_smiles_recall:0.276163, valid acc:0.970510
+INFO:Epoch  75, train loss:0.769822
+INFO:Epoch  75, eval loss:0.338671, smiles_to_spectrum_recall:0.297083, spectrum_to_smiles_recall:0.303311, valid acc:0.973757
+INFO:Epoch  76, train loss:0.739599
+INFO:Epoch  76, eval loss:0.345257, smiles_to_spectrum_recall:0.297668, spectrum_to_smiles_recall:0.308634, valid acc:0.970634
+INFO:Epoch  77, train loss:0.716646
+INFO:Epoch  77, eval loss:0.315736, smiles_to_spectrum_recall:0.305653, spectrum_to_smiles_recall:0.319121, valid acc:0.974307
+INFO:Epoch  78, train loss:0.693359
+INFO:Epoch  78, eval loss:0.326644, smiles_to_spectrum_recall:0.307250, spectrum_to_smiles_recall:0.327425, valid acc:0.969463
+INFO:Epoch  79, train loss:0.661049
+INFO:Epoch  79, eval loss:0.306074, smiles_to_spectrum_recall:0.329660, spectrum_to_smiles_recall:0.332854, valid acc:0.972781
+INFO:Epoch  80, train loss:0.641585
+INFO:Epoch  80, eval loss:0.283913, smiles_to_spectrum_recall:0.336474, spectrum_to_smiles_recall:0.348078, valid acc:0.975159
+INFO:Epoch  81, train loss:0.621298
+INFO:Epoch  81, eval loss:0.296413, smiles_to_spectrum_recall:0.328170, spectrum_to_smiles_recall:0.343500, valid acc:0.971184
+INFO:Epoch  82, train loss:0.592102
+INFO:Epoch  82, eval loss:0.264403, smiles_to_spectrum_recall:0.342649, spectrum_to_smiles_recall:0.355318, valid acc:0.977732
+INFO:Epoch  83, train loss:0.572136
+INFO:Epoch  83, eval loss:0.254537, smiles_to_spectrum_recall:0.364527, spectrum_to_smiles_recall:0.381987, valid acc:0.976791
+INFO:Epoch  84, train loss:0.554782
+INFO:Epoch  84, eval loss:0.251425, smiles_to_spectrum_recall:0.363090, spectrum_to_smiles_recall:0.379857, valid acc:0.976099
+INFO:Epoch  85, train loss:0.536800
+INFO:Epoch  85, eval loss:0.242368, smiles_to_spectrum_recall:0.374002, spectrum_to_smiles_recall:0.401416, valid acc:0.976667
+INFO:Epoch  86, train loss:0.515202
+INFO:Epoch  86, eval loss:0.252236, smiles_to_spectrum_recall:0.372937, spectrum_to_smiles_recall:0.386831, valid acc:0.972071
+INFO:Epoch  87, train loss:0.496561
+INFO:Epoch  87, eval loss:0.229725, smiles_to_spectrum_recall:0.389758, spectrum_to_smiles_recall:0.404024, valid acc:0.976703
+INFO:Epoch  88, train loss:0.480910
+INFO:Epoch  88, eval loss:0.249137, smiles_to_spectrum_recall:0.367295, spectrum_to_smiles_recall:0.381241, valid acc:0.972036
+INFO:Epoch  89, train loss:0.464417
+INFO:Epoch  89, eval loss:0.232083, smiles_to_spectrum_recall:0.397956, spectrum_to_smiles_recall:0.403918, valid acc:0.971965
+INFO:Epoch  90, train loss:0.444539
+INFO:Epoch  90, eval loss:0.201217, smiles_to_spectrum_recall:0.407697, spectrum_to_smiles_recall:0.429682, valid acc:0.980092
+INFO:Epoch  91, train loss:0.425978
+INFO:Epoch  91, eval loss:0.196368, smiles_to_spectrum_recall:0.418823, spectrum_to_smiles_recall:0.424412, valid acc:0.979062
+INFO:Epoch  92, train loss:0.415756
+INFO:Epoch  92, eval loss:0.217217, smiles_to_spectrum_recall:0.409507, spectrum_to_smiles_recall:0.419940, valid acc:0.973988
+INFO:Epoch  93, train loss:0.401396
+INFO:Epoch  93, eval loss:0.206846, smiles_to_spectrum_recall:0.420313, spectrum_to_smiles_recall:0.420047, valid acc:0.974076
+INFO:Epoch  94, train loss:0.388765
+INFO:Epoch  94, eval loss:0.199017, smiles_to_spectrum_recall:0.421484, spectrum_to_smiles_recall:0.436442, valid acc:0.975585
+INFO:Epoch  95, train loss:0.369677
+INFO:Epoch  95, eval loss:0.193602, smiles_to_spectrum_recall:0.414670, spectrum_to_smiles_recall:0.447833, valid acc:0.976223
+INFO:Epoch  96, train loss:0.360581
+INFO:Epoch  96, eval loss:0.187615, smiles_to_spectrum_recall:0.436761, spectrum_to_smiles_recall:0.457309, valid acc:0.976720
+INFO:Epoch  97, train loss:0.341924
+INFO:Epoch  97, eval loss:0.172039, smiles_to_spectrum_recall:0.443628, spectrum_to_smiles_recall:0.461993, valid acc:0.978991
+INFO:Epoch  98, train loss:0.340600
+INFO:Epoch  98, eval loss:0.189169, smiles_to_spectrum_recall:0.433088, spectrum_to_smiles_recall:0.473384, valid acc:0.972675
+INFO:Epoch  99, train loss:0.326176
+INFO:Epoch  99, eval loss:0.183216, smiles_to_spectrum_recall:0.450602, spectrum_to_smiles_recall:0.476472, valid acc:0.973296
+INFO:Epoch 100, train loss:0.316253
+INFO:Epoch 100, eval loss:0.178613, smiles_to_spectrum_recall:0.455392, spectrum_to_smiles_recall:0.463324, valid acc:0.975940
+INFO:Epoch 101, train loss:0.304074
+INFO:Epoch 101, eval loss:0.167455, smiles_to_spectrum_recall:0.477111, spectrum_to_smiles_recall:0.493878, valid acc:0.976152
+INFO:Epoch 102, train loss:0.290967
+INFO:Epoch 102, eval loss:0.164492, smiles_to_spectrum_recall:0.472000, spectrum_to_smiles_recall:0.497818, valid acc:0.977253
+INFO:Epoch 103, train loss:0.286333
+INFO:Epoch 103, eval loss:0.163909, smiles_to_spectrum_recall:0.479027, spectrum_to_smiles_recall:0.502342, valid acc:0.976436
+INFO:Epoch 104, train loss:0.273499
+INFO:Epoch 104, eval loss:0.159147, smiles_to_spectrum_recall:0.484137, spectrum_to_smiles_recall:0.517673, valid acc:0.977572
+INFO:Epoch 105, train loss:0.267137
+INFO:Epoch 105, eval loss:0.160552, smiles_to_spectrum_recall:0.486745, spectrum_to_smiles_recall:0.521239, valid acc:0.975549
+INFO:Epoch 106, train loss:0.259432
+INFO:Epoch 106, eval loss:0.147751, smiles_to_spectrum_recall:0.493719, spectrum_to_smiles_recall:0.533482, valid acc:0.977696
+INFO:Epoch 107, train loss:0.252546
+INFO:Epoch 107, eval loss:0.164175, smiles_to_spectrum_recall:0.479506, spectrum_to_smiles_recall:0.490099, valid acc:0.975886
+INFO:Epoch 108, train loss:0.241443
+INFO:Epoch 108, eval loss:0.134570, smiles_to_spectrum_recall:0.510593, spectrum_to_smiles_recall:0.545672, valid acc:0.980429
+INFO:Epoch 109, train loss:0.231520
+INFO:Epoch 109, eval loss:0.135795, smiles_to_spectrum_recall:0.519483, spectrum_to_smiles_recall:0.536783, valid acc:0.979364
+INFO:Epoch 110, train loss:0.223984
+INFO:Epoch 110, eval loss:0.143501, smiles_to_spectrum_recall:0.518365, spectrum_to_smiles_recall:0.551262, valid acc:0.976880
+INFO:Epoch 111, train loss:0.220166
+INFO:Epoch 111, eval loss:0.138949, smiles_to_spectrum_recall:0.526616, spectrum_to_smiles_recall:0.552699, valid acc:0.978211
+INFO:Epoch 112, train loss:0.219281
+INFO:Epoch 112, eval loss:0.144691, smiles_to_spectrum_recall:0.519483, spectrum_to_smiles_recall:0.530661, valid acc:0.976028
+INFO:Epoch 113, train loss:0.209501
+INFO:Epoch 113, eval loss:0.139240, smiles_to_spectrum_recall:0.528000, spectrum_to_smiles_recall:0.569041, valid acc:0.976880
+INFO:Epoch 114, train loss:0.205439
+INFO:Epoch 114, eval loss:0.145157, smiles_to_spectrum_recall:0.541520, spectrum_to_smiles_recall:0.570478, valid acc:0.974076
+INFO:Epoch 115, train loss:0.195060
+INFO:Epoch 115, eval loss:0.126300, smiles_to_spectrum_recall:0.550516, spectrum_to_smiles_recall:0.584584, valid acc:0.979825
+INFO:Epoch 116, train loss:0.192145
+INFO:Epoch 116, eval loss:0.131299, smiles_to_spectrum_recall:0.543437, spectrum_to_smiles_recall:0.567976, valid acc:0.977377
+INFO:Epoch 117, train loss:0.184975
+INFO:Epoch 117, eval loss:0.129725, smiles_to_spectrum_recall:0.537528, spectrum_to_smiles_recall:0.560045, valid acc:0.977803
+INFO:Epoch 118, train loss:0.181762
+INFO:Epoch 118, eval loss:0.111238, smiles_to_spectrum_recall:0.560417, spectrum_to_smiles_recall:0.579101, valid acc:0.982292
+INFO:Epoch 119, train loss:0.176269
+INFO:Epoch 119, eval loss:0.118591, smiles_to_spectrum_recall:0.551954, spectrum_to_smiles_recall:0.598584, valid acc:0.980482
+INFO:Epoch 120, train loss:0.167962
+INFO:Epoch 120, eval loss:0.129763, smiles_to_spectrum_recall:0.553231, spectrum_to_smiles_recall:0.594645, valid acc:0.977590
+INFO:Epoch 121, train loss:0.168427
+INFO:Epoch 121, eval loss:0.128002, smiles_to_spectrum_recall:0.561642, spectrum_to_smiles_recall:0.584265, valid acc:0.977536
+INFO:Epoch 122, train loss:0.159180
+INFO:Epoch 122, eval loss:0.125423, smiles_to_spectrum_recall:0.565421, spectrum_to_smiles_recall:0.593527, valid acc:0.977856
+INFO:Epoch 123, train loss:0.162270
+INFO:Epoch 123, eval loss:0.114836, smiles_to_spectrum_recall:0.568029, spectrum_to_smiles_recall:0.605770, valid acc:0.979080
+INFO:Epoch 124, train loss:0.159346
+INFO:Epoch 124, eval loss:0.124284, smiles_to_spectrum_recall:0.571756, spectrum_to_smiles_recall:0.592196, valid acc:0.976206
+INFO:Epoch 125, train loss:0.148203
+INFO:Epoch 125, eval loss:0.126168, smiles_to_spectrum_recall:0.567444, spectrum_to_smiles_recall:0.585223, valid acc:0.977306
+INFO:Epoch 126, train loss:0.149613
+INFO:Epoch 126, eval loss:0.118348, smiles_to_spectrum_recall:0.586714, spectrum_to_smiles_recall:0.612371, valid acc:0.977235
+INFO:Epoch 127, train loss:0.140060
+INFO:Epoch 127, eval loss:0.116218, smiles_to_spectrum_recall:0.582881, spectrum_to_smiles_recall:0.602949, valid acc:0.978637
+INFO:Epoch 128, train loss:0.137402
+INFO:Epoch 128, eval loss:0.112083, smiles_to_spectrum_recall:0.595071, spectrum_to_smiles_recall:0.629724, valid acc:0.978708
+INFO:Epoch 129, train loss:0.138475
+INFO:Epoch 129, eval loss:0.135250, smiles_to_spectrum_recall:0.585117, spectrum_to_smiles_recall:0.599702, valid acc:0.972817
+INFO:Epoch 130, train loss:0.134449
+INFO:Epoch 130, eval loss:0.112353, smiles_to_spectrum_recall:0.597094, spectrum_to_smiles_recall:0.612052, valid acc:0.978850
+INFO:Epoch 131, train loss:0.130030
+INFO:Epoch 131, eval loss:0.119049, smiles_to_spectrum_recall:0.588151, spectrum_to_smiles_recall:0.617960, valid acc:0.976135
+INFO:Epoch 132, train loss:0.125980
+INFO:Epoch 132, eval loss:0.105993, smiles_to_spectrum_recall:0.607207, spectrum_to_smiles_recall:0.619451, valid acc:0.979258
+INFO:Epoch 133, train loss:0.124600
+INFO:Epoch 133, eval loss:0.118071, smiles_to_spectrum_recall:0.591664, spectrum_to_smiles_recall:0.622272, valid acc:0.977217
+INFO:Epoch 134, train loss:0.124576
+INFO:Epoch 134, eval loss:0.109368, smiles_to_spectrum_recall:0.605611, spectrum_to_smiles_recall:0.646492, valid acc:0.978530
+INFO:Epoch 135, train loss:0.119682
+INFO:Epoch 135, eval loss:0.095169, smiles_to_spectrum_recall:0.611306, spectrum_to_smiles_recall:0.637443, valid acc:0.981547
+INFO:Epoch 136, train loss:0.113372
+INFO:Epoch 136, eval loss:0.101236, smiles_to_spectrum_recall:0.615405, spectrum_to_smiles_recall:0.639998, valid acc:0.980269
+INFO:Epoch 137, train loss:0.112206
+INFO:Epoch 137, eval loss:0.100095, smiles_to_spectrum_recall:0.608751, spectrum_to_smiles_recall:0.641754, valid acc:0.980145
+INFO:Epoch 138, train loss:0.111099
+INFO:Epoch 138, eval loss:0.101548, smiles_to_spectrum_recall:0.607793, spectrum_to_smiles_recall:0.651709, valid acc:0.979524
+INFO:Epoch 139, train loss:0.111232
+INFO:Epoch 139, eval loss:0.095758, smiles_to_spectrum_recall:0.626158, spectrum_to_smiles_recall:0.649899, valid acc:0.980979
+INFO:Epoch 140, train loss:0.107996
+INFO:Epoch 140, eval loss:0.102355, smiles_to_spectrum_recall:0.624348, spectrum_to_smiles_recall:0.654690, valid acc:0.979577
+INFO:Epoch 141, train loss:0.107766
+INFO:Epoch 141, eval loss:0.116913, smiles_to_spectrum_recall:0.617321, spectrum_to_smiles_recall:0.650059, valid acc:0.975194
+INFO:Epoch 142, train loss:0.103743
+INFO:Epoch 142, eval loss:0.106037, smiles_to_spectrum_recall:0.627276, spectrum_to_smiles_recall:0.658256, valid acc:0.977909
+INFO:Epoch 143, train loss:0.099964
+INFO:Epoch 143, eval loss:0.112378, smiles_to_spectrum_recall:0.624774, spectrum_to_smiles_recall:0.655062, valid acc:0.977253
+INFO:Epoch 144, train loss:0.104601
+INFO:Epoch 144, eval loss:0.091095, smiles_to_spectrum_recall:0.637230, spectrum_to_smiles_recall:0.657564, valid acc:0.981387
+INFO:Epoch 145, train loss:0.099538
+INFO:Epoch 145, eval loss:0.091104, smiles_to_spectrum_recall:0.633557, spectrum_to_smiles_recall:0.658948, valid acc:0.981972
+INFO:Epoch 146, train loss:0.098459
+INFO:Epoch 146, eval loss:0.099910, smiles_to_spectrum_recall:0.637709, spectrum_to_smiles_recall:0.668423, valid acc:0.978406
+INFO:Epoch 147, train loss:0.095792
+INFO:Epoch 147, eval loss:0.124919, smiles_to_spectrum_recall:0.619291, spectrum_to_smiles_recall:0.642234, valid acc:0.972444
+INFO:Epoch 148, train loss:0.093431
+INFO:Epoch 148, eval loss:0.108220, smiles_to_spectrum_recall:0.632918, spectrum_to_smiles_recall:0.664271, valid acc:0.976490
+INFO:Epoch 149, train loss:0.091838
+INFO:Epoch 149, eval loss:0.088409, smiles_to_spectrum_recall:0.636644, spectrum_to_smiles_recall:0.658735, valid acc:0.981405
+INFO:Epoch 150, train loss:0.088917
+INFO:Epoch 150, eval loss:0.087552, smiles_to_spectrum_recall:0.647823, spectrum_to_smiles_recall:0.675876, valid acc:0.981387
+INFO:Epoch 151, train loss:0.091295
+INFO:Epoch 151, eval loss:0.114368, smiles_to_spectrum_recall:0.636857, spectrum_to_smiles_recall:0.665176, valid acc:0.974857
+INFO:Epoch 152, train loss:0.087970
+INFO:Epoch 152, eval loss:0.083650, smiles_to_spectrum_recall:0.652880, spectrum_to_smiles_recall:0.686202, valid acc:0.981937
+INFO:Epoch 153, train loss:0.086855
+INFO:Epoch 153, eval loss:0.082516, smiles_to_spectrum_recall:0.650697, spectrum_to_smiles_recall:0.688438, valid acc:0.981848
+INFO:Epoch 154, train loss:0.084889
+INFO:Epoch 154, eval loss:0.084923, smiles_to_spectrum_recall:0.648355, spectrum_to_smiles_recall:0.677206, valid acc:0.981919
+INFO:Epoch 155, train loss:0.085553
+INFO:Epoch 155, eval loss:0.092232, smiles_to_spectrum_recall:0.664058, spectrum_to_smiles_recall:0.695092, valid acc:0.979754
+INFO:Epoch 156, train loss:0.082900
+INFO:Epoch 156, eval loss:0.084424, smiles_to_spectrum_recall:0.647823, spectrum_to_smiles_recall:0.677313, valid acc:0.982700
+INFO:Epoch 157, train loss:0.083147
+INFO:Epoch 157, eval loss:0.093564, smiles_to_spectrum_recall:0.663686, spectrum_to_smiles_recall:0.692590, valid acc:0.979879
+INFO:Epoch 158, train loss:0.079649
+INFO:Epoch 158, eval loss:0.092111, smiles_to_spectrum_recall:0.667785, spectrum_to_smiles_recall:0.691898, valid acc:0.980145
+INFO:Epoch 159, train loss:0.075568
+INFO:Epoch 159, eval loss:0.080932, smiles_to_spectrum_recall:0.671457, spectrum_to_smiles_recall:0.698286, valid acc:0.982576
+INFO:Epoch 160, train loss:0.080014
+INFO:Epoch 160, eval loss:0.084286, smiles_to_spectrum_recall:0.667625, spectrum_to_smiles_recall:0.708666, valid acc:0.980766
+INFO:Epoch 161, train loss:0.075696
+INFO:Epoch 161, eval loss:0.078854, smiles_to_spectrum_recall:0.666401, spectrum_to_smiles_recall:0.698446, valid acc:0.981795
+INFO:Epoch 162, train loss:0.076451
+INFO:Epoch 162, eval loss:0.082931, smiles_to_spectrum_recall:0.667146, spectrum_to_smiles_recall:0.694187, valid acc:0.981689
+INFO:Epoch 163, train loss:0.079141
+INFO:Epoch 163, eval loss:0.098979, smiles_to_spectrum_recall:0.667944, spectrum_to_smiles_recall:0.696529, valid acc:0.977235
+INFO:Epoch 164, train loss:0.067888
+INFO:Epoch 164, eval loss:0.097328, smiles_to_spectrum_recall:0.665229, spectrum_to_smiles_recall:0.694134, valid acc:0.977253
+INFO:Epoch 165, train loss:0.074883
+INFO:Epoch 165, eval loss:0.072129, smiles_to_spectrum_recall:0.685777, spectrum_to_smiles_recall:0.711434, valid acc:0.983942
+INFO:Epoch 166, train loss:0.069128
+INFO:Epoch 166, eval loss:0.096337, smiles_to_spectrum_recall:0.675663, spectrum_to_smiles_recall:0.694240, valid acc:0.978619
+INFO:Epoch 167, train loss:0.072722
+INFO:Epoch 167, eval loss:0.071501, smiles_to_spectrum_recall:0.678218, spectrum_to_smiles_recall:0.717077, valid acc:0.984173
+INFO:Epoch 168, train loss:0.071994
+INFO:Epoch 168, eval loss:0.090283, smiles_to_spectrum_recall:0.676408, spectrum_to_smiles_recall:0.694187, valid acc:0.979719
+INFO:Epoch 169, train loss:0.065261
+INFO:Epoch 169, eval loss:0.080461, smiles_to_spectrum_recall:0.684818, spectrum_to_smiles_recall:0.714362, valid acc:0.982469
+INFO:Epoch 170, train loss:0.068169
+INFO:Epoch 170, eval loss:0.087237, smiles_to_spectrum_recall:0.668583, spectrum_to_smiles_recall:0.700628, valid acc:0.980588
+INFO:Epoch 171, train loss:0.067010
+INFO:Epoch 171, eval loss:0.083850, smiles_to_spectrum_recall:0.687374, spectrum_to_smiles_recall:0.709837, valid acc:0.981316
+INFO:Epoch 172, train loss:0.064539
+INFO:Epoch 172, eval loss:0.082648, smiles_to_spectrum_recall:0.681731, spectrum_to_smiles_recall:0.711221, valid acc:0.982274
+INFO:Epoch 173, train loss:0.061962
+INFO:Epoch 173, eval loss:0.082716, smiles_to_spectrum_recall:0.682263, spectrum_to_smiles_recall:0.700468, valid acc:0.981227
+INFO:Epoch 174, train loss:0.067580
+INFO:Epoch 174, eval loss:0.084981, smiles_to_spectrum_recall:0.690674, spectrum_to_smiles_recall:0.717715, valid acc:0.981103
+INFO:Epoch 175, train loss:0.067977
+INFO:Epoch 175, eval loss:0.097522, smiles_to_spectrum_recall:0.688598, spectrum_to_smiles_recall:0.717183, valid acc:0.977164
+INFO:Epoch 176, train loss:0.066341
+INFO:Epoch 176, eval loss:0.086555, smiles_to_spectrum_recall:0.684126, spectrum_to_smiles_recall:0.711328, valid acc:0.981245
+INFO:Epoch 177, train loss:0.062502
+INFO:Epoch 177, eval loss:0.083645, smiles_to_spectrum_recall:0.695358, spectrum_to_smiles_recall:0.722932, valid acc:0.980730
+INFO:Epoch 178, train loss:0.063558
+INFO:Epoch 178, eval loss:0.094613, smiles_to_spectrum_recall:0.681146, spectrum_to_smiles_recall:0.700894, valid acc:0.977306
+INFO:Epoch 179, train loss:0.060128
+INFO:Epoch 179, eval loss:0.088904, smiles_to_spectrum_recall:0.692856, spectrum_to_smiles_recall:0.720696, valid acc:0.978920
+INFO:Epoch 180, train loss:0.058384
+INFO:Epoch 180, eval loss:0.081584, smiles_to_spectrum_recall:0.704248, spectrum_to_smiles_recall:0.729320, valid acc:0.981511
+INFO:Epoch 181, train loss:0.059838
+INFO:Epoch 181, eval loss:0.079450, smiles_to_spectrum_recall:0.687533, spectrum_to_smiles_recall:0.722027, valid acc:0.982310
+INFO:Epoch 182, train loss:0.058447
+INFO:Epoch 182, eval loss:0.092060, smiles_to_spectrum_recall:0.687693, spectrum_to_smiles_recall:0.719206, valid acc:0.978211
+INFO:Epoch 183, train loss:0.058949
+INFO:Epoch 183, eval loss:0.077555, smiles_to_spectrum_recall:0.696689, spectrum_to_smiles_recall:0.717662, valid acc:0.982150
+INFO:Epoch 184, train loss:0.061699
+INFO:Epoch 184, eval loss:0.093184, smiles_to_spectrum_recall:0.686735, spectrum_to_smiles_recall:0.712605, valid acc:0.978743
+INFO:Epoch 185, train loss:0.059534
+INFO:Epoch 185, eval loss:0.090273, smiles_to_spectrum_recall:0.695358, spectrum_to_smiles_recall:0.724316, valid acc:0.978814
+INFO:Epoch 186, train loss:0.058735
+INFO:Epoch 186, eval loss:0.078934, smiles_to_spectrum_recall:0.696849, spectrum_to_smiles_recall:0.720856, valid acc:0.981263
+INFO:Epoch 187, train loss:0.060011
+INFO:Epoch 187, eval loss:0.078843, smiles_to_spectrum_recall:0.702332, spectrum_to_smiles_recall:0.726552, valid acc:0.981866
+INFO:Epoch 188, train loss:0.056567
+INFO:Epoch 188, eval loss:0.078726, smiles_to_spectrum_recall:0.697967, spectrum_to_smiles_recall:0.730012, valid acc:0.981582
+INFO:Epoch 189, train loss:0.059743
+INFO:Epoch 189, eval loss:0.081250, smiles_to_spectrum_recall:0.702385, spectrum_to_smiles_recall:0.728362, valid acc:0.980180
+INFO:Epoch 190, train loss:0.056697
+INFO:Epoch 190, eval loss:0.083614, smiles_to_spectrum_recall:0.685777, spectrum_to_smiles_recall:0.718780, valid acc:0.980287
+INFO:Epoch 191, train loss:0.056326
+INFO:Epoch 191, eval loss:0.096239, smiles_to_spectrum_recall:0.689929, spectrum_to_smiles_recall:0.718780, valid acc:0.977377
+INFO:Epoch 192, train loss:0.055237
+INFO:Epoch 192, eval loss:0.090581, smiles_to_spectrum_recall:0.698286, spectrum_to_smiles_recall:0.733099, valid acc:0.979506
+INFO:Epoch 193, train loss:0.054413
+INFO:Epoch 193, eval loss:0.079600, smiles_to_spectrum_recall:0.683701, spectrum_to_smiles_recall:0.703928, valid acc:0.981830
+INFO:Epoch 194, train loss:0.052869
+INFO:Epoch 194, eval loss:0.095733, smiles_to_spectrum_recall:0.698925, spectrum_to_smiles_recall:0.717077, valid acc:0.977483
+INFO:Epoch 195, train loss:0.055878
+INFO:Epoch 195, eval loss:0.072397, smiles_to_spectrum_recall:0.711913, spectrum_to_smiles_recall:0.752316, valid acc:0.983552
+INFO:Epoch 196, train loss:0.052797
+INFO:Epoch 196, eval loss:0.083717, smiles_to_spectrum_recall:0.700256, spectrum_to_smiles_recall:0.733206, valid acc:0.981050
+INFO:Epoch 197, train loss:0.053534
+INFO:Epoch 197, eval loss:0.083289, smiles_to_spectrum_recall:0.701373, spectrum_to_smiles_recall:0.730757, valid acc:0.979400
+INFO:Epoch 198, train loss:0.050717
+INFO:Epoch 198, eval loss:0.082061, smiles_to_spectrum_recall:0.706696, spectrum_to_smiles_recall:0.745289, valid acc:0.981192
+INFO:Epoch 199, train loss:0.051579
+INFO:Epoch 199, eval loss:0.096615, smiles_to_spectrum_recall:0.695944, spectrum_to_smiles_recall:0.727084, valid acc:0.978654
+INFO:Epoch 200, train loss:0.053422
+INFO:Epoch 200, eval loss:0.080530, smiles_to_spectrum_recall:0.697754, spectrum_to_smiles_recall:0.738475, valid acc:0.981422
+INFO:Epoch 201, train loss:0.049511
+INFO:Epoch 201, eval loss:0.088186, smiles_to_spectrum_recall:0.706537, spectrum_to_smiles_recall:0.735601, valid acc:0.979985
+INFO:Epoch 202, train loss:0.050533
+INFO:Epoch 202, eval loss:0.081002, smiles_to_spectrum_recall:0.711753, spectrum_to_smiles_recall:0.742521, valid acc:0.980872
+INFO:Epoch 203, train loss:0.048563
+INFO:Epoch 203, eval loss:0.103153, smiles_to_spectrum_recall:0.693815, spectrum_to_smiles_recall:0.721708, valid acc:0.973988
+INFO:Epoch 204, train loss:0.048149
+INFO:Epoch 204, eval loss:0.072712, smiles_to_spectrum_recall:0.706484, spectrum_to_smiles_recall:0.745023, valid acc:0.982984
+INFO:Epoch 205, train loss:0.047627
+INFO:Epoch 205, eval loss:0.087459, smiles_to_spectrum_recall:0.721335, spectrum_to_smiles_recall:0.755190, valid acc:0.979488
+INFO:Epoch 206, train loss:0.049592
+INFO:Epoch 206, eval loss:0.077973, smiles_to_spectrum_recall:0.712392, spectrum_to_smiles_recall:0.743319, valid acc:0.981547
+INFO:Epoch 207, train loss:0.049774
+INFO:Epoch 207, eval loss:0.079798, smiles_to_spectrum_recall:0.710849, spectrum_to_smiles_recall:0.743905, valid acc:0.981901
+INFO:Epoch 208, train loss:0.044942
+INFO:Epoch 208, eval loss:0.087423, smiles_to_spectrum_recall:0.708453, spectrum_to_smiles_recall:0.738103, valid acc:0.979843
+INFO:Epoch 209, train loss:0.048944
+INFO:Epoch 209, eval loss:0.097126, smiles_to_spectrum_recall:0.705579, spectrum_to_smiles_recall:0.739487, valid acc:0.976862
+INFO:Epoch 210, train loss:0.049141
+INFO:Epoch 210, eval loss:0.081668, smiles_to_spectrum_recall:0.716331, spectrum_to_smiles_recall:0.741031, valid acc:0.980517
+INFO:Epoch 211, train loss:0.048822
+INFO:Epoch 211, eval loss:0.083862, smiles_to_spectrum_recall:0.712552, spectrum_to_smiles_recall:0.742574, valid acc:0.980979
+INFO:Epoch 212, train loss:0.046520
+INFO:Epoch 212, eval loss:0.087360, smiles_to_spectrum_recall:0.712073, spectrum_to_smiles_recall:0.752049, valid acc:0.979825
+INFO:Epoch 213, train loss:0.044576
+INFO:Epoch 213, eval loss:0.083724, smiles_to_spectrum_recall:0.702065, spectrum_to_smiles_recall:0.733685, valid acc:0.980003
+INFO:Epoch 214, train loss:0.046340
+INFO:Epoch 214, eval loss:0.087336, smiles_to_spectrum_recall:0.714096, spectrum_to_smiles_recall:0.739380, valid acc:0.978850
+INFO:Epoch 215, train loss:0.046102
+INFO:Epoch 215, eval loss:0.075997, smiles_to_spectrum_recall:0.710689, spectrum_to_smiles_recall:0.738475, valid acc:0.982026
+INFO:Epoch 216, train loss:0.047959
+INFO:Epoch 216, eval loss:0.098999, smiles_to_spectrum_recall:0.713191, spectrum_to_smiles_recall:0.745449, valid acc:0.976596
+INFO:Epoch 217, train loss:0.043031
+INFO:Epoch 217, eval loss:0.076175, smiles_to_spectrum_recall:0.716491, spectrum_to_smiles_recall:0.756201, valid acc:0.982434
+INFO:Epoch 218, train loss:0.046651
+INFO:Epoch 218, eval loss:0.085723, smiles_to_spectrum_recall:0.712605, spectrum_to_smiles_recall:0.739221, valid acc:0.979630
+INFO:Epoch 219, train loss:0.044738
+INFO:Epoch 219, eval loss:0.082506, smiles_to_spectrum_recall:0.726498, spectrum_to_smiles_recall:0.757585, valid acc:0.980855
+INFO:Epoch 220, train loss:0.045052
+INFO:Epoch 220, eval loss:0.085372, smiles_to_spectrum_recall:0.712499, spectrum_to_smiles_recall:0.751517, valid acc:0.979488
+INFO:Epoch 221, train loss:0.046276
+INFO:Epoch 221, eval loss:0.068692, smiles_to_spectrum_recall:0.719951, spectrum_to_smiles_recall:0.756840, valid acc:0.984155
+INFO:Epoch 222, train loss:0.043202
+INFO:Epoch 222, eval loss:0.084831, smiles_to_spectrum_recall:0.717822, spectrum_to_smiles_recall:0.756361, valid acc:0.980659
+INFO:Epoch 223, train loss:0.046927
+INFO:Epoch 223, eval loss:0.080601, smiles_to_spectrum_recall:0.715639, spectrum_to_smiles_recall:0.744757, valid acc:0.980801
+INFO:Epoch 224, train loss:0.048686
+INFO:Epoch 224, eval loss:0.076837, smiles_to_spectrum_recall:0.719632, spectrum_to_smiles_recall:0.753487, valid acc:0.982114
+INFO:Epoch 225, train loss:0.043930
+INFO:Epoch 225, eval loss:0.087938, smiles_to_spectrum_recall:0.709624, spectrum_to_smiles_recall:0.736825, valid acc:0.980038
+INFO:Epoch 226, train loss:0.045507
+INFO:Epoch 226, eval loss:0.076762, smiles_to_spectrum_recall:0.712925, spectrum_to_smiles_recall:0.740551, valid acc:0.982203
+INFO:Epoch 227, train loss:0.042447
+INFO:Epoch 227, eval loss:0.084326, smiles_to_spectrum_recall:0.713137, spectrum_to_smiles_recall:0.748643, valid acc:0.980393
+INFO:Epoch 228, train loss:0.045580
+INFO:Epoch 228, eval loss:0.078047, smiles_to_spectrum_recall:0.709731, spectrum_to_smiles_recall:0.741989, valid acc:0.981316
+INFO:Epoch 229, train loss:0.043151
+INFO:Epoch 229, eval loss:0.073165, smiles_to_spectrum_recall:0.724795, spectrum_to_smiles_recall:0.755350, valid acc:0.982913
+INFO:Epoch 230, train loss:0.043751
+INFO:Epoch 230, eval loss:0.086494, smiles_to_spectrum_recall:0.716810, spectrum_to_smiles_recall:0.763281, valid acc:0.980234
+INFO:Epoch 231, train loss:0.041574
+INFO:Epoch 231, eval loss:0.080076, smiles_to_spectrum_recall:0.723198, spectrum_to_smiles_recall:0.761950, valid acc:0.980819
+INFO:Epoch 232, train loss:0.039979
+INFO:Epoch 232, eval loss:0.077933, smiles_to_spectrum_recall:0.721708, spectrum_to_smiles_recall:0.752262, valid acc:0.982931
+INFO:Epoch 233, train loss:0.041123
+INFO:Epoch 233, eval loss:0.079210, smiles_to_spectrum_recall:0.716278, spectrum_to_smiles_recall:0.745449, valid acc:0.981050
+INFO:Epoch 234, train loss:0.044383
+INFO:Epoch 234, eval loss:0.088212, smiles_to_spectrum_recall:0.723890, spectrum_to_smiles_recall:0.759981, valid acc:0.979258
+INFO:Epoch 235, train loss:0.044839
+INFO:Epoch 235, eval loss:0.087655, smiles_to_spectrum_recall:0.717236, spectrum_to_smiles_recall:0.750452, valid acc:0.979719
+INFO:Epoch 236, train loss:0.044793
+INFO:Epoch 236, eval loss:0.076450, smiles_to_spectrum_recall:0.728521, spectrum_to_smiles_recall:0.761365, valid acc:0.982522
+INFO:Epoch 237, train loss:0.044442
+INFO:Epoch 237, eval loss:0.078782, smiles_to_spectrum_recall:0.708080, spectrum_to_smiles_recall:0.746460, valid acc:0.981422
+INFO:Epoch 238, train loss:0.042766
+INFO:Epoch 238, eval loss:0.086674, smiles_to_spectrum_recall:0.729213, spectrum_to_smiles_recall:0.760247, valid acc:0.979985
+INFO:Epoch 239, train loss:0.039378
+INFO:Epoch 239, eval loss:0.078039, smiles_to_spectrum_recall:0.726392, spectrum_to_smiles_recall:0.760939, valid acc:0.981759
+INFO:Epoch 240, train loss:0.043810
+INFO:Epoch 240, eval loss:0.086958, smiles_to_spectrum_recall:0.727137, spectrum_to_smiles_recall:0.762696, valid acc:0.979098
+INFO:Epoch 241, train loss:0.039209
+INFO:Epoch 241, eval loss:0.081236, smiles_to_spectrum_recall:0.725061, spectrum_to_smiles_recall:0.757106, valid acc:0.981777
+INFO:Epoch 242, train loss:0.043624
+INFO:Epoch 242, eval loss:0.093742, smiles_to_spectrum_recall:0.730278, spectrum_to_smiles_recall:0.766156, valid acc:0.978317
+INFO:Epoch 243, train loss:0.041106
+INFO:Epoch 243, eval loss:0.082649, smiles_to_spectrum_recall:0.722772, spectrum_to_smiles_recall:0.764505, valid acc:0.980411
+INFO:Epoch 244, train loss:0.037337
+INFO:Epoch 244, eval loss:0.079986, smiles_to_spectrum_recall:0.712871, spectrum_to_smiles_recall:0.746194, valid acc:0.981121
+INFO:Epoch 245, train loss:0.041314
+INFO:Epoch 245, eval loss:0.081594, smiles_to_spectrum_recall:0.719099, spectrum_to_smiles_recall:0.752475, valid acc:0.980695
+INFO:Epoch 246, train loss:0.038759
+INFO:Epoch 246, eval loss:0.080194, smiles_to_spectrum_recall:0.718620, spectrum_to_smiles_recall:0.750985, valid acc:0.980482
+INFO:Epoch 247, train loss:0.039762
+INFO:Epoch 247, eval loss:0.087753, smiles_to_spectrum_recall:0.722027, spectrum_to_smiles_recall:0.754977, valid acc:0.979772
+INFO:Epoch 248, train loss:0.040358
+INFO:Epoch 248, eval loss:0.079983, smiles_to_spectrum_recall:0.719685, spectrum_to_smiles_recall:0.752848, valid acc:0.981316
+INFO:Epoch 249, train loss:0.037031
+INFO:Epoch 249, eval loss:0.074668, smiles_to_spectrum_recall:0.719578, spectrum_to_smiles_recall:0.767593, valid acc:0.982150
+INFO:Epoch 250, train loss:0.036043
+INFO:Epoch 250, eval loss:0.093327, smiles_to_spectrum_recall:0.711061, spectrum_to_smiles_recall:0.742894, valid acc:0.978282
+INFO:Epoch 251, train loss:0.037602
+INFO:Epoch 251, eval loss:0.080884, smiles_to_spectrum_recall:0.726978, spectrum_to_smiles_recall:0.760726, valid acc:0.980997
+INFO:Epoch 252, train loss:0.037546
+INFO:Epoch 252, eval loss:0.073508, smiles_to_spectrum_recall:0.727297, spectrum_to_smiles_recall:0.757639, valid acc:0.982984
+INFO:Epoch 253, train loss:0.042224
+INFO:Epoch 253, eval loss:0.079048, smiles_to_spectrum_recall:0.719046, spectrum_to_smiles_recall:0.762855, valid acc:0.981955
+INFO:Epoch 254, train loss:0.039123
+INFO:Epoch 254, eval loss:0.095507, smiles_to_spectrum_recall:0.713350, spectrum_to_smiles_recall:0.751943, valid acc:0.977803
+INFO:Epoch 255, train loss:0.037057
+INFO:Epoch 255, eval loss:0.084545, smiles_to_spectrum_recall:0.727723, spectrum_to_smiles_recall:0.757266, valid acc:0.980997
+INFO:Epoch 256, train loss:0.036504
+INFO:Epoch 256, eval loss:0.073350, smiles_to_spectrum_recall:0.733685, spectrum_to_smiles_recall:0.761631, valid acc:0.983179
+INFO:Epoch 257, train loss:0.036957
+INFO:Epoch 257, eval loss:0.084555, smiles_to_spectrum_recall:0.714947, spectrum_to_smiles_recall:0.743160, valid acc:0.981174
+INFO:Epoch 258, train loss:0.035910
+INFO:Epoch 258, eval loss:0.087553, smiles_to_spectrum_recall:0.722080, spectrum_to_smiles_recall:0.751677, valid acc:0.979524
+INFO:Epoch 259, train loss:0.038191
+INFO:Epoch 259, eval loss:0.074051, smiles_to_spectrum_recall:0.728362, spectrum_to_smiles_recall:0.767114, valid acc:0.982310
+INFO:Epoch 260, train loss:0.036440
+INFO:Epoch 260, eval loss:0.086798, smiles_to_spectrum_recall:0.721974, spectrum_to_smiles_recall:0.764293, valid acc:0.980659
+INFO:Epoch 261, train loss:0.037129
+INFO:Epoch 261, eval loss:0.091398, smiles_to_spectrum_recall:0.719845, spectrum_to_smiles_recall:0.752369, valid acc:0.978832
+INFO:Epoch 262, train loss:0.037473
+INFO:Epoch 262, eval loss:0.085733, smiles_to_spectrum_recall:0.733046, spectrum_to_smiles_recall:0.761045, valid acc:0.980624
+INFO:Epoch 263, train loss:0.035358
+INFO:Epoch 263, eval loss:0.081479, smiles_to_spectrum_recall:0.719898, spectrum_to_smiles_recall:0.745502, valid acc:0.981830
+INFO:Epoch 264, train loss:0.037637
+INFO:Epoch 264, eval loss:0.083382, smiles_to_spectrum_recall:0.727882, spectrum_to_smiles_recall:0.771532, valid acc:0.981511
+INFO:Epoch 265, train loss:0.035258
+INFO:Epoch 265, eval loss:0.084617, smiles_to_spectrum_recall:0.729958, spectrum_to_smiles_recall:0.767274, valid acc:0.981866
+INFO:Epoch 266, train loss:0.033972
+INFO:Epoch 266, eval loss:0.097991, smiles_to_spectrum_recall:0.729958, spectrum_to_smiles_recall:0.771266, valid acc:0.977998
+INFO:Epoch 267, train loss:0.033659
+INFO:Epoch 267, eval loss:0.080191, smiles_to_spectrum_recall:0.721708, spectrum_to_smiles_recall:0.757905, valid acc:0.982221
+INFO:Epoch 268, train loss:0.036715
+INFO:Epoch 268, eval loss:0.085516, smiles_to_spectrum_recall:0.734111, spectrum_to_smiles_recall:0.770787, valid acc:0.980890
+INFO:Epoch 269, train loss:0.033843
+INFO:Epoch 269, eval loss:0.093583, smiles_to_spectrum_recall:0.725008, spectrum_to_smiles_recall:0.765677, valid acc:0.979080
+INFO:Epoch 270, train loss:0.038653
+INFO:Epoch 270, eval loss:0.071988, smiles_to_spectrum_recall:0.735175, spectrum_to_smiles_recall:0.770521, valid acc:0.983623
+INFO:Epoch 271, train loss:0.035950
+INFO:Epoch 271, eval loss:0.074610, smiles_to_spectrum_recall:0.738263, spectrum_to_smiles_recall:0.773235, valid acc:0.982292
+INFO:Epoch 272, train loss:0.036682
+INFO:Epoch 272, eval loss:0.077492, smiles_to_spectrum_recall:0.738422, spectrum_to_smiles_recall:0.759502, valid acc:0.982327
+INFO:Epoch 273, train loss:0.035082
+INFO:Epoch 273, eval loss:0.092310, smiles_to_spectrum_recall:0.738369, spectrum_to_smiles_recall:0.763920, valid acc:0.979808
+INFO:Epoch 274, train loss:0.033534
+INFO:Epoch 274, eval loss:0.079355, smiles_to_spectrum_recall:0.737730, spectrum_to_smiles_recall:0.770467, valid acc:0.982469
+INFO:Epoch 275, train loss:0.033323
+INFO:Epoch 275, eval loss:0.074597, smiles_to_spectrum_recall:0.741989, spectrum_to_smiles_recall:0.774087, valid acc:0.983569
+INFO:Epoch 276, train loss:0.037145
+INFO:Epoch 276, eval loss:0.088255, smiles_to_spectrum_recall:0.737943, spectrum_to_smiles_recall:0.775418, valid acc:0.979985
+INFO:Epoch 277, train loss:0.033532
+INFO:Epoch 277, eval loss:0.085839, smiles_to_spectrum_recall:0.734696, spectrum_to_smiles_recall:0.771106, valid acc:0.980819
+INFO:Epoch 278, train loss:0.033157
+INFO:Epoch 278, eval loss:0.079024, smiles_to_spectrum_recall:0.735814, spectrum_to_smiles_recall:0.777654, valid acc:0.982185
+INFO:Epoch 279, train loss:0.034718
+INFO:Epoch 279, eval loss:0.082102, smiles_to_spectrum_recall:0.737730, spectrum_to_smiles_recall:0.774779, valid acc:0.980748
+INFO:Epoch 280, train loss:0.032608
+INFO:Epoch 280, eval loss:0.081322, smiles_to_spectrum_recall:0.742095, spectrum_to_smiles_recall:0.773395, valid acc:0.980784
+INFO:Epoch 281, train loss:0.034135
+INFO:Epoch 281, eval loss:0.092751, smiles_to_spectrum_recall:0.735814, spectrum_to_smiles_recall:0.774353, valid acc:0.979169
+INFO:Epoch 282, train loss:0.032444
+INFO:Epoch 282, eval loss:0.093017, smiles_to_spectrum_recall:0.736346, spectrum_to_smiles_recall:0.770042, valid acc:0.978761
+INFO:Epoch 283, train loss:0.036269
+INFO:Epoch 283, eval loss:0.088976, smiles_to_spectrum_recall:0.744384, spectrum_to_smiles_recall:0.772437, valid acc:0.979967
+INFO:Epoch 284, train loss:0.033148
+INFO:Epoch 284, eval loss:0.086296, smiles_to_spectrum_recall:0.744437, spectrum_to_smiles_recall:0.784467, valid acc:0.980251
+INFO:Epoch 285, train loss:0.029368
+INFO:Epoch 285, eval loss:0.090566, smiles_to_spectrum_recall:0.739221, spectrum_to_smiles_recall:0.766315, valid acc:0.979133
+INFO:Epoch 286, train loss:0.031204
+INFO:Epoch 286, eval loss:0.087694, smiles_to_spectrum_recall:0.740977, spectrum_to_smiles_recall:0.767966, valid acc:0.979719
+INFO:Epoch 287, train loss:0.031623
+INFO:Epoch 287, eval loss:0.075235, smiles_to_spectrum_recall:0.744597, spectrum_to_smiles_recall:0.780528, valid acc:0.982700
+INFO:Epoch 288, train loss:0.033256
+INFO:Epoch 288, eval loss:0.083245, smiles_to_spectrum_recall:0.727244, spectrum_to_smiles_recall:0.759555, valid acc:0.982221
+INFO:Epoch 289, train loss:0.033662
+INFO:Epoch 289, eval loss:0.096740, smiles_to_spectrum_recall:0.740498, spectrum_to_smiles_recall:0.774194, valid acc:0.979062
+INFO:Epoch 290, train loss:0.033867
+INFO:Epoch 290, eval loss:0.082330, smiles_to_spectrum_recall:0.733472, spectrum_to_smiles_recall:0.773502, valid acc:0.981334
+INFO:Epoch 291, train loss:0.033578
+INFO:Epoch 291, eval loss:0.085993, smiles_to_spectrum_recall:0.741935, spectrum_to_smiles_recall:0.776695, valid acc:0.980819
+INFO:Epoch 292, train loss:0.031384
+INFO:Epoch 292, eval loss:0.092734, smiles_to_spectrum_recall:0.730278, spectrum_to_smiles_recall:0.757745, valid acc:0.979151
+INFO:Epoch 293, train loss:0.031570
+INFO:Epoch 293, eval loss:0.090802, smiles_to_spectrum_recall:0.736772, spectrum_to_smiles_recall:0.764825, valid acc:0.980038
+INFO:Epoch 294, train loss:0.033900
+INFO:Epoch 294, eval loss:0.087506, smiles_to_spectrum_recall:0.736187, spectrum_to_smiles_recall:0.764878, valid acc:0.980305
+INFO:Epoch 295, train loss:0.032565
+INFO:Epoch 295, eval loss:0.079638, smiles_to_spectrum_recall:0.732514, spectrum_to_smiles_recall:0.774673, valid acc:0.982097
+INFO:Epoch 296, train loss:0.031909
+INFO:Epoch 296, eval loss:0.083736, smiles_to_spectrum_recall:0.737038, spectrum_to_smiles_recall:0.771319, valid acc:0.980393
+INFO:Epoch 297, train loss:0.031807
+INFO:Epoch 297, eval loss:0.094290, smiles_to_spectrum_recall:0.741776, spectrum_to_smiles_recall:0.766581, valid acc:0.978690
+INFO:Epoch 298, train loss:0.029576
+INFO:Epoch 298, eval loss:0.080932, smiles_to_spectrum_recall:0.736825, spectrum_to_smiles_recall:0.771532, valid acc:0.981795
+INFO:Epoch 299, train loss:0.030048
+INFO:Epoch 299, eval loss:0.069748, smiles_to_spectrum_recall:0.745608, spectrum_to_smiles_recall:0.773821, valid acc:0.983871
+INFO:Epoch 300, train loss:0.031879
+INFO:Epoch 300, eval loss:0.073859, smiles_to_spectrum_recall:0.738209, spectrum_to_smiles_recall:0.785425, valid acc:0.983747
+INFO:Epoch 301, train loss:0.033584
+INFO:Epoch 301, eval loss:0.076033, smiles_to_spectrum_recall:0.751624, spectrum_to_smiles_recall:0.774406, valid acc:0.984066
+INFO:Epoch 302, train loss:0.034139
+INFO:Epoch 302, eval loss:0.092520, smiles_to_spectrum_recall:0.736506, spectrum_to_smiles_recall:0.776908, valid acc:0.978228
+INFO:Epoch 303, train loss:0.032457
+INFO:Epoch 303, eval loss:0.084697, smiles_to_spectrum_recall:0.727403, spectrum_to_smiles_recall:0.768178, valid acc:0.980926
+INFO:Epoch 304, train loss:0.032910
+INFO:Epoch 304, eval loss:0.063631, smiles_to_spectrum_recall:0.739487, spectrum_to_smiles_recall:0.780315, valid acc:0.986568
+INFO:Epoch 305, train loss:0.030773
+INFO:Epoch 305, eval loss:0.089526, smiles_to_spectrum_recall:0.741084, spectrum_to_smiles_recall:0.778505, valid acc:0.980571
+INFO:Epoch 306, train loss:0.028246
+INFO:Epoch 306, eval loss:0.086038, smiles_to_spectrum_recall:0.749228, spectrum_to_smiles_recall:0.784254, valid acc:0.979843
+INFO:Epoch 307, train loss:0.031764
+INFO:Epoch 307, eval loss:0.090129, smiles_to_spectrum_recall:0.745768, spectrum_to_smiles_recall:0.786863, valid acc:0.979471
+INFO:Epoch 308, train loss:0.030090
+INFO:Epoch 308, eval loss:0.076203, smiles_to_spectrum_recall:0.746247, spectrum_to_smiles_recall:0.788193, valid acc:0.982682
+INFO:Epoch 309, train loss:0.029211
+INFO:Epoch 309, eval loss:0.087733, smiles_to_spectrum_recall:0.747684, spectrum_to_smiles_recall:0.783190, valid acc:0.980748
+INFO:Epoch 310, train loss:0.034112
+INFO:Epoch 310, eval loss:0.076478, smiles_to_spectrum_recall:0.751677, spectrum_to_smiles_recall:0.789577, valid acc:0.983055
+INFO:Epoch 311, train loss:0.032341
+INFO:Epoch 311, eval loss:0.073240, smiles_to_spectrum_recall:0.748270, spectrum_to_smiles_recall:0.786596, valid acc:0.983303
+INFO:Epoch 312, train loss:0.028272
+INFO:Epoch 312, eval loss:0.088467, smiles_to_spectrum_recall:0.743852, spectrum_to_smiles_recall:0.779304, valid acc:0.980677
+INFO:Epoch 313, train loss:0.030136
+INFO:Epoch 313, eval loss:0.072565, smiles_to_spectrum_recall:0.749814, spectrum_to_smiles_recall:0.786437, valid acc:0.982931
+INFO:Epoch 314, train loss:0.032130
+INFO:Epoch 314, eval loss:0.114429, smiles_to_spectrum_recall:0.742202, spectrum_to_smiles_recall:0.773076, valid acc:0.973473
+INFO:Epoch 315, train loss:0.030336
+INFO:Epoch 315, eval loss:0.097401, smiles_to_spectrum_recall:0.749228, spectrum_to_smiles_recall:0.778771, valid acc:0.978158
+INFO:Epoch 316, train loss:0.029669
+INFO:Epoch 316, eval loss:0.086425, smiles_to_spectrum_recall:0.763654, spectrum_to_smiles_recall:0.788087, valid acc:0.980074
+INFO:Epoch 317, train loss:0.029764
+INFO:Epoch 317, eval loss:0.079620, smiles_to_spectrum_recall:0.749760, spectrum_to_smiles_recall:0.782125, valid acc:0.981387
+INFO:Epoch 318, train loss:0.032398
+INFO:Epoch 318, eval loss:0.080476, smiles_to_spectrum_recall:0.750985, spectrum_to_smiles_recall:0.791387, valid acc:0.980855
+INFO:Epoch 319, train loss:0.028952
+INFO:Epoch 319, eval loss:0.092707, smiles_to_spectrum_recall:0.755776, spectrum_to_smiles_recall:0.788939, valid acc:0.979062
+INFO:Epoch 320, train loss:0.029566
+INFO:Epoch 320, eval loss:0.093718, smiles_to_spectrum_recall:0.757905, spectrum_to_smiles_recall:0.799904, valid acc:0.979151
+INFO:Epoch 321, train loss:0.028329
+INFO:Epoch 321, eval loss:0.076058, smiles_to_spectrum_recall:0.749548, spectrum_to_smiles_recall:0.777334, valid acc:0.982132
+INFO:Epoch 322, train loss:0.030805
+INFO:Epoch 322, eval loss:0.088432, smiles_to_spectrum_recall:0.743479, spectrum_to_smiles_recall:0.780102, valid acc:0.979896
+INFO:Epoch 323, train loss:0.027776
+INFO:Epoch 323, eval loss:0.099848, smiles_to_spectrum_recall:0.754285, spectrum_to_smiles_recall:0.792399, valid acc:0.978033
+INFO:Epoch 324, train loss:0.030165
+INFO:Epoch 324, eval loss:0.096466, smiles_to_spectrum_recall:0.741935, spectrum_to_smiles_recall:0.782338, valid acc:0.978761
+INFO:Epoch 325, train loss:0.023173
+INFO:Epoch 325, eval loss:0.082548, smiles_to_spectrum_recall:0.753274, spectrum_to_smiles_recall:0.782072, valid acc:0.982416
+INFO:Epoch 326, train loss:0.026708
+INFO:Epoch 326, eval loss:0.091530, smiles_to_spectrum_recall:0.750932, spectrum_to_smiles_recall:0.783722, valid acc:0.980872
+INFO:Epoch 327, train loss:0.029490
+INFO:Epoch 327, eval loss:0.074650, smiles_to_spectrum_recall:0.755616, spectrum_to_smiles_recall:0.792345, valid acc:0.983906
+INFO:Epoch 328, train loss:0.027333
+INFO:Epoch 328, eval loss:0.085988, smiles_to_spectrum_recall:0.749015, spectrum_to_smiles_recall:0.762057, valid acc:0.980979
+INFO:Epoch 329, train loss:0.028111
+INFO:Epoch 329, eval loss:0.083572, smiles_to_spectrum_recall:0.751943, spectrum_to_smiles_recall:0.774353, valid acc:0.981067
+INFO:Epoch 330, train loss:0.031275
+INFO:Epoch 330, eval loss:0.085936, smiles_to_spectrum_recall:0.746833, spectrum_to_smiles_recall:0.774779, valid acc:0.981600
+INFO:Epoch 331, train loss:0.029010
+INFO:Epoch 331, eval loss:0.094214, smiles_to_spectrum_recall:0.753380, spectrum_to_smiles_recall:0.789524, valid acc:0.979683
+INFO:Epoch 332, train loss:0.024708
+INFO:Epoch 332, eval loss:0.078054, smiles_to_spectrum_recall:0.749654, spectrum_to_smiles_recall:0.774460, valid acc:0.982434
+INFO:Epoch 333, train loss:0.026605
+INFO:Epoch 333, eval loss:0.085266, smiles_to_spectrum_recall:0.756468, spectrum_to_smiles_recall:0.786916, valid acc:0.981050
+INFO:Epoch 334, train loss:0.030976
+INFO:Epoch 334, eval loss:0.079064, smiles_to_spectrum_recall:0.756787, spectrum_to_smiles_recall:0.781486, valid acc:0.981706
+INFO:Epoch 335, train loss:0.028447
+INFO:Epoch 335, eval loss:0.086608, smiles_to_spectrum_recall:0.758863, spectrum_to_smiles_recall:0.794900, valid acc:0.981085
+INFO:Epoch 336, train loss:0.028853
+INFO:Epoch 336, eval loss:0.080454, smiles_to_spectrum_recall:0.754445, spectrum_to_smiles_recall:0.791813, valid acc:0.981476
+INFO:Epoch 337, train loss:0.027605
+INFO:Epoch 337, eval loss:0.089025, smiles_to_spectrum_recall:0.761045, spectrum_to_smiles_recall:0.793570, valid acc:0.980961
+INFO:Epoch 338, train loss:0.027623
+INFO:Epoch 338, eval loss:0.078349, smiles_to_spectrum_recall:0.762110, spectrum_to_smiles_recall:0.791653, valid acc:0.983002
+INFO:Epoch 339, train loss:0.028224
+INFO:Epoch 339, eval loss:0.089355, smiles_to_spectrum_recall:0.765623, spectrum_to_smiles_recall:0.798094, valid acc:0.980730
+INFO:Epoch 340, train loss:0.025851
+INFO:Epoch 340, eval loss:0.085004, smiles_to_spectrum_recall:0.758331, spectrum_to_smiles_recall:0.786650, valid acc:0.981689
+INFO:Epoch 341, train loss:0.026984
+INFO:Epoch 341, eval loss:0.077678, smiles_to_spectrum_recall:0.774140, spectrum_to_smiles_recall:0.796923, valid acc:0.982824
+INFO:Epoch 342, train loss:0.027688
+INFO:Epoch 342, eval loss:0.088432, smiles_to_spectrum_recall:0.760300, spectrum_to_smiles_recall:0.796551, valid acc:0.980890
+INFO:Epoch 343, train loss:0.025945
+INFO:Epoch 343, eval loss:0.089692, smiles_to_spectrum_recall:0.759874, spectrum_to_smiles_recall:0.795380, valid acc:0.979648
+INFO:Epoch 344, train loss:0.026981
+INFO:Epoch 344, eval loss:0.084359, smiles_to_spectrum_recall:0.766102, spectrum_to_smiles_recall:0.798733, valid acc:0.981511
+INFO:Epoch 345, train loss:0.026302
+INFO:Epoch 345, eval loss:0.106223, smiles_to_spectrum_recall:0.749814, spectrum_to_smiles_recall:0.780581, valid acc:0.976348
+INFO:Epoch 346, train loss:0.030799
+INFO:Epoch 346, eval loss:0.087267, smiles_to_spectrum_recall:0.763654, spectrum_to_smiles_recall:0.793996, valid acc:0.981937
+INFO:Epoch 347, train loss:0.027465
+INFO:Epoch 347, eval loss:0.087520, smiles_to_spectrum_recall:0.767646, spectrum_to_smiles_recall:0.798467, valid acc:0.981334
+INFO:Epoch 348, train loss:0.027036
+INFO:Epoch 348, eval loss:0.081462, smiles_to_spectrum_recall:0.758916, spectrum_to_smiles_recall:0.792292, valid acc:0.982842
+INFO:Epoch 349, train loss:0.024907
+INFO:Epoch 349, eval loss:0.093555, smiles_to_spectrum_recall:0.761631, spectrum_to_smiles_recall:0.790003, valid acc:0.979258
+INFO:Epoch 350, train loss:0.025667
+INFO:Epoch 350, eval loss:0.086389, smiles_to_spectrum_recall:0.749973, spectrum_to_smiles_recall:0.780368, valid acc:0.982310
+INFO:Epoch 351, train loss:0.026827
+INFO:Epoch 351, eval loss:0.088869, smiles_to_spectrum_recall:0.754392, spectrum_to_smiles_recall:0.795646, valid acc:0.980890
+INFO:Epoch 352, train loss:0.022526
+INFO:Epoch 352, eval loss:0.093503, smiles_to_spectrum_recall:0.758224, spectrum_to_smiles_recall:0.801182, valid acc:0.979453
+INFO:Epoch 353, train loss:0.023323
+INFO:Epoch 353, eval loss:0.091362, smiles_to_spectrum_recall:0.758384, spectrum_to_smiles_recall:0.799532, valid acc:0.980943
+INFO:Epoch 354, train loss:0.026135
+INFO:Epoch 354, eval loss:0.076768, smiles_to_spectrum_recall:0.767753, spectrum_to_smiles_recall:0.792558, valid acc:0.983498
+INFO:Epoch 355, train loss:0.025295
+INFO:Epoch 355, eval loss:0.086841, smiles_to_spectrum_recall:0.767699, spectrum_to_smiles_recall:0.804163, valid acc:0.981813
+INFO:Epoch 356, train loss:0.027269
+INFO:Epoch 356, eval loss:0.076604, smiles_to_spectrum_recall:0.770787, spectrum_to_smiles_recall:0.808208, valid acc:0.983871
+INFO:Epoch 357, train loss:0.025366
+INFO:Epoch 357, eval loss:0.094636, smiles_to_spectrum_recall:0.765038, spectrum_to_smiles_recall:0.794368, valid acc:0.980411
+INFO:Epoch 358, train loss:0.023366
+INFO:Epoch 358, eval loss:0.096611, smiles_to_spectrum_recall:0.765197, spectrum_to_smiles_recall:0.798201, valid acc:0.979524
+INFO:Epoch 359, train loss:0.024531
+INFO:Epoch 359, eval loss:0.095673, smiles_to_spectrum_recall:0.763760, spectrum_to_smiles_recall:0.801448, valid acc:0.979027
+INFO:Epoch 360, train loss:0.025654
+INFO:Epoch 360, eval loss:0.107119, smiles_to_spectrum_recall:0.760726, spectrum_to_smiles_recall:0.796072, valid acc:0.976348
+INFO:Epoch 361, train loss:0.025129
+INFO:Epoch 361, eval loss:0.090773, smiles_to_spectrum_recall:0.770201, spectrum_to_smiles_recall:0.802087, valid acc:0.981138
+INFO:Epoch 362, train loss:0.025802
+INFO:Epoch 362, eval loss:0.089357, smiles_to_spectrum_recall:0.759661, spectrum_to_smiles_recall:0.794208, valid acc:0.980588
+INFO:Epoch 363, train loss:0.023644
+INFO:Epoch 363, eval loss:0.104089, smiles_to_spectrum_recall:0.749228, spectrum_to_smiles_recall:0.768817, valid acc:0.977483
+INFO:Epoch 364, train loss:0.023379
+INFO:Epoch 364, eval loss:0.085644, smiles_to_spectrum_recall:0.773608, spectrum_to_smiles_recall:0.799957, valid acc:0.981316
+INFO:Epoch 365, train loss:0.025132
+INFO:Epoch 365, eval loss:0.089711, smiles_to_spectrum_recall:0.772863, spectrum_to_smiles_recall:0.800436, valid acc:0.980198
+INFO:Epoch 366, train loss:0.024891
+INFO:Epoch 366, eval loss:0.087649, smiles_to_spectrum_recall:0.766635, spectrum_to_smiles_recall:0.800277, valid acc:0.981192
+INFO:Epoch 367, train loss:0.025327
+INFO:Epoch 367, eval loss:0.106793, smiles_to_spectrum_recall:0.770467, spectrum_to_smiles_recall:0.791547, valid acc:0.975957
+INFO:Epoch 368, train loss:0.025140
+INFO:Epoch 368, eval loss:0.088370, smiles_to_spectrum_recall:0.768178, spectrum_to_smiles_recall:0.797562, valid acc:0.981156
+INFO:Epoch 369, train loss:0.027160
+INFO:Epoch 369, eval loss:0.099690, smiles_to_spectrum_recall:0.776482, spectrum_to_smiles_recall:0.808049, valid acc:0.979240
+INFO:Epoch 370, train loss:0.022835
+INFO:Epoch 370, eval loss:0.093187, smiles_to_spectrum_recall:0.771266, spectrum_to_smiles_recall:0.793942, valid acc:0.980038
+INFO:Epoch 371, train loss:0.022208
+INFO:Epoch 371, eval loss:0.103174, smiles_to_spectrum_recall:0.761525, spectrum_to_smiles_recall:0.801022, valid acc:0.977004
+INFO:Epoch 372, train loss:0.025741
+INFO:Epoch 372, eval loss:0.095249, smiles_to_spectrum_recall:0.770627, spectrum_to_smiles_recall:0.795805, valid acc:0.979382
+INFO:Epoch 373, train loss:0.022991
+INFO:Epoch 373, eval loss:0.079907, smiles_to_spectrum_recall:0.776429, spectrum_to_smiles_recall:0.810710, valid acc:0.983392
+INFO:Epoch 374, train loss:0.023109
+INFO:Epoch 374, eval loss:0.102449, smiles_to_spectrum_recall:0.771692, spectrum_to_smiles_recall:0.797030, valid acc:0.978353
+INFO:Epoch 375, train loss:0.022998
+INFO:Epoch 375, eval loss:0.100176, smiles_to_spectrum_recall:0.772703, spectrum_to_smiles_recall:0.814330, valid acc:0.979240
+INFO:Epoch 376, train loss:0.025674
+INFO:Epoch 376, eval loss:0.097869, smiles_to_spectrum_recall:0.767859, spectrum_to_smiles_recall:0.808900, valid acc:0.978495
+INFO:Epoch 377, train loss:0.024532
+INFO:Epoch 377, eval loss:0.087219, smiles_to_spectrum_recall:0.776376, spectrum_to_smiles_recall:0.811881, valid acc:0.980766
+INFO:Epoch 378, train loss:0.021993
+INFO:Epoch 378, eval loss:0.089932, smiles_to_spectrum_recall:0.774034, spectrum_to_smiles_recall:0.804908, valid acc:0.981014
+INFO:Epoch 379, train loss:0.025360
+INFO:Epoch 379, eval loss:0.100592, smiles_to_spectrum_recall:0.758863, spectrum_to_smiles_recall:0.801022, valid acc:0.978672
+INFO:Epoch 380, train loss:0.022923
+INFO:Epoch 380, eval loss:0.087399, smiles_to_spectrum_recall:0.773342, spectrum_to_smiles_recall:0.807197, valid acc:0.981706
+INFO:Epoch 381, train loss:0.022517
+INFO:Epoch 381, eval loss:0.096331, smiles_to_spectrum_recall:0.766848, spectrum_to_smiles_recall:0.801767, valid acc:0.979595
+INFO:Epoch 382, train loss:0.025507
+INFO:Epoch 382, eval loss:0.087604, smiles_to_spectrum_recall:0.763707, spectrum_to_smiles_recall:0.804376, valid acc:0.981209
+INFO:Epoch 383, train loss:0.026751
+INFO:Epoch 383, eval loss:0.091981, smiles_to_spectrum_recall:0.776962, spectrum_to_smiles_recall:0.810550, valid acc:0.979967
+INFO:Epoch 384, train loss:0.023767
+INFO:Epoch 384, eval loss:0.077435, smiles_to_spectrum_recall:0.776962, spectrum_to_smiles_recall:0.817950, valid acc:0.983765
+INFO:Epoch 385, train loss:0.021476
+INFO:Epoch 385, eval loss:0.096937, smiles_to_spectrum_recall:0.778931, spectrum_to_smiles_recall:0.806931, valid acc:0.979524
+INFO:Epoch 386, train loss:0.020284
+INFO:Epoch 386, eval loss:0.092621, smiles_to_spectrum_recall:0.767380, spectrum_to_smiles_recall:0.801714, valid acc:0.980358
+INFO:Epoch 387, train loss:0.023520
+INFO:Epoch 387, eval loss:0.095975, smiles_to_spectrum_recall:0.774832, spectrum_to_smiles_recall:0.808208, valid acc:0.980038
+INFO:Epoch 388, train loss:0.020093
+INFO:Epoch 388, eval loss:0.092901, smiles_to_spectrum_recall:0.768338, spectrum_to_smiles_recall:0.794634, valid acc:0.980109
+INFO:Epoch 389, train loss:0.025505
+INFO:Epoch 389, eval loss:0.081982, smiles_to_spectrum_recall:0.772916, spectrum_to_smiles_recall:0.807410, valid acc:0.982097
+INFO:Epoch 390, train loss:0.023735
+INFO:Epoch 390, eval loss:0.095535, smiles_to_spectrum_recall:0.773448, spectrum_to_smiles_recall:0.807250, valid acc:0.978850
+INFO:Epoch 391, train loss:0.021184
+INFO:Epoch 391, eval loss:0.104277, smiles_to_spectrum_recall:0.766262, spectrum_to_smiles_recall:0.806026, valid acc:0.977909
+INFO:Epoch 392, train loss:0.024348
+INFO:Epoch 392, eval loss:0.098528, smiles_to_spectrum_recall:0.767380, spectrum_to_smiles_recall:0.792824, valid acc:0.979808
+INFO:Epoch 393, train loss:0.021167
+INFO:Epoch 393, eval loss:0.084831, smiles_to_spectrum_recall:0.776962, spectrum_to_smiles_recall:0.820824, valid acc:0.981759
+INFO:Epoch 394, train loss:0.023757
+INFO:Epoch 394, eval loss:0.083177, smiles_to_spectrum_recall:0.777387, spectrum_to_smiles_recall:0.813159, valid acc:0.982256
+INFO:Epoch 395, train loss:0.022745
+INFO:Epoch 395, eval loss:0.098956, smiles_to_spectrum_recall:0.782231, spectrum_to_smiles_recall:0.811136, valid acc:0.978725
+INFO:Epoch 396, train loss:0.021532
+INFO:Epoch 396, eval loss:0.108249, smiles_to_spectrum_recall:0.775578, spectrum_to_smiles_recall:0.807357, valid acc:0.976703
+INFO:Epoch 397, train loss:0.023171
+INFO:Epoch 397, eval loss:0.089500, smiles_to_spectrum_recall:0.780741, spectrum_to_smiles_recall:0.810391, valid acc:0.981032
+INFO:Epoch 398, train loss:0.025154
+INFO:Epoch 398, eval loss:0.078991, smiles_to_spectrum_recall:0.771319, spectrum_to_smiles_recall:0.811242, valid acc:0.984155
+INFO:Epoch 399, train loss:0.019191
+INFO:Epoch 399, eval loss:0.106329, smiles_to_spectrum_recall:0.779943, spectrum_to_smiles_recall:0.805547, valid acc:0.977998
+INFO:Epoch 400, train loss:0.022240
+INFO:Epoch 400, eval loss:0.103025, smiles_to_spectrum_recall:0.777228, spectrum_to_smiles_recall:0.805493, valid acc:0.977448
+INFO:Epoch 401, train loss:0.022192
+INFO:Epoch 401, eval loss:0.101820, smiles_to_spectrum_recall:0.769509, spectrum_to_smiles_recall:0.803950, valid acc:0.979133
+INFO:Epoch 402, train loss:0.022553
+INFO:Epoch 402, eval loss:0.103941, smiles_to_spectrum_recall:0.777920, spectrum_to_smiles_recall:0.812201, valid acc:0.978211
+INFO:Epoch 403, train loss:0.020478
+INFO:Epoch 403, eval loss:0.092180, smiles_to_spectrum_recall:0.773661, spectrum_to_smiles_recall:0.811455, valid acc:0.979843
+INFO:Epoch 404, train loss:0.021111
+INFO:Epoch 404, eval loss:0.100025, smiles_to_spectrum_recall:0.772756, spectrum_to_smiles_recall:0.799585, valid acc:0.978814
+INFO:Epoch 405, train loss:0.019409
+INFO:Epoch 405, eval loss:0.093788, smiles_to_spectrum_recall:0.781327, spectrum_to_smiles_recall:0.802406, valid acc:0.981085
+INFO:Epoch 406, train loss:0.022215
+INFO:Epoch 406, eval loss:0.095202, smiles_to_spectrum_recall:0.771692, spectrum_to_smiles_recall:0.799478, valid acc:0.978814
+INFO:Epoch 407, train loss:0.018548
+INFO:Epoch 407, eval loss:0.089966, smiles_to_spectrum_recall:0.784840, spectrum_to_smiles_recall:0.812360, valid acc:0.980127
+INFO:Epoch 408, train loss:0.022101
+INFO:Epoch 408, eval loss:0.082099, smiles_to_spectrum_recall:0.788832, spectrum_to_smiles_recall:0.815448, valid acc:0.982327
+INFO:Epoch 409, train loss:0.022952
+INFO:Epoch 409, eval loss:0.088291, smiles_to_spectrum_recall:0.782711, spectrum_to_smiles_recall:0.818642, valid acc:0.979967
+INFO:Epoch 410, train loss:0.019617
+INFO:Epoch 410, eval loss:0.098231, smiles_to_spectrum_recall:0.773981, spectrum_to_smiles_recall:0.798573, valid acc:0.978601
+INFO:Epoch 411, train loss:0.021792
+INFO:Epoch 411, eval loss:0.093943, smiles_to_spectrum_recall:0.773129, spectrum_to_smiles_recall:0.805014, valid acc:0.979701
+INFO:Epoch 412, train loss:0.021327
+INFO:Epoch 412, eval loss:0.098085, smiles_to_spectrum_recall:0.786171, spectrum_to_smiles_recall:0.821995, valid acc:0.979524
+INFO:Epoch 413, train loss:0.023489
+INFO:Epoch 413, eval loss:0.120104, smiles_to_spectrum_recall:0.770414, spectrum_to_smiles_recall:0.795592, valid acc:0.974360
+INFO:Epoch 414, train loss:0.024375
+INFO:Epoch 414, eval loss:0.084652, smiles_to_spectrum_recall:0.780368, spectrum_to_smiles_recall:0.812520, valid acc:0.981866
+INFO:Epoch 415, train loss:0.020880
+INFO:Epoch 415, eval loss:0.098359, smiles_to_spectrum_recall:0.778771, spectrum_to_smiles_recall:0.810337, valid acc:0.979648
+INFO:Epoch 416, train loss:0.022169
+INFO:Epoch 416, eval loss:0.086895, smiles_to_spectrum_recall:0.787501, spectrum_to_smiles_recall:0.823219, valid acc:0.981280
+INFO:Epoch 417, train loss:0.020458
+INFO:Epoch 417, eval loss:0.094834, smiles_to_spectrum_recall:0.789418, spectrum_to_smiles_recall:0.819600, valid acc:0.979861
+INFO:Epoch 418, train loss:0.022567
+INFO:Epoch 418, eval loss:0.079502, smiles_to_spectrum_recall:0.782125, spectrum_to_smiles_recall:0.817790, valid acc:0.983782
+INFO:Epoch 419, train loss:0.023862
+INFO:Epoch 419, eval loss:0.092983, smiles_to_spectrum_recall:0.777281, spectrum_to_smiles_recall:0.813638, valid acc:0.980588
+INFO:Epoch 420, train loss:0.019410
+INFO:Epoch 420, eval loss:0.100709, smiles_to_spectrum_recall:0.772064, spectrum_to_smiles_recall:0.813159, valid acc:0.978619
+INFO:Epoch 421, train loss:0.020950
+INFO:Epoch 421, eval loss:0.095371, smiles_to_spectrum_recall:0.780102, spectrum_to_smiles_recall:0.806558, valid acc:0.980234
+INFO:Epoch 422, train loss:0.021025
+INFO:Epoch 422, eval loss:0.092814, smiles_to_spectrum_recall:0.788992, spectrum_to_smiles_recall:0.818056, valid acc:0.981138
+INFO:Epoch 423, train loss:0.020424
+INFO:Epoch 423, eval loss:0.083603, smiles_to_spectrum_recall:0.784840, spectrum_to_smiles_recall:0.816566, valid acc:0.981582
+INFO:Epoch 424, train loss:0.022828
+INFO:Epoch 424, eval loss:0.095397, smiles_to_spectrum_recall:0.782977, spectrum_to_smiles_recall:0.812573, valid acc:0.979772
+INFO:Epoch 425, train loss:0.020923
+INFO:Epoch 425, eval loss:0.085431, smiles_to_spectrum_recall:0.788619, spectrum_to_smiles_recall:0.817524, valid acc:0.981830
+INFO:Epoch 426, train loss:0.020376
+INFO:Epoch 426, eval loss:0.091261, smiles_to_spectrum_recall:0.794634, spectrum_to_smiles_recall:0.820026, valid acc:0.980855
+INFO:Epoch 427, train loss:0.021591
+INFO:Epoch 427, eval loss:0.098605, smiles_to_spectrum_recall:0.793197, spectrum_to_smiles_recall:0.814010, valid acc:0.978566
+INFO:Epoch 428, train loss:0.019379
+INFO:Epoch 428, eval loss:0.087615, smiles_to_spectrum_recall:0.792878, spectrum_to_smiles_recall:0.820930, valid acc:0.981174
+INFO:Epoch 429, train loss:0.021172
+INFO:Epoch 429, eval loss:0.108901, smiles_to_spectrum_recall:0.779943, spectrum_to_smiles_recall:0.814862, valid acc:0.977324
+INFO:Epoch 430, train loss:0.017638
+INFO:Epoch 430, eval loss:0.099995, smiles_to_spectrum_recall:0.789684, spectrum_to_smiles_recall:0.812520, valid acc:0.980234
+INFO:Epoch 431, train loss:0.020401
+INFO:Epoch 431, eval loss:0.103212, smiles_to_spectrum_recall:0.785691, spectrum_to_smiles_recall:0.811721, valid acc:0.978495
+INFO:Epoch 432, train loss:0.019239
+INFO:Epoch 432, eval loss:0.099608, smiles_to_spectrum_recall:0.786650, spectrum_to_smiles_recall:0.815980, valid acc:0.980003
+INFO:Epoch 433, train loss:0.020589
+INFO:Epoch 433, eval loss:0.098503, smiles_to_spectrum_recall:0.789684, spectrum_to_smiles_recall:0.820238, valid acc:0.978779
+INFO:Epoch 434, train loss:0.022125
+INFO:Epoch 434, eval loss:0.099895, smiles_to_spectrum_recall:0.783882, spectrum_to_smiles_recall:0.817470, valid acc:0.978282
+INFO:Epoch 435, train loss:0.019219
+INFO:Epoch 435, eval loss:0.088769, smiles_to_spectrum_recall:0.797136, spectrum_to_smiles_recall:0.820292, valid acc:0.982239
+INFO:Epoch 436, train loss:0.019647
+INFO:Epoch 436, eval loss:0.091035, smiles_to_spectrum_recall:0.789790, spectrum_to_smiles_recall:0.826733, valid acc:0.981422
+INFO:Epoch 437, train loss:0.019446
+INFO:Epoch 437, eval loss:0.091352, smiles_to_spectrum_recall:0.790269, spectrum_to_smiles_recall:0.822847, valid acc:0.980322
+INFO:Epoch 438, train loss:0.018517
+INFO:Epoch 438, eval loss:0.096417, smiles_to_spectrum_recall:0.785266, spectrum_to_smiles_recall:0.813744, valid acc:0.979045
+INFO:Epoch 439, train loss:0.019825
+INFO:Epoch 439, eval loss:0.106043, smiles_to_spectrum_recall:0.788779, spectrum_to_smiles_recall:0.810337, valid acc:0.977501
+INFO:Epoch 440, train loss:0.018554
+INFO:Epoch 440, eval loss:0.088235, smiles_to_spectrum_recall:0.788406, spectrum_to_smiles_recall:0.827584, valid acc:0.982381
+INFO:Epoch 441, train loss:0.018236
+INFO:Epoch 441, eval loss:0.097317, smiles_to_spectrum_recall:0.796976, spectrum_to_smiles_recall:0.828436, valid acc:0.979683
+INFO:Epoch 442, train loss:0.019162
+INFO:Epoch 442, eval loss:0.094811, smiles_to_spectrum_recall:0.790748, spectrum_to_smiles_recall:0.827212, valid acc:0.980855
+INFO:Epoch 443, train loss:0.018824
+INFO:Epoch 443, eval loss:0.089523, smiles_to_spectrum_recall:0.796764, spectrum_to_smiles_recall:0.814596, valid acc:0.981121
+INFO:Epoch 444, train loss:0.020982
+INFO:Epoch 444, eval loss:0.087430, smiles_to_spectrum_recall:0.794475, spectrum_to_smiles_recall:0.825668, valid acc:0.981405
+INFO:Epoch 445, train loss:0.016720
+INFO:Epoch 445, eval loss:0.088254, smiles_to_spectrum_recall:0.786117, spectrum_to_smiles_recall:0.824018, valid acc:0.980766
+INFO:Epoch 446, train loss:0.021284
+INFO:Epoch 446, eval loss:0.097654, smiles_to_spectrum_recall:0.791228, spectrum_to_smiles_recall:0.814649, valid acc:0.979790
+INFO:Epoch 447, train loss:0.018571
+INFO:Epoch 447, eval loss:0.112472, smiles_to_spectrum_recall:0.790589, spectrum_to_smiles_recall:0.826307, valid acc:0.975815
+INFO:Epoch 448, train loss:0.016383
+INFO:Epoch 448, eval loss:0.094954, smiles_to_spectrum_recall:0.793304, spectrum_to_smiles_recall:0.827159, valid acc:0.981014
+INFO:Epoch 449, train loss:0.016959
+INFO:Epoch 449, eval loss:0.106006, smiles_to_spectrum_recall:0.786277, spectrum_to_smiles_recall:0.823219, valid acc:0.977075
+INFO:Epoch 450, train loss:0.020338
+INFO:Epoch 450, eval loss:0.113546, smiles_to_spectrum_recall:0.791334, spectrum_to_smiles_recall:0.826626, valid acc:0.976064
+INFO:Epoch 451, train loss:0.019132
+INFO:Epoch 451, eval loss:0.092470, smiles_to_spectrum_recall:0.794049, spectrum_to_smiles_recall:0.825083, valid acc:0.980003
+INFO:Epoch 452, train loss:0.018720
+INFO:Epoch 452, eval loss:0.092175, smiles_to_spectrum_recall:0.796231, spectrum_to_smiles_recall:0.826307, valid acc:0.981334
+INFO:Epoch 453, train loss:0.018095
+INFO:Epoch 453, eval loss:0.082961, smiles_to_spectrum_recall:0.796817, spectrum_to_smiles_recall:0.820238, valid acc:0.982771
+INFO:Epoch 454, train loss:0.019031
+INFO:Epoch 454, eval loss:0.106617, smiles_to_spectrum_recall:0.799106, spectrum_to_smiles_recall:0.822527, valid acc:0.976969
+INFO:Epoch 455, train loss:0.018055
+INFO:Epoch 455, eval loss:0.085837, smiles_to_spectrum_recall:0.781007, spectrum_to_smiles_recall:0.814756, valid acc:0.981405
+INFO:Epoch 456, train loss:0.017231
+INFO:Epoch 456, eval loss:0.098815, smiles_to_spectrum_recall:0.793410, spectrum_to_smiles_recall:0.818269, valid acc:0.978016
+INFO:Epoch 457, train loss:0.018568
+INFO:Epoch 457, eval loss:0.094095, smiles_to_spectrum_recall:0.789205, spectrum_to_smiles_recall:0.831736, valid acc:0.979914
+INFO:Epoch 458, train loss:0.017954
+INFO:Epoch 458, eval loss:0.092152, smiles_to_spectrum_recall:0.791281, spectrum_to_smiles_recall:0.821356, valid acc:0.980801
+INFO:Epoch 459, train loss:0.020290
+INFO:Epoch 459, eval loss:0.097235, smiles_to_spectrum_recall:0.791015, spectrum_to_smiles_recall:0.834771, valid acc:0.979435
+INFO:Epoch 460, train loss:0.017807
+INFO:Epoch 460, eval loss:0.093008, smiles_to_spectrum_recall:0.794475, spectrum_to_smiles_recall:0.828649, valid acc:0.980997
+INFO:Epoch 461, train loss:0.020142
+INFO:Epoch 461, eval loss:0.107867, smiles_to_spectrum_recall:0.791547, spectrum_to_smiles_recall:0.837592, valid acc:0.976507
+INFO:Epoch 462, train loss:0.018574
+INFO:Epoch 462, eval loss:0.094782, smiles_to_spectrum_recall:0.791281, spectrum_to_smiles_recall:0.829820, valid acc:0.980855
+INFO:Epoch 463, train loss:0.018129
+INFO:Epoch 463, eval loss:0.088582, smiles_to_spectrum_recall:0.793463, spectrum_to_smiles_recall:0.832428, valid acc:0.980908
+INFO:Epoch 464, train loss:0.017419
+INFO:Epoch 464, eval loss:0.097639, smiles_to_spectrum_recall:0.792132, spectrum_to_smiles_recall:0.831949, valid acc:0.979559
+INFO:Epoch 465, train loss:0.016890
+INFO:Epoch 465, eval loss:0.100074, smiles_to_spectrum_recall:0.798307, spectrum_to_smiles_recall:0.828489, valid acc:0.979187
+INFO:Epoch 466, train loss:0.017723
+INFO:Epoch 466, eval loss:0.090912, smiles_to_spectrum_recall:0.789258, spectrum_to_smiles_recall:0.828170, valid acc:0.980287
+INFO:Epoch 467, train loss:0.018086
+INFO:Epoch 467, eval loss:0.090128, smiles_to_spectrum_recall:0.794421, spectrum_to_smiles_recall:0.831736, valid acc:0.980997
+INFO:Epoch 468, train loss:0.017803
+INFO:Epoch 468, eval loss:0.096421, smiles_to_spectrum_recall:0.792878, spectrum_to_smiles_recall:0.826892, valid acc:0.978850
+INFO:Epoch 469, train loss:0.017150
+INFO:Epoch 469, eval loss:0.089663, smiles_to_spectrum_recall:0.800330, spectrum_to_smiles_recall:0.825828, valid acc:0.981174
+INFO:Epoch 470, train loss:0.017386
+INFO:Epoch 470, eval loss:0.101064, smiles_to_spectrum_recall:0.785053, spectrum_to_smiles_recall:0.829181, valid acc:0.977341
+INFO:Epoch 471, train loss:0.017865
+INFO:Epoch 471, eval loss:0.109954, smiles_to_spectrum_recall:0.785798, spectrum_to_smiles_recall:0.825508, valid acc:0.976933
+INFO:Epoch 472, train loss:0.017852
+INFO:Epoch 472, eval loss:0.094974, smiles_to_spectrum_recall:0.792079, spectrum_to_smiles_recall:0.829554, valid acc:0.979737
+INFO:Epoch 473, train loss:0.017670
+INFO:Epoch 473, eval loss:0.097014, smiles_to_spectrum_recall:0.784574, spectrum_to_smiles_recall:0.839668, valid acc:0.979772
+INFO:Epoch 474, train loss:0.017660
+INFO:Epoch 474, eval loss:0.105940, smiles_to_spectrum_recall:0.795220, spectrum_to_smiles_recall:0.840307, valid acc:0.977466
+INFO:Epoch 475, train loss:0.018767
+INFO:Epoch 475, eval loss:0.110765, smiles_to_spectrum_recall:0.791228, spectrum_to_smiles_recall:0.828915, valid acc:0.977040
+INFO:Epoch 476, train loss:0.016777
+INFO:Epoch 476, eval loss:0.110154, smiles_to_spectrum_recall:0.794208, spectrum_to_smiles_recall:0.834717, valid acc:0.977111
+INFO:Epoch 477, train loss:0.018588
+INFO:Epoch 477, eval loss:0.098014, smiles_to_spectrum_recall:0.795486, spectrum_to_smiles_recall:0.824657, valid acc:0.979861
+INFO:Epoch 478, train loss:0.016601
+INFO:Epoch 478, eval loss:0.106796, smiles_to_spectrum_recall:0.795539, spectrum_to_smiles_recall:0.833227, valid acc:0.977874
+INFO:Epoch 479, train loss:0.018610
+INFO:Epoch 479, eval loss:0.107733, smiles_to_spectrum_recall:0.786543, spectrum_to_smiles_recall:0.813159, valid acc:0.976223
+INFO:Epoch 480, train loss:0.015055
+INFO:Epoch 480, eval loss:0.107944, smiles_to_spectrum_recall:0.783403, spectrum_to_smiles_recall:0.823592, valid acc:0.978140
+INFO:Epoch 481, train loss:0.018150
+INFO:Epoch 481, eval loss:0.132377, smiles_to_spectrum_recall:0.780315, spectrum_to_smiles_recall:0.822102, valid acc:0.971628
+INFO:Epoch 482, train loss:0.016289
+INFO:Epoch 482, eval loss:0.098592, smiles_to_spectrum_recall:0.790429, spectrum_to_smiles_recall:0.840786, valid acc:0.979435
+INFO:Epoch 483, train loss:0.018196
+INFO:Epoch 483, eval loss:0.108032, smiles_to_spectrum_recall:0.801554, spectrum_to_smiles_recall:0.835569, valid acc:0.978033
+INFO:Epoch 484, train loss:0.016743
+INFO:Epoch 484, eval loss:0.105654, smiles_to_spectrum_recall:0.800862, spectrum_to_smiles_recall:0.835516, valid acc:0.977820
+INFO:Epoch 485, train loss:0.017244
+INFO:Epoch 485, eval loss:0.094227, smiles_to_spectrum_recall:0.806505, spectrum_to_smiles_recall:0.835888, valid acc:0.980926
+INFO:Epoch 486, train loss:0.016905
+INFO:Epoch 486, eval loss:0.102401, smiles_to_spectrum_recall:0.790589, spectrum_to_smiles_recall:0.820877, valid acc:0.979222
+INFO:Epoch 487, train loss:0.018575
+INFO:Epoch 487, eval loss:0.111963, smiles_to_spectrum_recall:0.796284, spectrum_to_smiles_recall:0.830512, valid acc:0.977040
+INFO:Epoch 488, train loss:0.018009
+INFO:Epoch 488, eval loss:0.107816, smiles_to_spectrum_recall:0.799212, spectrum_to_smiles_recall:0.835676, valid acc:0.977909
+INFO:Epoch 489, train loss:0.014083
+INFO:Epoch 489, eval loss:0.112538, smiles_to_spectrum_recall:0.795752, spectrum_to_smiles_recall:0.831311, valid acc:0.976685
+INFO:Epoch 490, train loss:0.016001
+INFO:Epoch 490, eval loss:0.108253, smiles_to_spectrum_recall:0.802033, spectrum_to_smiles_recall:0.840307, valid acc:0.977430
+INFO:Epoch 491, train loss:0.017284
+INFO:Epoch 491, eval loss:0.083667, smiles_to_spectrum_recall:0.806718, spectrum_to_smiles_recall:0.829660, valid acc:0.983232
+INFO:Epoch 492, train loss:0.018411
+INFO:Epoch 492, eval loss:0.118118, smiles_to_spectrum_recall:0.804003, spectrum_to_smiles_recall:0.832428, valid acc:0.976117
+INFO:Epoch 493, train loss:0.017250
+INFO:Epoch 493, eval loss:0.098299, smiles_to_spectrum_recall:0.804056, spectrum_to_smiles_recall:0.837272, valid acc:0.980216
+INFO:Epoch 494, train loss:0.014379
+INFO:Epoch 494, eval loss:0.119189, smiles_to_spectrum_recall:0.789364, spectrum_to_smiles_recall:0.818908, valid acc:0.974839
+INFO:Epoch 495, train loss:0.015231
+INFO:Epoch 495, eval loss:0.113439, smiles_to_spectrum_recall:0.792878, spectrum_to_smiles_recall:0.827691, valid acc:0.976348
+INFO:Epoch 496, train loss:0.016101
+INFO:Epoch 496, eval loss:0.104617, smiles_to_spectrum_recall:0.801235, spectrum_to_smiles_recall:0.842808, valid acc:0.978424
+INFO:Epoch 497, train loss:0.015618
+INFO:Epoch 497, eval loss:0.099203, smiles_to_spectrum_recall:0.808847, spectrum_to_smiles_recall:0.838976, valid acc:0.979914
+INFO:Epoch 498, train loss:0.017380
+INFO:Epoch 498, eval loss:0.100066, smiles_to_spectrum_recall:0.799904, spectrum_to_smiles_recall:0.839455, valid acc:0.979577
+INFO:Epoch 499, train loss:0.017441
+INFO:Epoch 499, eval loss:0.111407, smiles_to_spectrum_recall:0.796125, spectrum_to_smiles_recall:0.828649, valid acc:0.977554
+INFO:Epoch 500, train loss:0.016392
+INFO:Epoch 500, eval loss:0.100317, smiles_to_spectrum_recall:0.803843, spectrum_to_smiles_recall:0.841744, valid acc:0.978956
+INFO:Epoch 501, train loss:0.017963
+INFO:Epoch 501, eval loss:0.099876, smiles_to_spectrum_recall:0.802193, spectrum_to_smiles_recall:0.837539, valid acc:0.979169
+INFO:Epoch 502, train loss:0.015654
+INFO:Epoch 502, eval loss:0.099625, smiles_to_spectrum_recall:0.798360, spectrum_to_smiles_recall:0.833493, valid acc:0.979169
+INFO:Epoch 503, train loss:0.015255
+INFO:Epoch 503, eval loss:0.095262, smiles_to_spectrum_recall:0.806611, spectrum_to_smiles_recall:0.834132, valid acc:0.980163
+INFO:Epoch 504, train loss:0.016268
+INFO:Epoch 504, eval loss:0.107660, smiles_to_spectrum_recall:0.798627, spectrum_to_smiles_recall:0.825881, valid acc:0.978459
+INFO:Epoch 505, train loss:0.016046
+INFO:Epoch 505, eval loss:0.110175, smiles_to_spectrum_recall:0.806185, spectrum_to_smiles_recall:0.840786, valid acc:0.977430
+INFO:Epoch 506, train loss:0.015406
+INFO:Epoch 506, eval loss:0.111125, smiles_to_spectrum_recall:0.799798, spectrum_to_smiles_recall:0.828117, valid acc:0.976543
+INFO:Epoch 507, train loss:0.013447
+INFO:Epoch 507, eval loss:0.101301, smiles_to_spectrum_recall:0.801501, spectrum_to_smiles_recall:0.837006, valid acc:0.979364
+INFO:Epoch 508, train loss:0.013601
+INFO:Epoch 508, eval loss:0.102794, smiles_to_spectrum_recall:0.807569, spectrum_to_smiles_recall:0.844565, valid acc:0.979240
+INFO:Epoch 509, train loss:0.014539
+INFO:Epoch 509, eval loss:0.095037, smiles_to_spectrum_recall:0.810284, spectrum_to_smiles_recall:0.839561, valid acc:0.980748
+INFO:Epoch 510, train loss:0.014857
+INFO:Epoch 510, eval loss:0.100082, smiles_to_spectrum_recall:0.805919, spectrum_to_smiles_recall:0.839668, valid acc:0.979577
+INFO:Epoch 511, train loss:0.016936
+INFO:Epoch 511, eval loss:0.084423, smiles_to_spectrum_recall:0.801395, spectrum_to_smiles_recall:0.832535, valid acc:0.982753
+INFO:Epoch 512, train loss:0.014836
+INFO:Epoch 512, eval loss:0.094733, smiles_to_spectrum_recall:0.804482, spectrum_to_smiles_recall:0.837698, valid acc:0.980535
+INFO:Epoch 513, train loss:0.017840
+INFO:Epoch 513, eval loss:0.118932, smiles_to_spectrum_recall:0.794634, spectrum_to_smiles_recall:0.826573, valid acc:0.974839
+INFO:Epoch 514, train loss:0.015806
+INFO:Epoch 514, eval loss:0.124903, smiles_to_spectrum_recall:0.799638, spectrum_to_smiles_recall:0.831790, valid acc:0.975301
+INFO:Epoch 515, train loss:0.013755
+INFO:Epoch 515, eval loss:0.112651, smiles_to_spectrum_recall:0.807995, spectrum_to_smiles_recall:0.843926, valid acc:0.977377
+INFO:Epoch 516, train loss:0.013536
+INFO:Epoch 516, eval loss:0.095989, smiles_to_spectrum_recall:0.808474, spectrum_to_smiles_recall:0.841691, valid acc:0.980482
+INFO:Epoch 517, train loss:0.013127
+INFO:Epoch 517, eval loss:0.117765, smiles_to_spectrum_recall:0.812999, spectrum_to_smiles_recall:0.842808, valid acc:0.976223
+INFO:Epoch 518, train loss:0.015661
+INFO:Epoch 518, eval loss:0.109988, smiles_to_spectrum_recall:0.813478, spectrum_to_smiles_recall:0.836527, valid acc:0.978495
+INFO:Epoch 519, train loss:0.013972
+INFO:Epoch 519, eval loss:0.109650, smiles_to_spectrum_recall:0.811296, spectrum_to_smiles_recall:0.842489, valid acc:0.977732
+INFO:Epoch 520, train loss:0.011806
+INFO:Epoch 520, eval loss:0.105032, smiles_to_spectrum_recall:0.803098, spectrum_to_smiles_recall:0.834291, valid acc:0.977980
+INFO:Epoch 521, train loss:0.014236
+INFO:Epoch 521, eval loss:0.096051, smiles_to_spectrum_recall:0.807729, spectrum_to_smiles_recall:0.833174, valid acc:0.981511
+INFO:Epoch 522, train loss:0.016185
+INFO:Epoch 522, eval loss:0.098735, smiles_to_spectrum_recall:0.810018, spectrum_to_smiles_recall:0.839881, valid acc:0.979985
+INFO:Epoch 523, train loss:0.012622
+INFO:Epoch 523, eval loss:0.113304, smiles_to_spectrum_recall:0.804801, spectrum_to_smiles_recall:0.837326, valid acc:0.977554
+INFO:Epoch 524, train loss:0.016293
+INFO:Epoch 524, eval loss:0.105257, smiles_to_spectrum_recall:0.809113, spectrum_to_smiles_recall:0.826467, valid acc:0.979400
+INFO:Epoch 525, train loss:0.013718
+INFO:Epoch 525, eval loss:0.116778, smiles_to_spectrum_recall:0.808208, spectrum_to_smiles_recall:0.840626, valid acc:0.976454
+INFO:Epoch 526, train loss:0.014778
+INFO:Epoch 526, eval loss:0.131487, smiles_to_spectrum_recall:0.806452, spectrum_to_smiles_recall:0.841212, valid acc:0.974041
+INFO:Epoch 527, train loss:0.014152
+INFO:Epoch 527, eval loss:0.128809, smiles_to_spectrum_recall:0.802832, spectrum_to_smiles_recall:0.841212, valid acc:0.974485
+INFO:Epoch 528, train loss:0.014794
+INFO:Epoch 528, eval loss:0.114194, smiles_to_spectrum_recall:0.807197, spectrum_to_smiles_recall:0.842755, valid acc:0.977253
+INFO:Epoch 529, train loss:0.013382
+INFO:Epoch 529, eval loss:0.112441, smiles_to_spectrum_recall:0.809166, spectrum_to_smiles_recall:0.840732, valid acc:0.977572
+INFO:Epoch 530, train loss:0.015231
+INFO:Epoch 530, eval loss:0.115600, smiles_to_spectrum_recall:0.807569, spectrum_to_smiles_recall:0.843075, valid acc:0.976561
+INFO:Epoch 531, train loss:0.013591
+INFO:Epoch 531, eval loss:0.107161, smiles_to_spectrum_recall:0.813638, spectrum_to_smiles_recall:0.840040, valid acc:0.978779
+INFO:Epoch 532, train loss:0.013128
+INFO:Epoch 532, eval loss:0.111277, smiles_to_spectrum_recall:0.812893, spectrum_to_smiles_recall:0.844192, valid acc:0.978140
+INFO:Epoch 533, train loss:0.015942
+INFO:Epoch 533, eval loss:0.125637, smiles_to_spectrum_recall:0.800543, spectrum_to_smiles_recall:0.829181, valid acc:0.974964
+INFO:Epoch 534, train loss:0.014286
+INFO:Epoch 534, eval loss:0.119950, smiles_to_spectrum_recall:0.807782, spectrum_to_smiles_recall:0.841531, valid acc:0.975975
+INFO:Epoch 535, train loss:0.015866
+INFO:Epoch 535, eval loss:0.097297, smiles_to_spectrum_recall:0.813425, spectrum_to_smiles_recall:0.842063, valid acc:0.981582
+INFO:Epoch 536, train loss:0.013381
+INFO:Epoch 536, eval loss:0.109472, smiles_to_spectrum_recall:0.813318, spectrum_to_smiles_recall:0.842755, valid acc:0.977980
+INFO:Epoch 537, train loss:0.012743
+INFO:Epoch 537, eval loss:0.095279, smiles_to_spectrum_recall:0.812467, spectrum_to_smiles_recall:0.843075, valid acc:0.980482
+INFO:Epoch 538, train loss:0.013938
+INFO:Epoch 538, eval loss:0.127408, smiles_to_spectrum_recall:0.807303, spectrum_to_smiles_recall:0.843926, valid acc:0.973544
+INFO:Epoch 539, train loss:0.013925
+INFO:Epoch 539, eval loss:0.108501, smiles_to_spectrum_recall:0.812520, spectrum_to_smiles_recall:0.847812, valid acc:0.977767
+INFO:Epoch 540, train loss:0.014876
+INFO:Epoch 540, eval loss:0.113611, smiles_to_spectrum_recall:0.812786, spectrum_to_smiles_recall:0.840839, valid acc:0.976844
+INFO:Epoch 541, train loss:0.015465
+INFO:Epoch 541, eval loss:0.096791, smiles_to_spectrum_recall:0.813798, spectrum_to_smiles_recall:0.849941, valid acc:0.979737
+INFO:Epoch 542, train loss:0.011888
+INFO:Epoch 542, eval loss:0.110050, smiles_to_spectrum_recall:0.819706, spectrum_to_smiles_recall:0.848770, valid acc:0.977998
+INFO:Epoch 543, train loss:0.014465
+INFO:Epoch 543, eval loss:0.111134, smiles_to_spectrum_recall:0.808208, spectrum_to_smiles_recall:0.846322, valid acc:0.978282
+INFO:Epoch 544, train loss:0.012768
+INFO:Epoch 544, eval loss:0.111280, smiles_to_spectrum_recall:0.812733, spectrum_to_smiles_recall:0.849090, valid acc:0.977962
+INFO:Epoch 545, train loss:0.013093
+INFO:Epoch 545, eval loss:0.115780, smiles_to_spectrum_recall:0.811615, spectrum_to_smiles_recall:0.838923, valid acc:0.976578
+INFO:Epoch 546, train loss:0.014322
+INFO:Epoch 546, eval loss:0.098380, smiles_to_spectrum_recall:0.811083, spectrum_to_smiles_recall:0.849622, valid acc:0.980021
+INFO:Epoch 547, train loss:0.012070
+INFO:Epoch 547, eval loss:0.121124, smiles_to_spectrum_recall:0.818535, spectrum_to_smiles_recall:0.849888, valid acc:0.974786
+INFO:Epoch 548, train loss:0.014689
+INFO:Epoch 548, eval loss:0.129732, smiles_to_spectrum_recall:0.814862, spectrum_to_smiles_recall:0.848291, valid acc:0.973917
+INFO:Epoch 549, train loss:0.012931
+INFO:Epoch 549, eval loss:0.118785, smiles_to_spectrum_recall:0.818588, spectrum_to_smiles_recall:0.847120, valid acc:0.975869
+INFO:Epoch 550, train loss:0.014786
+INFO:Epoch 550, eval loss:0.135820, smiles_to_spectrum_recall:0.806132, spectrum_to_smiles_recall:0.842489, valid acc:0.972196
+INFO:Epoch 551, train loss:0.014050
+INFO:Epoch 551, eval loss:0.118048, smiles_to_spectrum_recall:0.809539, spectrum_to_smiles_recall:0.844299, valid acc:0.977448
+INFO:Epoch 552, train loss:0.013302
+INFO:Epoch 552, eval loss:0.113337, smiles_to_spectrum_recall:0.815022, spectrum_to_smiles_recall:0.851272, valid acc:0.977590
+INFO:Epoch 553, train loss:0.012330
+INFO:Epoch 553, eval loss:0.124716, smiles_to_spectrum_recall:0.807144, spectrum_to_smiles_recall:0.836474, valid acc:0.975673
+INFO:Epoch 554, train loss:0.014222
+INFO:Epoch 554, eval loss:0.097993, smiles_to_spectrum_recall:0.813638, spectrum_to_smiles_recall:0.849941, valid acc:0.980340
+INFO:Epoch 555, train loss:0.011738
+INFO:Epoch 555, eval loss:0.112923, smiles_to_spectrum_recall:0.817045, spectrum_to_smiles_recall:0.843660, valid acc:0.978104
+INFO:Epoch 556, train loss:0.010294
+INFO:Epoch 556, eval loss:0.130291, smiles_to_spectrum_recall:0.809007, spectrum_to_smiles_recall:0.849409, valid acc:0.974893
+INFO:Epoch 557, train loss:0.011764
+INFO:Epoch 557, eval loss:0.123422, smiles_to_spectrum_recall:0.815448, spectrum_to_smiles_recall:0.847173, valid acc:0.975673
+INFO:Epoch 558, train loss:0.013088
+INFO:Epoch 558, eval loss:0.117913, smiles_to_spectrum_recall:0.816832, spectrum_to_smiles_recall:0.850101, valid acc:0.976862
+INFO:Epoch 559, train loss:0.012285
+INFO:Epoch 559, eval loss:0.120489, smiles_to_spectrum_recall:0.810870, spectrum_to_smiles_recall:0.843926, valid acc:0.976543
+INFO:Epoch 560, train loss:0.014341
+INFO:Epoch 560, eval loss:0.112895, smiles_to_spectrum_recall:0.814862, spectrum_to_smiles_recall:0.845736, valid acc:0.977359
+INFO:Epoch 561, train loss:0.013105
+INFO:Epoch 561, eval loss:0.103761, smiles_to_spectrum_recall:0.814330, spectrum_to_smiles_recall:0.842436, valid acc:0.979790
+INFO:Epoch 562, train loss:0.011440
+INFO:Epoch 562, eval loss:0.124303, smiles_to_spectrum_recall:0.819280, spectrum_to_smiles_recall:0.849888, valid acc:0.975283
+INFO:Epoch 563, train loss:0.012525
+INFO:Epoch 563, eval loss:0.121184, smiles_to_spectrum_recall:0.808581, spectrum_to_smiles_recall:0.853827, valid acc:0.976348
+INFO:Epoch 564, train loss:0.011794
+INFO:Epoch 564, eval loss:0.105711, smiles_to_spectrum_recall:0.819280, spectrum_to_smiles_recall:0.855531, valid acc:0.979009
+INFO:Epoch 565, train loss:0.011825
+INFO:Epoch 565, eval loss:0.125679, smiles_to_spectrum_recall:0.815554, spectrum_to_smiles_recall:0.844139, valid acc:0.974502
+INFO:Epoch 566, train loss:0.010473
+INFO:Epoch 566, eval loss:0.097405, smiles_to_spectrum_recall:0.820185, spectrum_to_smiles_recall:0.855477, valid acc:0.980269
+INFO:Epoch 567, train loss:0.012640
+INFO:Epoch 567, eval loss:0.112031, smiles_to_spectrum_recall:0.813531, spectrum_to_smiles_recall:0.849462, valid acc:0.977909
+INFO:Epoch 568, train loss:0.010553
+INFO:Epoch 568, eval loss:0.115856, smiles_to_spectrum_recall:0.812893, spectrum_to_smiles_recall:0.848557, valid acc:0.977022
+INFO:Epoch 569, train loss:0.014488
+INFO:Epoch 569, eval loss:0.108176, smiles_to_spectrum_recall:0.810710, spectrum_to_smiles_recall:0.847440, valid acc:0.977820
+INFO:Epoch 570, train loss:0.013847
+INFO:Epoch 570, eval loss:0.108432, smiles_to_spectrum_recall:0.815714, spectrum_to_smiles_recall:0.850687, valid acc:0.977945
+INFO:Epoch 571, train loss:0.012943
+INFO:Epoch 571, eval loss:0.114412, smiles_to_spectrum_recall:0.814490, spectrum_to_smiles_recall:0.849675, valid acc:0.977590
+INFO:Epoch 572, train loss:0.012359
+INFO:Epoch 572, eval loss:0.132319, smiles_to_spectrum_recall:0.812307, spectrum_to_smiles_recall:0.849675, valid acc:0.973757
+INFO:Epoch 573, train loss:0.012746
+INFO:Epoch 573, eval loss:0.125386, smiles_to_spectrum_recall:0.811775, spectrum_to_smiles_recall:0.850208, valid acc:0.974467
+INFO:Epoch 574, train loss:0.013807
+INFO:Epoch 574, eval loss:0.115823, smiles_to_spectrum_recall:0.813159, spectrum_to_smiles_recall:0.853455, valid acc:0.976436
+INFO:Epoch 575, train loss:0.012655
+INFO:Epoch 575, eval loss:0.126450, smiles_to_spectrum_recall:0.812201, spectrum_to_smiles_recall:0.851166, valid acc:0.973899
+INFO:Epoch 576, train loss:0.014121
+INFO:Epoch 576, eval loss:0.132669, smiles_to_spectrum_recall:0.813265, spectrum_to_smiles_recall:0.849622, valid acc:0.973455
+INFO:Epoch 577, train loss:0.011763
+INFO:Epoch 577, eval loss:0.130084, smiles_to_spectrum_recall:0.810657, spectrum_to_smiles_recall:0.846375, valid acc:0.973864
+INFO:Epoch 578, train loss:0.013183
+INFO:Epoch 578, eval loss:0.113414, smiles_to_spectrum_recall:0.814436, spectrum_to_smiles_recall:0.849941, valid acc:0.976951
+INFO:Epoch 579, train loss:0.012797
+INFO:Epoch 579, eval loss:0.128823, smiles_to_spectrum_recall:0.810550, spectrum_to_smiles_recall:0.854253, valid acc:0.974893
+INFO:Epoch 580, train loss:0.011975
+INFO:Epoch 580, eval loss:0.121034, smiles_to_spectrum_recall:0.813052, spectrum_to_smiles_recall:0.852656, valid acc:0.976046
+INFO:Epoch 581, train loss:0.011299
+INFO:Epoch 581, eval loss:0.113086, smiles_to_spectrum_recall:0.822634, spectrum_to_smiles_recall:0.853774, valid acc:0.977253
+INFO:Epoch 582, train loss:0.009737
+INFO:Epoch 582, eval loss:0.117441, smiles_to_spectrum_recall:0.816193, spectrum_to_smiles_recall:0.849462, valid acc:0.977253
+INFO:Epoch 583, train loss:0.013105
+INFO:Epoch 583, eval loss:0.128941, smiles_to_spectrum_recall:0.813159, spectrum_to_smiles_recall:0.854839, valid acc:0.975389
+INFO:Epoch 584, train loss:0.012985
+INFO:Epoch 584, eval loss:0.129886, smiles_to_spectrum_recall:0.810071, spectrum_to_smiles_recall:0.845523, valid acc:0.974396
+INFO:Epoch 585, train loss:0.008721
+INFO:Epoch 585, eval loss:0.116665, smiles_to_spectrum_recall:0.815980, spectrum_to_smiles_recall:0.854679, valid acc:0.977359
+INFO:Epoch 586, train loss:0.011070
+INFO:Epoch 586, eval loss:0.126209, smiles_to_spectrum_recall:0.811775, spectrum_to_smiles_recall:0.853401, valid acc:0.974786
+INFO:Epoch 587, train loss:0.012526
+INFO:Epoch 587, eval loss:0.108622, smiles_to_spectrum_recall:0.814383, spectrum_to_smiles_recall:0.849941, valid acc:0.977874
+INFO:Epoch 588, train loss:0.012225
+INFO:Epoch 588, eval loss:0.109348, smiles_to_spectrum_recall:0.816406, spectrum_to_smiles_recall:0.846588, valid acc:0.978583
+INFO:Epoch 589, train loss:0.013330
+INFO:Epoch 589, eval loss:0.114066, smiles_to_spectrum_recall:0.813638, spectrum_to_smiles_recall:0.853189, valid acc:0.977270
+INFO:Epoch 590, train loss:0.010617
+INFO:Epoch 590, eval loss:0.115201, smiles_to_spectrum_recall:0.817683, spectrum_to_smiles_recall:0.855211, valid acc:0.977057
+INFO:Epoch 591, train loss:0.011374
+INFO:Epoch 591, eval loss:0.104064, smiles_to_spectrum_recall:0.825987, spectrum_to_smiles_recall:0.852816, valid acc:0.979098
+INFO:Epoch 592, train loss:0.009670
+INFO:Epoch 592, eval loss:0.117586, smiles_to_spectrum_recall:0.820824, spectrum_to_smiles_recall:0.855424, valid acc:0.976330
+INFO:Epoch 593, train loss:0.010986
+INFO:Epoch 593, eval loss:0.116144, smiles_to_spectrum_recall:0.821782, spectrum_to_smiles_recall:0.854785, valid acc:0.976880
+INFO:Epoch 594, train loss:0.010686
+INFO:Epoch 594, eval loss:0.132581, smiles_to_spectrum_recall:0.819067, spectrum_to_smiles_recall:0.859417, valid acc:0.973491
+INFO:Epoch 595, train loss:0.010286
+INFO:Epoch 595, eval loss:0.115805, smiles_to_spectrum_recall:0.818801, spectrum_to_smiles_recall:0.855850, valid acc:0.977075
+INFO:Epoch 596, train loss:0.012552
+INFO:Epoch 596, eval loss:0.132256, smiles_to_spectrum_recall:0.813851, spectrum_to_smiles_recall:0.851219, valid acc:0.973225
+INFO:Epoch 597, train loss:0.011745
+INFO:Epoch 597, eval loss:0.117197, smiles_to_spectrum_recall:0.817577, spectrum_to_smiles_recall:0.854040, valid acc:0.976294
+INFO:Epoch 598, train loss:0.011579
+INFO:Epoch 598, eval loss:0.122989, smiles_to_spectrum_recall:0.822740, spectrum_to_smiles_recall:0.857128, valid acc:0.975851
+INFO:Epoch 599, train loss:0.011411
+INFO:Epoch 599, eval loss:0.147168, smiles_to_spectrum_recall:0.809752, spectrum_to_smiles_recall:0.845257, valid acc:0.970936
+INFO:Epoch 600, train loss:0.010888
+INFO:Epoch 600, eval loss:0.109219, smiles_to_spectrum_recall:0.824444, spectrum_to_smiles_recall:0.853508, valid acc:0.978087
+INFO:Epoch 601, train loss:0.012111
+INFO:Epoch 601, eval loss:0.112606, smiles_to_spectrum_recall:0.819919, spectrum_to_smiles_recall:0.856489, valid acc:0.978299
+INFO:Epoch 602, train loss:0.011541
+INFO:Epoch 602, eval loss:0.134082, smiles_to_spectrum_recall:0.818908, spectrum_to_smiles_recall:0.850208, valid acc:0.974112
+INFO:Epoch 603, train loss:0.011524
+INFO:Epoch 603, eval loss:0.126871, smiles_to_spectrum_recall:0.825295, spectrum_to_smiles_recall:0.859470, valid acc:0.975886
+INFO:Epoch 604, train loss:0.011798
+INFO:Epoch 604, eval loss:0.131845, smiles_to_spectrum_recall:0.823166, spectrum_to_smiles_recall:0.857820, valid acc:0.973988
+INFO:Epoch 605, train loss:0.010895
+INFO:Epoch 605, eval loss:0.130091, smiles_to_spectrum_recall:0.813744, spectrum_to_smiles_recall:0.850154, valid acc:0.975088
+INFO:Epoch 606, train loss:0.012605
+INFO:Epoch 606, eval loss:0.131311, smiles_to_spectrum_recall:0.821889, spectrum_to_smiles_recall:0.861333, valid acc:0.974272
+INFO:Epoch 607, train loss:0.010274
+INFO:Epoch 607, eval loss:0.125865, smiles_to_spectrum_recall:0.823060, spectrum_to_smiles_recall:0.854147, valid acc:0.976348
+INFO:Epoch 608, train loss:0.011000
+INFO:Epoch 608, eval loss:0.109136, smiles_to_spectrum_recall:0.817151, spectrum_to_smiles_recall:0.859097, valid acc:0.978211
+INFO:Epoch 609, train loss:0.010479
+INFO:Epoch 609, eval loss:0.122199, smiles_to_spectrum_recall:0.823698, spectrum_to_smiles_recall:0.857181, valid acc:0.975727
+INFO:Epoch 610, train loss:0.010071
+INFO:Epoch 610, eval loss:0.121131, smiles_to_spectrum_recall:0.812626, spectrum_to_smiles_recall:0.854360, valid acc:0.976720
+INFO:Epoch 611, train loss:0.010472
+INFO:Epoch 611, eval loss:0.139644, smiles_to_spectrum_recall:0.818216, spectrum_to_smiles_recall:0.855052, valid acc:0.973243
+INFO:Epoch 612, train loss:0.011508
+INFO:Epoch 612, eval loss:0.124028, smiles_to_spectrum_recall:0.820824, spectrum_to_smiles_recall:0.853614, valid acc:0.976649
+INFO:Epoch 613, train loss:0.009212
+INFO:Epoch 613, eval loss:0.123206, smiles_to_spectrum_recall:0.822474, spectrum_to_smiles_recall:0.848557, valid acc:0.975940
+INFO:Epoch 614, train loss:0.010316
+INFO:Epoch 614, eval loss:0.137544, smiles_to_spectrum_recall:0.817737, spectrum_to_smiles_recall:0.852124, valid acc:0.972302
+INFO:Epoch 615, train loss:0.011863
+INFO:Epoch 615, eval loss:0.102293, smiles_to_spectrum_recall:0.816246, spectrum_to_smiles_recall:0.858139, valid acc:0.980358
+INFO:Epoch 616, train loss:0.009400
+INFO:Epoch 616, eval loss:0.112214, smiles_to_spectrum_recall:0.830299, spectrum_to_smiles_recall:0.860588, valid acc:0.978583
+INFO:Epoch 617, train loss:0.013011
+INFO:Epoch 617, eval loss:0.124622, smiles_to_spectrum_recall:0.821356, spectrum_to_smiles_recall:0.852869, valid acc:0.976436
+INFO:Epoch 618, train loss:0.013125
+INFO:Epoch 618, eval loss:0.120978, smiles_to_spectrum_recall:0.822953, spectrum_to_smiles_recall:0.854093, valid acc:0.976525
+INFO:Epoch 619, train loss:0.011653
+INFO:Epoch 619, eval loss:0.128144, smiles_to_spectrum_recall:0.823219, spectrum_to_smiles_recall:0.854892, valid acc:0.975478
+INFO:Epoch 620, train loss:0.009394
+INFO:Epoch 620, eval loss:0.122011, smiles_to_spectrum_recall:0.828010, spectrum_to_smiles_recall:0.861759, valid acc:0.976170
+INFO:Epoch 621, train loss:0.009550
+INFO:Epoch 621, eval loss:0.130212, smiles_to_spectrum_recall:0.824178, spectrum_to_smiles_recall:0.852709, valid acc:0.975070
+INFO:Epoch 622, train loss:0.010694
+INFO:Epoch 622, eval loss:0.138342, smiles_to_spectrum_recall:0.830352, spectrum_to_smiles_recall:0.854839, valid acc:0.972267
+INFO:Epoch 623, train loss:0.010813
+INFO:Epoch 623, eval loss:0.119558, smiles_to_spectrum_recall:0.826946, spectrum_to_smiles_recall:0.856808, valid acc:0.975602
+INFO:Epoch 624, train loss:0.008172
+INFO:Epoch 624, eval loss:0.141816, smiles_to_spectrum_recall:0.823965, spectrum_to_smiles_recall:0.862664, valid acc:0.973420
+INFO:Epoch 625, train loss:0.008846
+INFO:Epoch 625, eval loss:0.125049, smiles_to_spectrum_recall:0.827371, spectrum_to_smiles_recall:0.862557, valid acc:0.976170
+INFO:Epoch 626, train loss:0.011273
+INFO:Epoch 626, eval loss:0.118460, smiles_to_spectrum_recall:0.824444, spectrum_to_smiles_recall:0.855371, valid acc:0.976561
+INFO:Epoch 627, train loss:0.010028
+INFO:Epoch 627, eval loss:0.129342, smiles_to_spectrum_recall:0.828809, spectrum_to_smiles_recall:0.858405, valid acc:0.975035
+INFO:Epoch 628, train loss:0.011931
+INFO:Epoch 628, eval loss:0.130894, smiles_to_spectrum_recall:0.829927, spectrum_to_smiles_recall:0.859417, valid acc:0.974591
+INFO:Epoch 629, train loss:0.011380
+INFO:Epoch 629, eval loss:0.128850, smiles_to_spectrum_recall:0.826839, spectrum_to_smiles_recall:0.865538, valid acc:0.973633
+INFO:Epoch 630, train loss:0.009985
+INFO:Epoch 630, eval loss:0.129117, smiles_to_spectrum_recall:0.821143, spectrum_to_smiles_recall:0.857713, valid acc:0.974680
+INFO:Epoch 631, train loss:0.010728
+INFO:Epoch 631, eval loss:0.135226, smiles_to_spectrum_recall:0.820558, spectrum_to_smiles_recall:0.858086, valid acc:0.972888
+INFO:Epoch 632, train loss:0.011117
+INFO:Epoch 632, eval loss:0.128709, smiles_to_spectrum_recall:0.829128, spectrum_to_smiles_recall:0.858991, valid acc:0.975283
+INFO:Epoch 633, train loss:0.011434
+INFO:Epoch 633, eval loss:0.122451, smiles_to_spectrum_recall:0.826254, spectrum_to_smiles_recall:0.858033, valid acc:0.976578
+INFO:Epoch 634, train loss:0.012235
+INFO:Epoch 634, eval loss:0.141881, smiles_to_spectrum_recall:0.824337, spectrum_to_smiles_recall:0.859789, valid acc:0.972391
+INFO:Epoch 635, train loss:0.008657
+INFO:Epoch 635, eval loss:0.124338, smiles_to_spectrum_recall:0.827851, spectrum_to_smiles_recall:0.858352, valid acc:0.976117
+INFO:Epoch 636, train loss:0.009654
+INFO:Epoch 636, eval loss:0.139975, smiles_to_spectrum_recall:0.818003, spectrum_to_smiles_recall:0.851538, valid acc:0.973562
+INFO:Epoch 637, train loss:0.009591
+INFO:Epoch 637, eval loss:0.140415, smiles_to_spectrum_recall:0.822847, spectrum_to_smiles_recall:0.854253, valid acc:0.973686
+INFO:Epoch 638, train loss:0.010471
+INFO:Epoch 638, eval loss:0.138636, smiles_to_spectrum_recall:0.828489, spectrum_to_smiles_recall:0.859310, valid acc:0.974130
+INFO:Epoch 639, train loss:0.010989
+INFO:Epoch 639, eval loss:0.134795, smiles_to_spectrum_recall:0.828383, spectrum_to_smiles_recall:0.862504, valid acc:0.975123
+INFO:Epoch 640, train loss:0.012147
+INFO:Epoch 640, eval loss:0.147831, smiles_to_spectrum_recall:0.827318, spectrum_to_smiles_recall:0.858565, valid acc:0.971362
+INFO:Epoch 641, train loss:0.010203
+INFO:Epoch 641, eval loss:0.144927, smiles_to_spectrum_recall:0.824763, spectrum_to_smiles_recall:0.859576, valid acc:0.972000
+INFO:Epoch 642, train loss:0.009347
+INFO:Epoch 642, eval loss:0.128648, smiles_to_spectrum_recall:0.832801, spectrum_to_smiles_recall:0.865166, valid acc:0.974910
+INFO:Epoch 643, train loss:0.008732
+INFO:Epoch 643, eval loss:0.130370, smiles_to_spectrum_recall:0.828862, spectrum_to_smiles_recall:0.864953, valid acc:0.974804
+INFO:Epoch 644, train loss:0.010420
+INFO:Epoch 644, eval loss:0.142305, smiles_to_spectrum_recall:0.830512, spectrum_to_smiles_recall:0.858352, valid acc:0.972249
+INFO:Epoch 645, train loss:0.008727
+INFO:Epoch 645, eval loss:0.133970, smiles_to_spectrum_recall:0.830406, spectrum_to_smiles_recall:0.860907, valid acc:0.974360
+INFO:Epoch 646, train loss:0.011899
+INFO:Epoch 646, eval loss:0.142866, smiles_to_spectrum_recall:0.829288, spectrum_to_smiles_recall:0.858512, valid acc:0.971131
+INFO:Epoch 647, train loss:0.010121
+INFO:Epoch 647, eval loss:0.135464, smiles_to_spectrum_recall:0.821569, spectrum_to_smiles_recall:0.857926, valid acc:0.974502
+INFO:Epoch 648, train loss:0.010447
+INFO:Epoch 648, eval loss:0.144414, smiles_to_spectrum_recall:0.824870, spectrum_to_smiles_recall:0.862291, valid acc:0.972586
+INFO:Epoch 649, train loss:0.009183
+INFO:Epoch 649, eval loss:0.128888, smiles_to_spectrum_recall:0.833599, spectrum_to_smiles_recall:0.866070, valid acc:0.975567
+INFO:Epoch 650, train loss:0.009916
+INFO:Epoch 650, eval loss:0.142789, smiles_to_spectrum_recall:0.831896, spectrum_to_smiles_recall:0.861120, valid acc:0.972071
+INFO:Epoch 651, train loss:0.008791
+INFO:Epoch 651, eval loss:0.129020, smiles_to_spectrum_recall:0.834558, spectrum_to_smiles_recall:0.864846, valid acc:0.974999
+INFO:Epoch 652, train loss:0.010563
+INFO:Epoch 652, eval loss:0.134013, smiles_to_spectrum_recall:0.828276, spectrum_to_smiles_recall:0.864367, valid acc:0.974715
+INFO:Epoch 653, train loss:0.009839
+INFO:Epoch 653, eval loss:0.150907, smiles_to_spectrum_recall:0.829075, spectrum_to_smiles_recall:0.865804, valid acc:0.970084
+INFO:Epoch 654, train loss:0.008162
+INFO:Epoch 654, eval loss:0.134766, smiles_to_spectrum_recall:0.835729, spectrum_to_smiles_recall:0.862664, valid acc:0.974218
+INFO:Epoch 655, train loss:0.010471
+INFO:Epoch 655, eval loss:0.138546, smiles_to_spectrum_recall:0.832375, spectrum_to_smiles_recall:0.865059, valid acc:0.972834
+INFO:Epoch 656, train loss:0.008942
+INFO:Epoch 656, eval loss:0.149748, smiles_to_spectrum_recall:0.830299, spectrum_to_smiles_recall:0.863622, valid acc:0.971947
+INFO:Epoch 657, train loss:0.008986
+INFO:Epoch 657, eval loss:0.157660, smiles_to_spectrum_recall:0.832641, spectrum_to_smiles_recall:0.864261, valid acc:0.970102
+INFO:Epoch 658, train loss:0.011980
+INFO:Epoch 658, eval loss:0.131236, smiles_to_spectrum_recall:0.836847, spectrum_to_smiles_recall:0.863090, valid acc:0.974272
+INFO:Epoch 659, train loss:0.007821
+INFO:Epoch 659, eval loss:0.135096, smiles_to_spectrum_recall:0.834025, spectrum_to_smiles_recall:0.862238, valid acc:0.974485
+INFO:Epoch 660, train loss:0.011291
+INFO:Epoch 660, eval loss:0.141400, smiles_to_spectrum_recall:0.835303, spectrum_to_smiles_recall:0.865432, valid acc:0.973757
+INFO:Epoch 661, train loss:0.010209
+INFO:Epoch 661, eval loss:0.144894, smiles_to_spectrum_recall:0.836634, spectrum_to_smiles_recall:0.869956, valid acc:0.973952
+INFO:Epoch 662, train loss:0.008478
+INFO:Epoch 662, eval loss:0.150507, smiles_to_spectrum_recall:0.834983, spectrum_to_smiles_recall:0.863569, valid acc:0.972107
+INFO:Epoch 663, train loss:0.008314
+INFO:Epoch 663, eval loss:0.146609, smiles_to_spectrum_recall:0.834717, spectrum_to_smiles_recall:0.869477, valid acc:0.972994
+INFO:Epoch 664, train loss:0.007954
+INFO:Epoch 664, eval loss:0.140656, smiles_to_spectrum_recall:0.830938, spectrum_to_smiles_recall:0.869531, valid acc:0.973633
+INFO:Epoch 665, train loss:0.009737
+INFO:Epoch 665, eval loss:0.137719, smiles_to_spectrum_recall:0.838177, spectrum_to_smiles_recall:0.866762, valid acc:0.974467
+INFO:Epoch 666, train loss:0.009767
+INFO:Epoch 666, eval loss:0.142791, smiles_to_spectrum_recall:0.834771, spectrum_to_smiles_recall:0.867614, valid acc:0.973278
+INFO:Epoch 667, train loss:0.007941
+INFO:Epoch 667, eval loss:0.149078, smiles_to_spectrum_recall:0.837006, spectrum_to_smiles_recall:0.872032, valid acc:0.972834
+INFO:Epoch 668, train loss:0.008258
+INFO:Epoch 668, eval loss:0.148386, smiles_to_spectrum_recall:0.834558, spectrum_to_smiles_recall:0.868040, valid acc:0.972338
+INFO:Epoch 669, train loss:0.009499
+INFO:Epoch 669, eval loss:0.137790, smiles_to_spectrum_recall:0.830033, spectrum_to_smiles_recall:0.864846, valid acc:0.974059
+INFO:Epoch 670, train loss:0.006545
+INFO:Epoch 670, eval loss:0.153240, smiles_to_spectrum_recall:0.834930, spectrum_to_smiles_recall:0.861493, valid acc:0.970741
+INFO:Epoch 671, train loss:0.008207
+INFO:Epoch 671, eval loss:0.138180, smiles_to_spectrum_recall:0.834771, spectrum_to_smiles_recall:0.869903, valid acc:0.973349
+INFO:Epoch 672, train loss:0.008953
+INFO:Epoch 672, eval loss:0.154499, smiles_to_spectrum_recall:0.831151, spectrum_to_smiles_recall:0.870116, valid acc:0.972071
+INFO:Epoch 673, train loss:0.007802
+INFO:Epoch 673, eval loss:0.136580, smiles_to_spectrum_recall:0.836155, spectrum_to_smiles_recall:0.869051, valid acc:0.975283
+INFO:Epoch 674, train loss:0.005651
+INFO:Epoch 674, eval loss:0.142936, smiles_to_spectrum_recall:0.838124, spectrum_to_smiles_recall:0.871819, valid acc:0.973243
+INFO:Epoch 675, train loss:0.009476
+INFO:Epoch 675, eval loss:0.167224, smiles_to_spectrum_recall:0.832535, spectrum_to_smiles_recall:0.865272, valid acc:0.968842
+INFO:Epoch 676, train loss:0.009345
+INFO:Epoch 676, eval loss:0.144038, smiles_to_spectrum_recall:0.835196, spectrum_to_smiles_recall:0.871234, valid acc:0.972284
+INFO:Epoch 677, train loss:0.006727
+INFO:Epoch 677, eval loss:0.160221, smiles_to_spectrum_recall:0.839668, spectrum_to_smiles_recall:0.870063, valid acc:0.970457
+INFO:Epoch 678, train loss:0.009245
+INFO:Epoch 678, eval loss:0.151144, smiles_to_spectrum_recall:0.835516, spectrum_to_smiles_recall:0.862504, valid acc:0.972249
+INFO:Epoch 679, train loss:0.007071
+INFO:Epoch 679, eval loss:0.154970, smiles_to_spectrum_recall:0.832641, spectrum_to_smiles_recall:0.863036, valid acc:0.971042
+INFO:Epoch 680, train loss:0.007366
+INFO:Epoch 680, eval loss:0.134413, smiles_to_spectrum_recall:0.838284, spectrum_to_smiles_recall:0.871979, valid acc:0.975620
+INFO:Epoch 681, train loss:0.006532
+INFO:Epoch 681, eval loss:0.145346, smiles_to_spectrum_recall:0.836847, spectrum_to_smiles_recall:0.873097, valid acc:0.972462
+INFO:Epoch 682, train loss:0.006122
+INFO:Epoch 682, eval loss:0.143648, smiles_to_spectrum_recall:0.843021, spectrum_to_smiles_recall:0.869956, valid acc:0.974414
+INFO:Epoch 683, train loss:0.007946
+INFO:Epoch 683, eval loss:0.144823, smiles_to_spectrum_recall:0.837805, spectrum_to_smiles_recall:0.869477, valid acc:0.973580
+INFO:Epoch 684, train loss:0.007384
+INFO:Epoch 684, eval loss:0.155762, smiles_to_spectrum_recall:0.837113, spectrum_to_smiles_recall:0.867508, valid acc:0.973065
+INFO:Epoch 685, train loss:0.009581
+INFO:Epoch 685, eval loss:0.154390, smiles_to_spectrum_recall:0.837752, spectrum_to_smiles_recall:0.862185, valid acc:0.972249
+INFO:Epoch 686, train loss:0.007266
+INFO:Epoch 686, eval loss:0.157095, smiles_to_spectrum_recall:0.836261, spectrum_to_smiles_recall:0.872032, valid acc:0.971539
+INFO:Epoch 687, train loss:0.008287
+INFO:Epoch 687, eval loss:0.153723, smiles_to_spectrum_recall:0.835942, spectrum_to_smiles_recall:0.864953, valid acc:0.971947
+INFO:Epoch 688, train loss:0.008170
+INFO:Epoch 688, eval loss:0.151483, smiles_to_spectrum_recall:0.836953, spectrum_to_smiles_recall:0.866816, valid acc:0.972817
+INFO:Epoch 689, train loss:0.006671
+INFO:Epoch 689, eval loss:0.148181, smiles_to_spectrum_recall:0.828489, spectrum_to_smiles_recall:0.863409, valid acc:0.972586
+INFO:Epoch 690, train loss:0.008503
+INFO:Epoch 690, eval loss:0.170646, smiles_to_spectrum_recall:0.831470, spectrum_to_smiles_recall:0.867188, valid acc:0.968842
+INFO:Epoch 691, train loss:0.010172
+INFO:Epoch 691, eval loss:0.152102, smiles_to_spectrum_recall:0.835463, spectrum_to_smiles_recall:0.867721, valid acc:0.971894
+INFO:Epoch 692, train loss:0.007583
+INFO:Epoch 692, eval loss:0.170872, smiles_to_spectrum_recall:0.832428, spectrum_to_smiles_recall:0.868732, valid acc:0.970049
+INFO:Epoch 693, train loss:0.006794
+INFO:Epoch 693, eval loss:0.147787, smiles_to_spectrum_recall:0.839987, spectrum_to_smiles_recall:0.872352, valid acc:0.973420
+INFO:Epoch 694, train loss:0.010267
+INFO:Epoch 694, eval loss:0.158128, smiles_to_spectrum_recall:0.838018, spectrum_to_smiles_recall:0.872086, valid acc:0.971699
+INFO:Epoch 695, train loss:0.006720
+INFO:Epoch 695, eval loss:0.163408, smiles_to_spectrum_recall:0.841691, spectrum_to_smiles_recall:0.867295, valid acc:0.971220
+INFO:Epoch 696, train loss:0.008491
+INFO:Epoch 696, eval loss:0.149669, smiles_to_spectrum_recall:0.840839, spectrum_to_smiles_recall:0.868679, valid acc:0.973491
+INFO:Epoch 697, train loss:0.008676
+INFO:Epoch 697, eval loss:0.148728, smiles_to_spectrum_recall:0.842223, spectrum_to_smiles_recall:0.870968, valid acc:0.972568
+INFO:Epoch 698, train loss:0.006247
+INFO:Epoch 698, eval loss:0.148905, smiles_to_spectrum_recall:0.837698, spectrum_to_smiles_recall:0.869318, valid acc:0.973136
+INFO:Epoch 699, train loss:0.008421
+INFO:Epoch 699, eval loss:0.172988, smiles_to_spectrum_recall:0.838284, spectrum_to_smiles_recall:0.872192, valid acc:0.969924
+INFO:Epoch 700, train loss:0.009168
+INFO:Epoch 700, eval loss:0.164899, smiles_to_spectrum_recall:0.840839, spectrum_to_smiles_recall:0.869105, valid acc:0.971166
+INFO:Epoch 701, train loss:0.008318
+INFO:Epoch 701, eval loss:0.174501, smiles_to_spectrum_recall:0.838444, spectrum_to_smiles_recall:0.868838, valid acc:0.968860
+INFO:Epoch 702, train loss:0.007876
+INFO:Epoch 702, eval loss:0.158585, smiles_to_spectrum_recall:0.844831, spectrum_to_smiles_recall:0.874268, valid acc:0.971752
+INFO:Epoch 703, train loss:0.008085
+INFO:Epoch 703, eval loss:0.160412, smiles_to_spectrum_recall:0.840253, spectrum_to_smiles_recall:0.867934, valid acc:0.970741
+INFO:Epoch 704, train loss:0.009396
+INFO:Epoch 704, eval loss:0.159194, smiles_to_spectrum_recall:0.837592, spectrum_to_smiles_recall:0.870382, valid acc:0.971486
+INFO:Epoch 705, train loss:0.008809
+INFO:Epoch 705, eval loss:0.153721, smiles_to_spectrum_recall:0.840999, spectrum_to_smiles_recall:0.876291, valid acc:0.972036
+INFO:Epoch 706, train loss:0.007391
+INFO:Epoch 706, eval loss:0.177457, smiles_to_spectrum_recall:0.834132, spectrum_to_smiles_recall:0.869158, valid acc:0.967635
+INFO:Epoch 707, train loss:0.007431
+INFO:Epoch 707, eval loss:0.158346, smiles_to_spectrum_recall:0.840786, spectrum_to_smiles_recall:0.875386, valid acc:0.971805
+INFO:Epoch 708, train loss:0.008910
+INFO:Epoch 708, eval loss:0.171862, smiles_to_spectrum_recall:0.839615, spectrum_to_smiles_recall:0.872192, valid acc:0.969463
+INFO:Epoch 709, train loss:0.006171
+INFO:Epoch 709, eval loss:0.169485, smiles_to_spectrum_recall:0.837698, spectrum_to_smiles_recall:0.867508, valid acc:0.970102
+INFO:Epoch 710, train loss:0.008324
+INFO:Epoch 710, eval loss:0.169060, smiles_to_spectrum_recall:0.837539, spectrum_to_smiles_recall:0.872937, valid acc:0.970492
+INFO:Epoch 711, train loss:0.008683
+INFO:Epoch 711, eval loss:0.152010, smiles_to_spectrum_recall:0.838444, spectrum_to_smiles_recall:0.871394, valid acc:0.972959
+INFO:Epoch 712, train loss:0.008166
+INFO:Epoch 712, eval loss:0.174430, smiles_to_spectrum_recall:0.837752, spectrum_to_smiles_recall:0.873416, valid acc:0.969587
+INFO:Epoch 713, train loss:0.009223
+INFO:Epoch 713, eval loss:0.162523, smiles_to_spectrum_recall:0.843713, spectrum_to_smiles_recall:0.872511, valid acc:0.970865
+INFO:Epoch 714, train loss:0.008303
+INFO:Epoch 714, eval loss:0.168314, smiles_to_spectrum_recall:0.842808, spectrum_to_smiles_recall:0.873683, valid acc:0.969853
+INFO:Epoch 715, train loss:0.008477
+INFO:Epoch 715, eval loss:0.162414, smiles_to_spectrum_recall:0.843128, spectrum_to_smiles_recall:0.870489, valid acc:0.971166
+INFO:Epoch 716, train loss:0.008477
+INFO:Epoch 716, eval loss:0.185584, smiles_to_spectrum_recall:0.841744, spectrum_to_smiles_recall:0.873363, valid acc:0.966926
+INFO:Epoch 717, train loss:0.008389
+INFO:Epoch 717, eval loss:0.167275, smiles_to_spectrum_recall:0.842702, spectrum_to_smiles_recall:0.875439, valid acc:0.969197
+INFO:Epoch 718, train loss:0.006513
+INFO:Epoch 718, eval loss:0.171740, smiles_to_spectrum_recall:0.842170, spectrum_to_smiles_recall:0.871766, valid acc:0.969747
+INFO:Epoch 719, train loss:0.008254
+INFO:Epoch 719, eval loss:0.167663, smiles_to_spectrum_recall:0.842968, spectrum_to_smiles_recall:0.876823, valid acc:0.971025
+INFO:Epoch 720, train loss:0.005816
+INFO:Epoch 720, eval loss:0.170522, smiles_to_spectrum_recall:0.842276, spectrum_to_smiles_recall:0.874375, valid acc:0.970723
+INFO:Epoch 721, train loss:0.007935
+INFO:Epoch 721, eval loss:0.168479, smiles_to_spectrum_recall:0.840573, spectrum_to_smiles_recall:0.873949, valid acc:0.970989
+INFO:Epoch 722, train loss:0.005853
+INFO:Epoch 722, eval loss:0.175696, smiles_to_spectrum_recall:0.839189, spectrum_to_smiles_recall:0.872991, valid acc:0.969090
+INFO:Epoch 723, train loss:0.008987
+INFO:Epoch 723, eval loss:0.164015, smiles_to_spectrum_recall:0.838390, spectrum_to_smiles_recall:0.870223, valid acc:0.971397
+INFO:Epoch 724, train loss:0.008416
+INFO:Epoch 724, eval loss:0.173779, smiles_to_spectrum_recall:0.839774, spectrum_to_smiles_recall:0.877036, valid acc:0.969676
+INFO:Epoch 725, train loss:0.007399
+INFO:Epoch 725, eval loss:0.178556, smiles_to_spectrum_recall:0.842489, spectrum_to_smiles_recall:0.871127, valid acc:0.968523
+INFO:Epoch 726, train loss:0.008492
+INFO:Epoch 726, eval loss:0.165387, smiles_to_spectrum_recall:0.840413, spectrum_to_smiles_recall:0.869371, valid acc:0.970457
+INFO:Epoch 727, train loss:0.008003
+INFO:Epoch 727, eval loss:0.166375, smiles_to_spectrum_recall:0.839402, spectrum_to_smiles_recall:0.874800, valid acc:0.970474
+INFO:Epoch 728, train loss:0.008198
+INFO:Epoch 728, eval loss:0.167593, smiles_to_spectrum_recall:0.844459, spectrum_to_smiles_recall:0.873949, valid acc:0.970883
+INFO:Epoch 729, train loss:0.005896
+INFO:Epoch 729, eval loss:0.179185, smiles_to_spectrum_recall:0.844086, spectrum_to_smiles_recall:0.876504, valid acc:0.969534
+INFO:Epoch 730, train loss:0.008393
+INFO:Epoch 730, eval loss:0.190617, smiles_to_spectrum_recall:0.840094, spectrum_to_smiles_recall:0.872565, valid acc:0.966660
+INFO:Epoch 731, train loss:0.006840
+INFO:Epoch 731, eval loss:0.181038, smiles_to_spectrum_recall:0.841158, spectrum_to_smiles_recall:0.879325, valid acc:0.967635
+INFO:Epoch 732, train loss:0.006271
+INFO:Epoch 732, eval loss:0.182345, smiles_to_spectrum_recall:0.841105, spectrum_to_smiles_recall:0.874055, valid acc:0.968026
+INFO:Epoch 733, train loss:0.006793
+INFO:Epoch 733, eval loss:0.161888, smiles_to_spectrum_recall:0.845576, spectrum_to_smiles_recall:0.876876, valid acc:0.971575
+INFO:Epoch 734, train loss:0.005748
+INFO:Epoch 734, eval loss:0.164148, smiles_to_spectrum_recall:0.843554, spectrum_to_smiles_recall:0.876557, valid acc:0.971912
+INFO:Epoch 735, train loss:0.007404
+INFO:Epoch 735, eval loss:0.177688, smiles_to_spectrum_recall:0.842276, spectrum_to_smiles_recall:0.873044, valid acc:0.969853
+INFO:Epoch 736, train loss:0.008691
+INFO:Epoch 736, eval loss:0.183562, smiles_to_spectrum_recall:0.840732, spectrum_to_smiles_recall:0.873470, valid acc:0.967423
+INFO:Epoch 737, train loss:0.009463
+INFO:Epoch 737, eval loss:0.153479, smiles_to_spectrum_recall:0.844512, spectrum_to_smiles_recall:0.875333, valid acc:0.973526
+INFO:Epoch 738, train loss:0.007774
+INFO:Epoch 738, eval loss:0.178009, smiles_to_spectrum_recall:0.845097, spectrum_to_smiles_recall:0.875918, valid acc:0.969144
+INFO:Epoch 739, train loss:0.005670
+INFO:Epoch 739, eval loss:0.189382, smiles_to_spectrum_recall:0.844086, spectrum_to_smiles_recall:0.875492, valid acc:0.967653
+INFO:Epoch 740, train loss:0.008200
+INFO:Epoch 740, eval loss:0.200448, smiles_to_spectrum_recall:0.842010, spectrum_to_smiles_recall:0.875120, valid acc:0.965151
+INFO:Epoch 741, train loss:0.007051
+INFO:Epoch 741, eval loss:0.178297, smiles_to_spectrum_recall:0.843394, spectrum_to_smiles_recall:0.874321, valid acc:0.968576
+INFO:Epoch 742, train loss:0.008295
+INFO:Epoch 742, eval loss:0.191707, smiles_to_spectrum_recall:0.844831, spectrum_to_smiles_recall:0.877568, valid acc:0.966819
+INFO:Epoch 743, train loss:0.007431
+INFO:Epoch 743, eval loss:0.185087, smiles_to_spectrum_recall:0.842649, spectrum_to_smiles_recall:0.877089, valid acc:0.968807
+INFO:Epoch 744, train loss:0.006278
+INFO:Epoch 744, eval loss:0.170582, smiles_to_spectrum_recall:0.843234, spectrum_to_smiles_recall:0.877143, valid acc:0.970457
+INFO:Epoch 745, train loss:0.007392
+INFO:Epoch 745, eval loss:0.191272, smiles_to_spectrum_recall:0.844565, spectrum_to_smiles_recall:0.877355, valid acc:0.965684
+INFO:Epoch 746, train loss:0.008726
+INFO:Epoch 746, eval loss:0.183708, smiles_to_spectrum_recall:0.843181, spectrum_to_smiles_recall:0.879059, valid acc:0.967706
+INFO:Epoch 747, train loss:0.004472
+INFO:Epoch 747, eval loss:0.179266, smiles_to_spectrum_recall:0.845683, spectrum_to_smiles_recall:0.875546, valid acc:0.969428
+INFO:Epoch 748, train loss:0.007641
+INFO:Epoch 748, eval loss:0.204034, smiles_to_spectrum_recall:0.839561, spectrum_to_smiles_recall:0.872458, valid acc:0.964424
+INFO:Epoch 749, train loss:0.007148
+INFO:Epoch 749, eval loss:0.172348, smiles_to_spectrum_recall:0.843554, spectrum_to_smiles_recall:0.878101, valid acc:0.969623
+INFO:Epoch 750, train loss:0.006525
+INFO:Epoch 750, eval loss:0.185182, smiles_to_spectrum_recall:0.843341, spectrum_to_smiles_recall:0.877462, valid acc:0.967050
+INFO:Epoch 751, train loss:0.007107
+INFO:Epoch 751, eval loss:0.188221, smiles_to_spectrum_recall:0.841584, spectrum_to_smiles_recall:0.873736, valid acc:0.967245
+INFO:Epoch 752, train loss:0.007124
+INFO:Epoch 752, eval loss:0.184652, smiles_to_spectrum_recall:0.841744, spectrum_to_smiles_recall:0.877781, valid acc:0.967742
+INFO:Epoch 753, train loss:0.006003
+INFO:Epoch 753, eval loss:0.183245, smiles_to_spectrum_recall:0.844459, spectrum_to_smiles_recall:0.877568, valid acc:0.968736
+INFO:Epoch 754, train loss:0.005514
+INFO:Epoch 754, eval loss:0.184618, smiles_to_spectrum_recall:0.846588, spectrum_to_smiles_recall:0.875279, valid acc:0.968878
+INFO:Epoch 755, train loss:0.007523
+INFO:Epoch 755, eval loss:0.187007, smiles_to_spectrum_recall:0.847919, spectrum_to_smiles_recall:0.880869, valid acc:0.967742
+INFO:Epoch 756, train loss:0.008785
+INFO:Epoch 756, eval loss:0.191386, smiles_to_spectrum_recall:0.845843, spectrum_to_smiles_recall:0.881774, valid acc:0.967334
+INFO:Epoch 757, train loss:0.005759
+INFO:Epoch 757, eval loss:0.196668, smiles_to_spectrum_recall:0.844139, spectrum_to_smiles_recall:0.876184, valid acc:0.966039
+INFO:Epoch 758, train loss:0.006133
+INFO:Epoch 758, eval loss:0.167218, smiles_to_spectrum_recall:0.848611, spectrum_to_smiles_recall:0.879378, valid acc:0.971255
+INFO:Epoch 759, train loss:0.007259
+INFO:Epoch 759, eval loss:0.181407, smiles_to_spectrum_recall:0.842542, spectrum_to_smiles_recall:0.883477, valid acc:0.968487
+INFO:Epoch 760, train loss:0.006185
+INFO:Epoch 760, eval loss:0.193897, smiles_to_spectrum_recall:0.843554, spectrum_to_smiles_recall:0.882679, valid acc:0.967032
+INFO:Epoch 761, train loss:0.007275
+INFO:Epoch 761, eval loss:0.190968, smiles_to_spectrum_recall:0.846428, spectrum_to_smiles_recall:0.881987, valid acc:0.967156
+INFO:Epoch 762, train loss:0.006927
+INFO:Epoch 762, eval loss:0.165689, smiles_to_spectrum_recall:0.844086, spectrum_to_smiles_recall:0.884063, valid acc:0.971575
+INFO:Epoch 763, train loss:0.006853
+INFO:Epoch 763, eval loss:0.190433, smiles_to_spectrum_recall:0.843713, spectrum_to_smiles_recall:0.881028, valid acc:0.967600
+INFO:Epoch 764, train loss:0.007868
+INFO:Epoch 764, eval loss:0.192470, smiles_to_spectrum_recall:0.848345, spectrum_to_smiles_recall:0.879165, valid acc:0.967281
+INFO:Epoch 765, train loss:0.005897
+INFO:Epoch 765, eval loss:0.180708, smiles_to_spectrum_recall:0.847919, spectrum_to_smiles_recall:0.880549, valid acc:0.969286
+INFO:Epoch 766, train loss:0.006503
+INFO:Epoch 766, eval loss:0.187772, smiles_to_spectrum_recall:0.847014, spectrum_to_smiles_recall:0.883211, valid acc:0.969179
+INFO:Epoch 767, train loss:0.006280
+INFO:Epoch 767, eval loss:0.187963, smiles_to_spectrum_recall:0.847067, spectrum_to_smiles_recall:0.877675, valid acc:0.968860
+INFO:Epoch 768, train loss:0.008746
+INFO:Epoch 768, eval loss:0.187741, smiles_to_spectrum_recall:0.847440, spectrum_to_smiles_recall:0.878367, valid acc:0.969303
+INFO:Epoch 769, train loss:0.004706
+INFO:Epoch 769, eval loss:0.189173, smiles_to_spectrum_recall:0.850740, spectrum_to_smiles_recall:0.879538, valid acc:0.969445
+INFO:Epoch 770, train loss:0.005610
+INFO:Epoch 770, eval loss:0.209968, smiles_to_spectrum_recall:0.851219, spectrum_to_smiles_recall:0.880123, valid acc:0.965790
+INFO:Epoch 771, train loss:0.006605
+INFO:Epoch 771, eval loss:0.190246, smiles_to_spectrum_recall:0.843341, spectrum_to_smiles_recall:0.879059, valid acc:0.969002
+INFO:Epoch 772, train loss:0.004728
+INFO:Epoch 772, eval loss:0.210298, smiles_to_spectrum_recall:0.850793, spectrum_to_smiles_recall:0.879165, valid acc:0.964956
+INFO:Epoch 773, train loss:0.006676
+INFO:Epoch 773, eval loss:0.218400, smiles_to_spectrum_recall:0.846481, spectrum_to_smiles_recall:0.877143, valid acc:0.964229
+INFO:Epoch 774, train loss:0.007349
+INFO:Epoch 774, eval loss:0.198343, smiles_to_spectrum_recall:0.848451, spectrum_to_smiles_recall:0.881401, valid acc:0.966961
+INFO:Epoch 775, train loss:0.005547
+INFO:Epoch 775, eval loss:0.193593, smiles_to_spectrum_recall:0.845204, spectrum_to_smiles_recall:0.885553, valid acc:0.967476
+INFO:Epoch 776, train loss:0.004758
+INFO:Epoch 776, eval loss:0.189617, smiles_to_spectrum_recall:0.848557, spectrum_to_smiles_recall:0.883158, valid acc:0.969587
+INFO:Epoch 777, train loss:0.007728
+INFO:Epoch 777, eval loss:0.204053, smiles_to_spectrum_recall:0.849516, spectrum_to_smiles_recall:0.883264, valid acc:0.966802
+INFO:Epoch 778, train loss:0.004924
+INFO:Epoch 778, eval loss:0.201576, smiles_to_spectrum_recall:0.846641, spectrum_to_smiles_recall:0.880816, valid acc:0.966855
+INFO:Epoch 779, train loss:0.007134
+INFO:Epoch 779, eval loss:0.205516, smiles_to_spectrum_recall:0.848078, spectrum_to_smiles_recall:0.880869, valid acc:0.966677
+INFO:Epoch 780, train loss:0.006075
+INFO:Epoch 780, eval loss:0.207590, smiles_to_spectrum_recall:0.843980, spectrum_to_smiles_recall:0.883903, valid acc:0.965559
+INFO:Epoch 781, train loss:0.006049
+INFO:Epoch 781, eval loss:0.194913, smiles_to_spectrum_recall:0.847440, spectrum_to_smiles_recall:0.881082, valid acc:0.968079
+INFO:Epoch 782, train loss:0.007191
+INFO:Epoch 782, eval loss:0.220948, smiles_to_spectrum_recall:0.847759, spectrum_to_smiles_recall:0.880177, valid acc:0.963927
+INFO:Epoch 783, train loss:0.007463
+INFO:Epoch 783, eval loss:0.199258, smiles_to_spectrum_recall:0.849675, spectrum_to_smiles_recall:0.882200, valid acc:0.967635
+INFO:Epoch 784, train loss:0.005032
+INFO:Epoch 784, eval loss:0.211212, smiles_to_spectrum_recall:0.847014, spectrum_to_smiles_recall:0.883371, valid acc:0.965542
+INFO:Epoch 785, train loss:0.007671
+INFO:Epoch 785, eval loss:0.202788, smiles_to_spectrum_recall:0.845523, spectrum_to_smiles_recall:0.884222, valid acc:0.966411
+INFO:Epoch 786, train loss:0.005128
+INFO:Epoch 786, eval loss:0.206177, smiles_to_spectrum_recall:0.850154, spectrum_to_smiles_recall:0.881933, valid acc:0.966713
+INFO:Epoch 787, train loss:0.007018
+INFO:Epoch 787, eval loss:0.201200, smiles_to_spectrum_recall:0.850314, spectrum_to_smiles_recall:0.882732, valid acc:0.967777
+INFO:Epoch 788, train loss:0.005868
+INFO:Epoch 788, eval loss:0.195084, smiles_to_spectrum_recall:0.852550, spectrum_to_smiles_recall:0.885340, valid acc:0.968168
+INFO:Epoch 789, train loss:0.005256
+INFO:Epoch 789, eval loss:0.222314, smiles_to_spectrum_recall:0.848451, spectrum_to_smiles_recall:0.880816, valid acc:0.964158
+INFO:Epoch 790, train loss:0.005179
+INFO:Epoch 790, eval loss:0.214675, smiles_to_spectrum_recall:0.846056, spectrum_to_smiles_recall:0.883956, valid acc:0.966074
+INFO:Epoch 791, train loss:0.007136
+INFO:Epoch 791, eval loss:0.217358, smiles_to_spectrum_recall:0.851751, spectrum_to_smiles_recall:0.885926, valid acc:0.965453
+INFO:Epoch 792, train loss:0.004796
+INFO:Epoch 792, eval loss:0.207613, smiles_to_spectrum_recall:0.846002, spectrum_to_smiles_recall:0.883158, valid acc:0.966624
+INFO:Epoch 793, train loss:0.005986
+INFO:Epoch 793, eval loss:0.199307, smiles_to_spectrum_recall:0.850474, spectrum_to_smiles_recall:0.883424, valid acc:0.967369
+INFO:Epoch 794, train loss:0.006013
+INFO:Epoch 794, eval loss:0.208330, smiles_to_spectrum_recall:0.848824, spectrum_to_smiles_recall:0.883317, valid acc:0.966251
+INFO:Epoch 795, train loss:0.004742
+INFO:Epoch 795, eval loss:0.212269, smiles_to_spectrum_recall:0.848025, spectrum_to_smiles_recall:0.887629, valid acc:0.965382
+INFO:Epoch 796, train loss:0.006565
+INFO:Epoch 796, eval loss:0.218426, smiles_to_spectrum_recall:0.847280, spectrum_to_smiles_recall:0.882253, valid acc:0.964424
+INFO:Epoch 797, train loss:0.005715
+INFO:Epoch 797, eval loss:0.196449, smiles_to_spectrum_recall:0.851964, spectrum_to_smiles_recall:0.885074, valid acc:0.968594
+INFO:Epoch 798, train loss:0.007030
+INFO:Epoch 798, eval loss:0.202010, smiles_to_spectrum_recall:0.850953, spectrum_to_smiles_recall:0.884808, valid acc:0.966837
+INFO:Epoch 799, train loss:0.005692
+INFO:Epoch 799, eval loss:0.210422, smiles_to_spectrum_recall:0.850261, spectrum_to_smiles_recall:0.881188, valid acc:0.966056
+INFO:Epoch 800, train loss:0.005671
+INFO:Epoch 800, eval loss:0.217044, smiles_to_spectrum_recall:0.850154, spectrum_to_smiles_recall:0.881241, valid acc:0.966021
+INFO:Epoch 801, train loss:0.006944
+INFO:Epoch 801, eval loss:0.217960, smiles_to_spectrum_recall:0.850154, spectrum_to_smiles_recall:0.884968, valid acc:0.965311
+INFO:Epoch 802, train loss:0.007090
+INFO:Epoch 802, eval loss:0.198753, smiles_to_spectrum_recall:0.851964, spectrum_to_smiles_recall:0.887948, valid acc:0.968629
+INFO:Epoch 803, train loss:0.005094
+INFO:Epoch 803, eval loss:0.220224, smiles_to_spectrum_recall:0.849409, spectrum_to_smiles_recall:0.885872, valid acc:0.964566
+INFO:Epoch 804, train loss:0.007652
+INFO:Epoch 804, eval loss:0.221741, smiles_to_spectrum_recall:0.847440, spectrum_to_smiles_recall:0.881028, valid acc:0.964300
+INFO:Epoch 805, train loss:0.005712
+INFO:Epoch 805, eval loss:0.213635, smiles_to_spectrum_recall:0.848983, spectrum_to_smiles_recall:0.881667, valid acc:0.965613
+INFO:Epoch 806, train loss:0.006395
+INFO:Epoch 806, eval loss:0.219896, smiles_to_spectrum_recall:0.849941, spectrum_to_smiles_recall:0.885340, valid acc:0.964601
+INFO:Epoch 807, train loss:0.005773
+INFO:Epoch 807, eval loss:0.219870, smiles_to_spectrum_recall:0.851272, spectrum_to_smiles_recall:0.886831, valid acc:0.965134
+INFO:Epoch 808, train loss:0.004387
+INFO:Epoch 808, eval loss:0.230664, smiles_to_spectrum_recall:0.845310, spectrum_to_smiles_recall:0.887044, valid acc:0.963501
+INFO:Epoch 809, train loss:0.008176
+INFO:Epoch 809, eval loss:0.223849, smiles_to_spectrum_recall:0.850687, spectrum_to_smiles_recall:0.885553, valid acc:0.964282
+INFO:Epoch 810, train loss:0.006209
+INFO:Epoch 810, eval loss:0.211632, smiles_to_spectrum_recall:0.850953, spectrum_to_smiles_recall:0.883211, valid acc:0.966677
+INFO:Epoch 811, train loss:0.005390
+INFO:Epoch 811, eval loss:0.220571, smiles_to_spectrum_recall:0.848398, spectrum_to_smiles_recall:0.885021, valid acc:0.965187
+INFO:Epoch 812, train loss:0.005636
+INFO:Epoch 812, eval loss:0.215637, smiles_to_spectrum_recall:0.848398, spectrum_to_smiles_recall:0.886777, valid acc:0.965985
+INFO:Epoch 813, train loss:0.005380
+INFO:Epoch 813, eval loss:0.226907, smiles_to_spectrum_recall:0.849037, spectrum_to_smiles_recall:0.886032, valid acc:0.964193
+INFO:Epoch 814, train loss:0.006691
+INFO:Epoch 814, eval loss:0.215923, smiles_to_spectrum_recall:0.851964, spectrum_to_smiles_recall:0.882146, valid acc:0.965542
+INFO:Epoch 815, train loss:0.006445
+INFO:Epoch 815, eval loss:0.226349, smiles_to_spectrum_recall:0.849995, spectrum_to_smiles_recall:0.883264, valid acc:0.964246
+INFO:Epoch 816, train loss:0.004858
+INFO:Epoch 816, eval loss:0.215258, smiles_to_spectrum_recall:0.848983, spectrum_to_smiles_recall:0.883690, valid acc:0.965453
+INFO:Epoch 817, train loss:0.005667
+INFO:Epoch 817, eval loss:0.232217, smiles_to_spectrum_recall:0.851592, spectrum_to_smiles_recall:0.885872, valid acc:0.962525
+INFO:Epoch 818, train loss:0.003721
+INFO:Epoch 818, eval loss:0.221405, smiles_to_spectrum_recall:0.851006, spectrum_to_smiles_recall:0.884435, valid acc:0.965276
+INFO:Epoch 819, train loss:0.005721
+INFO:Epoch 819, eval loss:0.223910, smiles_to_spectrum_recall:0.848185, spectrum_to_smiles_recall:0.885606, valid acc:0.964708
+INFO:Epoch 820, train loss:0.006012
+INFO:Epoch 820, eval loss:0.224130, smiles_to_spectrum_recall:0.849622, spectrum_to_smiles_recall:0.883264, valid acc:0.964903
+INFO:Epoch 821, train loss:0.004780
+INFO:Epoch 821, eval loss:0.241224, smiles_to_spectrum_recall:0.848877, spectrum_to_smiles_recall:0.885447, valid acc:0.963235
+INFO:Epoch 822, train loss:0.006309
+INFO:Epoch 822, eval loss:0.228071, smiles_to_spectrum_recall:0.850101, spectrum_to_smiles_recall:0.885553, valid acc:0.965542
+INFO:Epoch 823, train loss:0.007518
+INFO:Epoch 823, eval loss:0.233422, smiles_to_spectrum_recall:0.848557, spectrum_to_smiles_recall:0.887416, valid acc:0.963927
+INFO:Epoch 824, train loss:0.004901
+INFO:Epoch 824, eval loss:0.229678, smiles_to_spectrum_recall:0.848877, spectrum_to_smiles_recall:0.882572, valid acc:0.964495
+INFO:Epoch 825, train loss:0.005899
+INFO:Epoch 825, eval loss:0.243967, smiles_to_spectrum_recall:0.847919, spectrum_to_smiles_recall:0.885819, valid acc:0.962472
+INFO:Epoch 826, train loss:0.006300
+INFO:Epoch 826, eval loss:0.245336, smiles_to_spectrum_recall:0.850740, spectrum_to_smiles_recall:0.887789, valid acc:0.961975
+INFO:Epoch 827, train loss:0.006412
+INFO:Epoch 827, eval loss:0.226202, smiles_to_spectrum_recall:0.851379, spectrum_to_smiles_recall:0.888374, valid acc:0.965187
+INFO:Epoch 828, train loss:0.004248
+INFO:Epoch 828, eval loss:0.237991, smiles_to_spectrum_recall:0.850846, spectrum_to_smiles_recall:0.889865, valid acc:0.963359
+INFO:Epoch 829, train loss:0.005602
+INFO:Epoch 829, eval loss:0.224417, smiles_to_spectrum_recall:0.850953, spectrum_to_smiles_recall:0.886405, valid acc:0.965205
+INFO:Epoch 830, train loss:0.005459
+INFO:Epoch 830, eval loss:0.228160, smiles_to_spectrum_recall:0.851805, spectrum_to_smiles_recall:0.887469, valid acc:0.964672
+INFO:Epoch 831, train loss:0.004457
+INFO:Epoch 831, eval loss:0.232907, smiles_to_spectrum_recall:0.854093, spectrum_to_smiles_recall:0.886458, valid acc:0.964513
+INFO:Epoch 832, train loss:0.006407
+INFO:Epoch 832, eval loss:0.228815, smiles_to_spectrum_recall:0.852337, spectrum_to_smiles_recall:0.884488, valid acc:0.964193
+INFO:Epoch 833, train loss:0.005609
+INFO:Epoch 833, eval loss:0.220247, smiles_to_spectrum_recall:0.853135, spectrum_to_smiles_recall:0.888800, valid acc:0.966163
+INFO:Epoch 834, train loss:0.006367
+INFO:Epoch 834, eval loss:0.224666, smiles_to_spectrum_recall:0.853614, spectrum_to_smiles_recall:0.887842, valid acc:0.966110
+INFO:Epoch 835, train loss:0.005965
+INFO:Epoch 835, eval loss:0.225047, smiles_to_spectrum_recall:0.852550, spectrum_to_smiles_recall:0.890237, valid acc:0.965932
+INFO:Epoch 836, train loss:0.004761
+INFO:Epoch 836, eval loss:0.247109, smiles_to_spectrum_recall:0.849462, spectrum_to_smiles_recall:0.885234, valid acc:0.962596
+INFO:Epoch 837, train loss:0.005621
+INFO:Epoch 837, eval loss:0.249162, smiles_to_spectrum_recall:0.851911, spectrum_to_smiles_recall:0.889545, valid acc:0.962117
+INFO:Epoch 838, train loss:0.005047
+INFO:Epoch 838, eval loss:0.241483, smiles_to_spectrum_recall:0.852763, spectrum_to_smiles_recall:0.887310, valid acc:0.964371
+INFO:Epoch 839, train loss:0.004271
+INFO:Epoch 839, eval loss:0.254444, smiles_to_spectrum_recall:0.854306, spectrum_to_smiles_recall:0.886405, valid acc:0.962011
+INFO:Epoch 840, train loss:0.005329
+INFO:Epoch 840, eval loss:0.243955, smiles_to_spectrum_recall:0.854093, spectrum_to_smiles_recall:0.887948, valid acc:0.963501
+INFO:Epoch 841, train loss:0.003519
+INFO:Epoch 841, eval loss:0.236538, smiles_to_spectrum_recall:0.854306, spectrum_to_smiles_recall:0.889652, valid acc:0.964406
+INFO:Epoch 842, train loss:0.005412
+INFO:Epoch 842, eval loss:0.249655, smiles_to_spectrum_recall:0.852443, spectrum_to_smiles_recall:0.888321, valid acc:0.962614
+INFO:Epoch 843, train loss:0.005387
+INFO:Epoch 843, eval loss:0.251102, smiles_to_spectrum_recall:0.853401, spectrum_to_smiles_recall:0.886990, valid acc:0.962951
+INFO:Epoch 844, train loss:0.004704
+INFO:Epoch 844, eval loss:0.247576, smiles_to_spectrum_recall:0.855052, spectrum_to_smiles_recall:0.884914, valid acc:0.962703
+INFO:Epoch 845, train loss:0.005081
+INFO:Epoch 845, eval loss:0.238516, smiles_to_spectrum_recall:0.853614, spectrum_to_smiles_recall:0.886724, valid acc:0.964069
+INFO:Epoch 846, train loss:0.004972
+INFO:Epoch 846, eval loss:0.240803, smiles_to_spectrum_recall:0.853774, spectrum_to_smiles_recall:0.886724, valid acc:0.963554
+INFO:Epoch 847, train loss:0.006123
+INFO:Epoch 847, eval loss:0.245565, smiles_to_spectrum_recall:0.854093, spectrum_to_smiles_recall:0.891089, valid acc:0.962720
+INFO:Epoch 848, train loss:0.005696
+INFO:Epoch 848, eval loss:0.245643, smiles_to_spectrum_recall:0.853455, spectrum_to_smiles_recall:0.890450, valid acc:0.962632
+INFO:Epoch 849, train loss:0.004640
+INFO:Epoch 849, eval loss:0.246790, smiles_to_spectrum_recall:0.853881, spectrum_to_smiles_recall:0.885713, valid acc:0.962703
+INFO:Epoch 850, train loss:0.004564
+INFO:Epoch 850, eval loss:0.252836, smiles_to_spectrum_recall:0.855584, spectrum_to_smiles_recall:0.888321, valid acc:0.961336
+INFO:Epoch 851, train loss:0.003516
+INFO:Epoch 851, eval loss:0.246097, smiles_to_spectrum_recall:0.856968, spectrum_to_smiles_recall:0.889545, valid acc:0.962809
+INFO:Epoch 852, train loss:0.004085
+INFO:Epoch 852, eval loss:0.253548, smiles_to_spectrum_recall:0.854040, spectrum_to_smiles_recall:0.889492, valid acc:0.961620
+INFO:Epoch 853, train loss:0.004400
+INFO:Epoch 853, eval loss:0.263508, smiles_to_spectrum_recall:0.854785, spectrum_to_smiles_recall:0.888161, valid acc:0.960094
+INFO:Epoch 854, train loss:0.004939
+INFO:Epoch 854, eval loss:0.247890, smiles_to_spectrum_recall:0.853774, spectrum_to_smiles_recall:0.886032, valid acc:0.962738
+INFO:Epoch 855, train loss:0.004946
+INFO:Epoch 855, eval loss:0.257056, smiles_to_spectrum_recall:0.855850, spectrum_to_smiles_recall:0.889545, valid acc:0.961585
+INFO:Epoch 856, train loss:0.005383
+INFO:Epoch 856, eval loss:0.245367, smiles_to_spectrum_recall:0.856542, spectrum_to_smiles_recall:0.889066, valid acc:0.963235
+INFO:Epoch 857, train loss:0.005300
+INFO:Epoch 857, eval loss:0.250707, smiles_to_spectrum_recall:0.855957, spectrum_to_smiles_recall:0.889545, valid acc:0.962153
+INFO:Epoch 858, train loss:0.005570
+INFO:Epoch 858, eval loss:0.257593, smiles_to_spectrum_recall:0.856223, spectrum_to_smiles_recall:0.888161, valid acc:0.961638
+INFO:Epoch 859, train loss:0.005604
+INFO:Epoch 859, eval loss:0.252907, smiles_to_spectrum_recall:0.855584, spectrum_to_smiles_recall:0.889758, valid acc:0.962099
+INFO:Epoch 860, train loss:0.005049
+INFO:Epoch 860, eval loss:0.251144, smiles_to_spectrum_recall:0.854998, spectrum_to_smiles_recall:0.888268, valid acc:0.962490
+INFO:Epoch 861, train loss:0.004836
+INFO:Epoch 861, eval loss:0.235967, smiles_to_spectrum_recall:0.858671, spectrum_to_smiles_recall:0.889226, valid acc:0.964246
+INFO:Epoch 862, train loss:0.004261
+INFO:Epoch 862, eval loss:0.262708, smiles_to_spectrum_recall:0.857128, spectrum_to_smiles_recall:0.888747, valid acc:0.959757
+INFO:Epoch 863, train loss:0.006066
+INFO:Epoch 863, eval loss:0.257889, smiles_to_spectrum_recall:0.856116, spectrum_to_smiles_recall:0.890237, valid acc:0.961106
+INFO:Epoch 864, train loss:0.006055
+INFO:Epoch 864, eval loss:0.254847, smiles_to_spectrum_recall:0.854839, spectrum_to_smiles_recall:0.890929, valid acc:0.960946
+INFO:Epoch 865, train loss:0.005257
+INFO:Epoch 865, eval loss:0.264951, smiles_to_spectrum_recall:0.854998, spectrum_to_smiles_recall:0.890557, valid acc:0.959580
+INFO:Epoch 866, train loss:0.005329
+INFO:Epoch 866, eval loss:0.259073, smiles_to_spectrum_recall:0.855903, spectrum_to_smiles_recall:0.888161, valid acc:0.961443
+INFO:Epoch 867, train loss:0.005175
+INFO:Epoch 867, eval loss:0.254357, smiles_to_spectrum_recall:0.855265, spectrum_to_smiles_recall:0.889599, valid acc:0.962188
+INFO:Epoch 868, train loss:0.005341
+INFO:Epoch 868, eval loss:0.277737, smiles_to_spectrum_recall:0.856169, spectrum_to_smiles_recall:0.891036, valid acc:0.958746
+INFO:Epoch 869, train loss:0.004557
+INFO:Epoch 869, eval loss:0.258724, smiles_to_spectrum_recall:0.854253, spectrum_to_smiles_recall:0.888161, valid acc:0.961159
+INFO:Epoch 870, train loss:0.005770
+INFO:Epoch 870, eval loss:0.256016, smiles_to_spectrum_recall:0.856755, spectrum_to_smiles_recall:0.892101, valid acc:0.961745
+INFO:Epoch 871, train loss:0.004956
+INFO:Epoch 871, eval loss:0.261383, smiles_to_spectrum_recall:0.853242, spectrum_to_smiles_recall:0.890823, valid acc:0.961283
+INFO:Epoch 872, train loss:0.003856
+INFO:Epoch 872, eval loss:0.245819, smiles_to_spectrum_recall:0.855957, spectrum_to_smiles_recall:0.890663, valid acc:0.963554
+INFO:Epoch 873, train loss:0.004433
+INFO:Epoch 873, eval loss:0.266041, smiles_to_spectrum_recall:0.853774, spectrum_to_smiles_recall:0.889386, valid acc:0.960485
+INFO:Epoch 874, train loss:0.006709
+INFO:Epoch 874, eval loss:0.260895, smiles_to_spectrum_recall:0.855158, spectrum_to_smiles_recall:0.891462, valid acc:0.961248
+INFO:Epoch 875, train loss:0.004797
+INFO:Epoch 875, eval loss:0.265876, smiles_to_spectrum_recall:0.854998, spectrum_to_smiles_recall:0.890929, valid acc:0.960804
+INFO:Epoch 876, train loss:0.004429
+INFO:Epoch 876, eval loss:0.263046, smiles_to_spectrum_recall:0.854040, spectrum_to_smiles_recall:0.891036, valid acc:0.960875
+INFO:Epoch 877, train loss:0.004480
+INFO:Epoch 877, eval loss:0.251476, smiles_to_spectrum_recall:0.854253, spectrum_to_smiles_recall:0.888321, valid acc:0.962685
+INFO:Epoch 878, train loss:0.004993
+INFO:Epoch 878, eval loss:0.266590, smiles_to_spectrum_recall:0.854732, spectrum_to_smiles_recall:0.890344, valid acc:0.960733
+INFO:Epoch 879, train loss:0.003143
+INFO:Epoch 879, eval loss:0.260545, smiles_to_spectrum_recall:0.856223, spectrum_to_smiles_recall:0.892101, valid acc:0.961727
+INFO:Epoch 880, train loss:0.002737
+INFO:Epoch 880, eval loss:0.248158, smiles_to_spectrum_recall:0.854573, spectrum_to_smiles_recall:0.890876, valid acc:0.963342
+INFO:Epoch 881, train loss:0.003956
+INFO:Epoch 881, eval loss:0.252621, smiles_to_spectrum_recall:0.856489, spectrum_to_smiles_recall:0.891036, valid acc:0.962809
+INFO:Epoch 882, train loss:0.003896
+INFO:Epoch 882, eval loss:0.264848, smiles_to_spectrum_recall:0.854519, spectrum_to_smiles_recall:0.892154, valid acc:0.961283
+INFO:Epoch 883, train loss:0.006963
+INFO:Epoch 883, eval loss:0.265097, smiles_to_spectrum_recall:0.855531, spectrum_to_smiles_recall:0.887416, valid acc:0.960999
+INFO:Epoch 884, train loss:0.002807
+INFO:Epoch 884, eval loss:0.255371, smiles_to_spectrum_recall:0.856595, spectrum_to_smiles_recall:0.888694, valid acc:0.962543
+INFO:Epoch 885, train loss:0.004282
+INFO:Epoch 885, eval loss:0.277365, smiles_to_spectrum_recall:0.853401, spectrum_to_smiles_recall:0.886298, valid acc:0.959260
+INFO:Epoch 886, train loss:0.003148
+INFO:Epoch 886, eval loss:0.262313, smiles_to_spectrum_recall:0.854147, spectrum_to_smiles_recall:0.891621, valid acc:0.961904
+INFO:Epoch 887, train loss:0.003180
+INFO:Epoch 887, eval loss:0.278506, smiles_to_spectrum_recall:0.853774, spectrum_to_smiles_recall:0.891675, valid acc:0.959828
+INFO:Epoch 888, train loss:0.004585
+INFO:Epoch 888, eval loss:0.267235, smiles_to_spectrum_recall:0.855318, spectrum_to_smiles_recall:0.891355, valid acc:0.961141
+INFO:Epoch 889, train loss:0.004202
+INFO:Epoch 889, eval loss:0.277532, smiles_to_spectrum_recall:0.854785, spectrum_to_smiles_recall:0.891675, valid acc:0.959562
+INFO:Epoch 890, train loss:0.004607
+INFO:Epoch 890, eval loss:0.259636, smiles_to_spectrum_recall:0.854785, spectrum_to_smiles_recall:0.893005, valid acc:0.962188
+INFO:Epoch 891, train loss:0.006475
+INFO:Epoch 891, eval loss:0.267292, smiles_to_spectrum_recall:0.858458, spectrum_to_smiles_recall:0.891568, valid acc:0.960414
+INFO:Epoch 892, train loss:0.005129
+INFO:Epoch 892, eval loss:0.269637, smiles_to_spectrum_recall:0.857341, spectrum_to_smiles_recall:0.894017, valid acc:0.960804
+INFO:Epoch 893, train loss:0.004681
+INFO:Epoch 893, eval loss:0.276554, smiles_to_spectrum_recall:0.854360, spectrum_to_smiles_recall:0.891249, valid acc:0.959331
+INFO:Epoch 894, train loss:0.003709
+INFO:Epoch 894, eval loss:0.260993, smiles_to_spectrum_recall:0.855371, spectrum_to_smiles_recall:0.892686, valid acc:0.961851
+INFO:Epoch 895, train loss:0.005264
+INFO:Epoch 895, eval loss:0.274977, smiles_to_spectrum_recall:0.853295, spectrum_to_smiles_recall:0.891036, valid acc:0.960077
+INFO:Epoch 896, train loss:0.005131
+INFO:Epoch 896, eval loss:0.278583, smiles_to_spectrum_recall:0.854413, spectrum_to_smiles_recall:0.893431, valid acc:0.959119
+INFO:Epoch 897, train loss:0.005630
+INFO:Epoch 897, eval loss:0.293566, smiles_to_spectrum_recall:0.854306, spectrum_to_smiles_recall:0.891994, valid acc:0.957522
+INFO:Epoch 898, train loss:0.006503
+INFO:Epoch 898, eval loss:0.279860, smiles_to_spectrum_recall:0.855477, spectrum_to_smiles_recall:0.889173, valid acc:0.959527
+INFO:Epoch 899, train loss:0.004500
+INFO:Epoch 899, eval loss:0.273918, smiles_to_spectrum_recall:0.855744, spectrum_to_smiles_recall:0.893218, valid acc:0.960378
+INFO:Epoch 900, train loss:0.005848
+INFO:Epoch 900, eval loss:0.282486, smiles_to_spectrum_recall:0.855052, spectrum_to_smiles_recall:0.893112, valid acc:0.958994
+INFO:Epoch 901, train loss:0.003813
+INFO:Epoch 901, eval loss:0.270848, smiles_to_spectrum_recall:0.856010, spectrum_to_smiles_recall:0.891568, valid acc:0.960077
+INFO:Epoch 902, train loss:0.005052
+INFO:Epoch 902, eval loss:0.275930, smiles_to_spectrum_recall:0.857181, spectrum_to_smiles_recall:0.890078, valid acc:0.959846
+INFO:Epoch 903, train loss:0.004359
+INFO:Epoch 903, eval loss:0.278251, smiles_to_spectrum_recall:0.856223, spectrum_to_smiles_recall:0.891941, valid acc:0.959314
+INFO:Epoch 904, train loss:0.003198
+INFO:Epoch 904, eval loss:0.276715, smiles_to_spectrum_recall:0.858192, spectrum_to_smiles_recall:0.890291, valid acc:0.959633
+INFO:Epoch 905, train loss:0.003534
+INFO:Epoch 905, eval loss:0.267740, smiles_to_spectrum_recall:0.858458, spectrum_to_smiles_recall:0.891728, valid acc:0.960857
+INFO:Epoch 906, train loss:0.005327
+INFO:Epoch 906, eval loss:0.278321, smiles_to_spectrum_recall:0.856915, spectrum_to_smiles_recall:0.890291, valid acc:0.959633
+INFO:Epoch 907, train loss:0.005954
+INFO:Epoch 907, eval loss:0.276797, smiles_to_spectrum_recall:0.858991, spectrum_to_smiles_recall:0.892313, valid acc:0.959704
+INFO:Epoch 908, train loss:0.003997
+INFO:Epoch 908, eval loss:0.283846, smiles_to_spectrum_recall:0.857447, spectrum_to_smiles_recall:0.890131, valid acc:0.958764
+INFO:Epoch 909, train loss:0.005157
+INFO:Epoch 909, eval loss:0.276068, smiles_to_spectrum_recall:0.857979, spectrum_to_smiles_recall:0.891036, valid acc:0.959669
+INFO:Epoch 910, train loss:0.004634
+INFO:Epoch 910, eval loss:0.277064, smiles_to_spectrum_recall:0.857447, spectrum_to_smiles_recall:0.890344, valid acc:0.960077
+INFO:Epoch 911, train loss:0.003808
+INFO:Epoch 911, eval loss:0.280857, smiles_to_spectrum_recall:0.858139, spectrum_to_smiles_recall:0.891089, valid acc:0.959562
+INFO:Epoch 912, train loss:0.004469
+INFO:Epoch 912, eval loss:0.285126, smiles_to_spectrum_recall:0.858458, spectrum_to_smiles_recall:0.892047, valid acc:0.958870
+INFO:Epoch 913, train loss:0.004770
+INFO:Epoch 913, eval loss:0.279073, smiles_to_spectrum_recall:0.858246, spectrum_to_smiles_recall:0.891408, valid acc:0.959828
+INFO:Epoch 914, train loss:0.004446
+INFO:Epoch 914, eval loss:0.283716, smiles_to_spectrum_recall:0.857394, spectrum_to_smiles_recall:0.891568, valid acc:0.959420
+INFO:Epoch 915, train loss:0.004203
+INFO:Epoch 915, eval loss:0.286310, smiles_to_spectrum_recall:0.856702, spectrum_to_smiles_recall:0.890983, valid acc:0.958994
+INFO:Epoch 916, train loss:0.005358
+INFO:Epoch 916, eval loss:0.282473, smiles_to_spectrum_recall:0.857553, spectrum_to_smiles_recall:0.892952, valid acc:0.959420
+INFO:Epoch 917, train loss:0.004424
+INFO:Epoch 917, eval loss:0.293112, smiles_to_spectrum_recall:0.858299, spectrum_to_smiles_recall:0.890078, valid acc:0.957788
+INFO:Epoch 918, train loss:0.007195
+INFO:Epoch 918, eval loss:0.295359, smiles_to_spectrum_recall:0.856808, spectrum_to_smiles_recall:0.892367, valid acc:0.957557
+INFO:Epoch 919, train loss:0.002746
+INFO:Epoch 919, eval loss:0.273942, smiles_to_spectrum_recall:0.857234, spectrum_to_smiles_recall:0.891462, valid acc:0.960609
+INFO:Epoch 920, train loss:0.003698
+INFO:Epoch 920, eval loss:0.277560, smiles_to_spectrum_recall:0.858086, spectrum_to_smiles_recall:0.890876, valid acc:0.960112
+INFO:Epoch 921, train loss:0.004488
+INFO:Epoch 921, eval loss:0.301660, smiles_to_spectrum_recall:0.858512, spectrum_to_smiles_recall:0.890344, valid acc:0.956457
+INFO:Epoch 922, train loss:0.004894
+INFO:Epoch 922, eval loss:0.291115, smiles_to_spectrum_recall:0.856010, spectrum_to_smiles_recall:0.892899, valid acc:0.958231
+INFO:Epoch 923, train loss:0.004654
+INFO:Epoch 923, eval loss:0.278210, smiles_to_spectrum_recall:0.856223, spectrum_to_smiles_recall:0.892899, valid acc:0.959881
+INFO:Epoch 924, train loss:0.005352
+INFO:Epoch 924, eval loss:0.287206, smiles_to_spectrum_recall:0.857074, spectrum_to_smiles_recall:0.892207, valid acc:0.958781
+INFO:Epoch 925, train loss:0.005364
+INFO:Epoch 925, eval loss:0.292439, smiles_to_spectrum_recall:0.857341, spectrum_to_smiles_recall:0.892580, valid acc:0.957788
+INFO:Epoch 926, train loss:0.004309
+INFO:Epoch 926, eval loss:0.281044, smiles_to_spectrum_recall:0.856861, spectrum_to_smiles_recall:0.891994, valid acc:0.959580
+INFO:Epoch 927, train loss:0.005189
+INFO:Epoch 927, eval loss:0.286709, smiles_to_spectrum_recall:0.858352, spectrum_to_smiles_recall:0.890663, valid acc:0.958533
+INFO:Epoch 928, train loss:0.003621
+INFO:Epoch 928, eval loss:0.287509, smiles_to_spectrum_recall:0.856861, spectrum_to_smiles_recall:0.894017, valid acc:0.958870
+INFO:Epoch 929, train loss:0.005055
+INFO:Epoch 929, eval loss:0.281326, smiles_to_spectrum_recall:0.857394, spectrum_to_smiles_recall:0.892260, valid acc:0.959491
+INFO:Epoch 930, train loss:0.005216
+INFO:Epoch 930, eval loss:0.294355, smiles_to_spectrum_recall:0.857766, spectrum_to_smiles_recall:0.892367, valid acc:0.957309
+INFO:Epoch 931, train loss:0.003733
+INFO:Epoch 931, eval loss:0.282488, smiles_to_spectrum_recall:0.857394, spectrum_to_smiles_recall:0.893431, valid acc:0.959119
+INFO:Epoch 932, train loss:0.003239
+INFO:Epoch 932, eval loss:0.286563, smiles_to_spectrum_recall:0.856968, spectrum_to_smiles_recall:0.892154, valid acc:0.958888
+INFO:Epoch 933, train loss:0.005074
+INFO:Epoch 933, eval loss:0.289224, smiles_to_spectrum_recall:0.857181, spectrum_to_smiles_recall:0.893165, valid acc:0.958214
+INFO:Epoch 934, train loss:0.005471
+INFO:Epoch 934, eval loss:0.293711, smiles_to_spectrum_recall:0.856063, spectrum_to_smiles_recall:0.893059, valid acc:0.957859
+INFO:Epoch 935, train loss:0.005805
+INFO:Epoch 935, eval loss:0.287981, smiles_to_spectrum_recall:0.858884, spectrum_to_smiles_recall:0.893485, valid acc:0.958427
+INFO:Epoch 936, train loss:0.003970
+INFO:Epoch 936, eval loss:0.290610, smiles_to_spectrum_recall:0.857766, spectrum_to_smiles_recall:0.893378, valid acc:0.958444
+INFO:Epoch 937, train loss:0.003485
+INFO:Epoch 937, eval loss:0.300989, smiles_to_spectrum_recall:0.856223, spectrum_to_smiles_recall:0.893644, valid acc:0.957078
+INFO:Epoch 938, train loss:0.004002
+INFO:Epoch 938, eval loss:0.287363, smiles_to_spectrum_recall:0.856702, spectrum_to_smiles_recall:0.893218, valid acc:0.958764
+INFO:Epoch 939, train loss:0.004792
+INFO:Epoch 939, eval loss:0.291912, smiles_to_spectrum_recall:0.857553, spectrum_to_smiles_recall:0.893910, valid acc:0.958462
+INFO:Epoch 940, train loss:0.003151
+INFO:Epoch 940, eval loss:0.286445, smiles_to_spectrum_recall:0.858618, spectrum_to_smiles_recall:0.894230, valid acc:0.959331
+INFO:Epoch 941, train loss:0.004466
+INFO:Epoch 941, eval loss:0.285759, smiles_to_spectrum_recall:0.858725, spectrum_to_smiles_recall:0.893485, valid acc:0.959456
+INFO:Epoch 942, train loss:0.005659
+INFO:Epoch 942, eval loss:0.284249, smiles_to_spectrum_recall:0.858725, spectrum_to_smiles_recall:0.893591, valid acc:0.959278
+INFO:Epoch 943, train loss:0.003927
+INFO:Epoch 943, eval loss:0.297841, smiles_to_spectrum_recall:0.857553, spectrum_to_smiles_recall:0.893325, valid acc:0.957646
+INFO:Epoch 944, train loss:0.005366
+INFO:Epoch 944, eval loss:0.295463, smiles_to_spectrum_recall:0.859097, spectrum_to_smiles_recall:0.892952, valid acc:0.957965
+INFO:Epoch 945, train loss:0.003633
+INFO:Epoch 945, eval loss:0.292855, smiles_to_spectrum_recall:0.858884, spectrum_to_smiles_recall:0.893059, valid acc:0.958444
+INFO:Epoch 946, train loss:0.003579
+INFO:Epoch 946, eval loss:0.286013, smiles_to_spectrum_recall:0.858139, spectrum_to_smiles_recall:0.893218, valid acc:0.959438
+INFO:Epoch 947, train loss:0.003576
+INFO:Epoch 947, eval loss:0.291607, smiles_to_spectrum_recall:0.858671, spectrum_to_smiles_recall:0.893005, valid acc:0.958817
+INFO:Epoch 948, train loss:0.004231
+INFO:Epoch 948, eval loss:0.305384, smiles_to_spectrum_recall:0.857074, spectrum_to_smiles_recall:0.891728, valid acc:0.956759
+INFO:Epoch 949, train loss:0.004965
+INFO:Epoch 949, eval loss:0.300696, smiles_to_spectrum_recall:0.858991, spectrum_to_smiles_recall:0.892260, valid acc:0.957220
+INFO:Epoch 950, train loss:0.004589
+INFO:Epoch 950, eval loss:0.298720, smiles_to_spectrum_recall:0.858033, spectrum_to_smiles_recall:0.892101, valid acc:0.957983
+INFO:Epoch 951, train loss:0.004971
+INFO:Epoch 951, eval loss:0.299096, smiles_to_spectrum_recall:0.858352, spectrum_to_smiles_recall:0.891515, valid acc:0.957841
+INFO:Epoch 952, train loss:0.005751
+INFO:Epoch 952, eval loss:0.292270, smiles_to_spectrum_recall:0.858831, spectrum_to_smiles_recall:0.893059, valid acc:0.958427
+INFO:Epoch 953, train loss:0.004485
+INFO:Epoch 953, eval loss:0.298936, smiles_to_spectrum_recall:0.857766, spectrum_to_smiles_recall:0.892793, valid acc:0.957486
+INFO:Epoch 954, train loss:0.004807
+INFO:Epoch 954, eval loss:0.299287, smiles_to_spectrum_recall:0.858458, spectrum_to_smiles_recall:0.891408, valid acc:0.956954
+INFO:Epoch 955, train loss:0.004914
+INFO:Epoch 955, eval loss:0.297441, smiles_to_spectrum_recall:0.856915, spectrum_to_smiles_recall:0.893697, valid acc:0.957202
+INFO:Epoch 956, train loss:0.004320
+INFO:Epoch 956, eval loss:0.299524, smiles_to_spectrum_recall:0.857873, spectrum_to_smiles_recall:0.892420, valid acc:0.957078
+INFO:Epoch 957, train loss:0.004371
+INFO:Epoch 957, eval loss:0.299558, smiles_to_spectrum_recall:0.858512, spectrum_to_smiles_recall:0.893431, valid acc:0.957238
+INFO:Epoch 958, train loss:0.004665
+INFO:Epoch 958, eval loss:0.295414, smiles_to_spectrum_recall:0.857873, spectrum_to_smiles_recall:0.893538, valid acc:0.957699
+INFO:Epoch 959, train loss:0.004038
+INFO:Epoch 959, eval loss:0.299487, smiles_to_spectrum_recall:0.857128, spectrum_to_smiles_recall:0.892207, valid acc:0.957273
+INFO:Epoch 960, train loss:0.003636
+INFO:Epoch 960, eval loss:0.291386, smiles_to_spectrum_recall:0.856968, spectrum_to_smiles_recall:0.891994, valid acc:0.958497
+INFO:Epoch 961, train loss:0.004462
+INFO:Epoch 961, eval loss:0.298294, smiles_to_spectrum_recall:0.857234, spectrum_to_smiles_recall:0.892633, valid acc:0.957326
+INFO:Epoch 962, train loss:0.004541
+INFO:Epoch 962, eval loss:0.295546, smiles_to_spectrum_recall:0.858033, spectrum_to_smiles_recall:0.891994, valid acc:0.957876
+INFO:Epoch 963, train loss:0.004699
+INFO:Epoch 963, eval loss:0.300320, smiles_to_spectrum_recall:0.857713, spectrum_to_smiles_recall:0.891621, valid acc:0.957575
+INFO:Epoch 964, train loss:0.004264
+INFO:Epoch 964, eval loss:0.305006, smiles_to_spectrum_recall:0.857128, spectrum_to_smiles_recall:0.893325, valid acc:0.956688
+INFO:Epoch 965, train loss:0.005261
+INFO:Epoch 965, eval loss:0.308543, smiles_to_spectrum_recall:0.857181, spectrum_to_smiles_recall:0.892846, valid acc:0.956155
+INFO:Epoch 966, train loss:0.004877
+INFO:Epoch 966, eval loss:0.295489, smiles_to_spectrum_recall:0.857926, spectrum_to_smiles_recall:0.892633, valid acc:0.958160
+INFO:Epoch 967, train loss:0.003997
+INFO:Epoch 967, eval loss:0.303629, smiles_to_spectrum_recall:0.858033, spectrum_to_smiles_recall:0.893804, valid acc:0.957113
+INFO:Epoch 968, train loss:0.003797
+INFO:Epoch 968, eval loss:0.302978, smiles_to_spectrum_recall:0.858405, spectrum_to_smiles_recall:0.893059, valid acc:0.957220
+INFO:Epoch 969, train loss:0.005770
+INFO:Epoch 969, eval loss:0.304661, smiles_to_spectrum_recall:0.859257, spectrum_to_smiles_recall:0.893059, valid acc:0.957007
+INFO:Epoch 970, train loss:0.005318
+INFO:Epoch 970, eval loss:0.308386, smiles_to_spectrum_recall:0.858778, spectrum_to_smiles_recall:0.891515, valid acc:0.956439
+INFO:Epoch 971, train loss:0.004151
+INFO:Epoch 971, eval loss:0.296750, smiles_to_spectrum_recall:0.858512, spectrum_to_smiles_recall:0.892686, valid acc:0.958054
+INFO:Epoch 972, train loss:0.003997
+INFO:Epoch 972, eval loss:0.302109, smiles_to_spectrum_recall:0.858671, spectrum_to_smiles_recall:0.892473, valid acc:0.957291
+INFO:Epoch 973, train loss:0.003831
+INFO:Epoch 973, eval loss:0.300331, smiles_to_spectrum_recall:0.859523, spectrum_to_smiles_recall:0.893644, valid acc:0.957468
+INFO:Epoch 974, train loss:0.003352
+INFO:Epoch 974, eval loss:0.297719, smiles_to_spectrum_recall:0.858884, spectrum_to_smiles_recall:0.892526, valid acc:0.957823
+INFO:Epoch 975, train loss:0.004992
+INFO:Epoch 975, eval loss:0.302167, smiles_to_spectrum_recall:0.858033, spectrum_to_smiles_recall:0.893272, valid acc:0.957380
+INFO:Epoch 976, train loss:0.003263
+INFO:Epoch 976, eval loss:0.300811, smiles_to_spectrum_recall:0.858778, spectrum_to_smiles_recall:0.893697, valid acc:0.957752
+INFO:Epoch 977, train loss:0.004908
+INFO:Epoch 977, eval loss:0.310372, smiles_to_spectrum_recall:0.859150, spectrum_to_smiles_recall:0.892739, valid acc:0.956350
+INFO:Epoch 978, train loss:0.004744
+INFO:Epoch 978, eval loss:0.305636, smiles_to_spectrum_recall:0.858352, spectrum_to_smiles_recall:0.893112, valid acc:0.957131
+INFO:Epoch 979, train loss:0.004526
+INFO:Epoch 979, eval loss:0.302104, smiles_to_spectrum_recall:0.857447, spectrum_to_smiles_recall:0.893005, valid acc:0.957788
+INFO:Epoch 980, train loss:0.005144
+INFO:Epoch 980, eval loss:0.299163, smiles_to_spectrum_recall:0.858352, spectrum_to_smiles_recall:0.892739, valid acc:0.958462
+INFO:Epoch 981, train loss:0.004349
+INFO:Epoch 981, eval loss:0.304842, smiles_to_spectrum_recall:0.857660, spectrum_to_smiles_recall:0.893005, valid acc:0.957593
+INFO:Epoch 982, train loss:0.005956
+INFO:Epoch 982, eval loss:0.299815, smiles_to_spectrum_recall:0.859097, spectrum_to_smiles_recall:0.892367, valid acc:0.958249
+INFO:Epoch 983, train loss:0.005429
+INFO:Epoch 983, eval loss:0.303521, smiles_to_spectrum_recall:0.859789, spectrum_to_smiles_recall:0.894017, valid acc:0.957610
+INFO:Epoch 984, train loss:0.004840
+INFO:Epoch 984, eval loss:0.308750, smiles_to_spectrum_recall:0.859150, spectrum_to_smiles_recall:0.893325, valid acc:0.956759
+INFO:Epoch 985, train loss:0.003437
+INFO:Epoch 985, eval loss:0.311128, smiles_to_spectrum_recall:0.858512, spectrum_to_smiles_recall:0.893591, valid acc:0.956421
+INFO:Epoch 986, train loss:0.005249
+INFO:Epoch 986, eval loss:0.305587, smiles_to_spectrum_recall:0.859257, spectrum_to_smiles_recall:0.893431, valid acc:0.957344
+INFO:Epoch 987, train loss:0.003426
+INFO:Epoch 987, eval loss:0.302962, smiles_to_spectrum_recall:0.858831, spectrum_to_smiles_recall:0.894762, valid acc:0.957575
+INFO:Epoch 988, train loss:0.004604
+INFO:Epoch 988, eval loss:0.302973, smiles_to_spectrum_recall:0.858884, spectrum_to_smiles_recall:0.893591, valid acc:0.957468
+INFO:Epoch 989, train loss:0.004246
+INFO:Epoch 989, eval loss:0.305162, smiles_to_spectrum_recall:0.859097, spectrum_to_smiles_recall:0.892899, valid acc:0.957149
+INFO:Epoch 990, train loss:0.005179
+INFO:Epoch 990, eval loss:0.305246, smiles_to_spectrum_recall:0.860109, spectrum_to_smiles_recall:0.894336, valid acc:0.957202
+INFO:Epoch 991, train loss:0.002780
+INFO:Epoch 991, eval loss:0.302880, smiles_to_spectrum_recall:0.859736, spectrum_to_smiles_recall:0.894230, valid acc:0.957433
+INFO:Epoch 992, train loss:0.003504
+INFO:Epoch 992, eval loss:0.296507, smiles_to_spectrum_recall:0.860801, spectrum_to_smiles_recall:0.894070, valid acc:0.958249
+INFO:Epoch 993, train loss:0.004748
+INFO:Epoch 993, eval loss:0.311393, smiles_to_spectrum_recall:0.858352, spectrum_to_smiles_recall:0.892952, valid acc:0.956191
+INFO:Epoch 994, train loss:0.004829
+INFO:Epoch 994, eval loss:0.312957, smiles_to_spectrum_recall:0.859576, spectrum_to_smiles_recall:0.893218, valid acc:0.955996
+INFO:Epoch 995, train loss:0.003459
+INFO:Epoch 995, eval loss:0.312412, smiles_to_spectrum_recall:0.859363, spectrum_to_smiles_recall:0.893964, valid acc:0.956173
+INFO:Epoch 996, train loss:0.003484
+INFO:Epoch 996, eval loss:0.312395, smiles_to_spectrum_recall:0.858991, spectrum_to_smiles_recall:0.893804, valid acc:0.956120
+INFO:Epoch 997, train loss:0.003118
+INFO:Epoch 997, eval loss:0.304182, smiles_to_spectrum_recall:0.859470, spectrum_to_smiles_recall:0.894869, valid acc:0.957273
+INFO:Epoch 998, train loss:0.005394
+INFO:Epoch 998, eval loss:0.308633, smiles_to_spectrum_recall:0.859736, spectrum_to_smiles_recall:0.894123, valid acc:0.956546
+INFO:Epoch 999, train loss:0.005258
+INFO:Epoch 999, eval loss:0.311366, smiles_to_spectrum_recall:0.859789, spectrum_to_smiles_recall:0.893804, valid acc:0.956280
