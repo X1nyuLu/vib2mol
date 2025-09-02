@@ -32,12 +32,6 @@ def launch_training(function_name, **kwargs):
         raise ValueError(f"Function '{function_name}' not found in registry.")
 
 
-importlib.import_module(f".cl", package=__package__)
-importlib.import_module(f".mlm", package=__package__)
-importlib.import_module(f".lm", package=__package__)
-importlib.import_module(f".cl_mlm", package=__package__)
-importlib.import_module(f".cl_lm", package=__package__)
-importlib.import_module(f".cl_mlm_lm", package=__package__)
-importlib.import_module(f".spt", package=__package__)
-
-importlib.import_module(f".rxn", package=__package__)
+from .spt import *
+from .matching import *
+from .rxn import *

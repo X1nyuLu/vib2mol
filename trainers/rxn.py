@@ -14,17 +14,16 @@ from utils.dataloader import Dataloader
 
 '''===================== RXN collator ================='''
 class RXNCollator(BaseCollator):
-    def __init__(self, tokenizer_path, spectral_types=None, smiles_types=None, mix_ratio=0.8):
+    def __init__(self, tokenizer_path, spectral_types=None, smiles_types=None, use_yield=True):
         super().__init__(tokenizer_path)
         self.spectral_types = spectral_types
         self.smiles_types = smiles_types
-        self.mix_ratio = mix_ratio
+        self.use_yield = use_yield
         
     def __call__(self, batch):
         batch_data = {}
         cache_data = {}
         for spectral_type in self.spectral_types:
-            # spectral_types = ['reactant1_raman', 'reactant2_raman', 'product_raman']   
             spectra = self.process_spectra(batch, spectral_types=spectral_type)
             cache_data[spectral_type] = spectra
         
@@ -33,18 +32,15 @@ class RXNCollator(BaseCollator):
         batch_data['smiles'] = smiles
         
         batch_size = len(cache_data['reactant1_raman'])
-        
-        if self.mix_ratio != False: # generate three random numbers
-            rxn_seed = int(torch.sum(cache_data['reactant1_raman']))
-            rng = torch.Generator()
-            rng.manual_seed(rxn_seed)
-            random_weights = torch.rand(batch_size, generator=rng)
-            random_weights = self.mix_ratio + (1 - self.mix_ratio) * random_weights
-            batch_data['raman'] = (0.5 - 0.5 * random_weights).reshape(-1, 1, 1) * (cache_data['reactant1_raman'] + cache_data['reactant2_raman']) + random_weights.reshape(-1, 1, 1) * cache_data['product_raman']
-        
-        else:
+        if self.use_yield:
             yields = torch.as_tensor([item['Yield'] for item in batch]).to(spectra.dtype)
-            batch_data['raman'] = (0.5 - 0.5 * yields).reshape(-1, 1, 1) * (cache_data['reactant1_raman'] + cache_data['reactant2_raman']) + yields.reshape(-1, 1, 1) * cache_data['product_raman']
+        else:
+            yields = torch.as_tensor([1.0 for _ in batch]).to(spectra.dtype)
+        batch_data['raman'] = (0.5 - 0.5 * yields).reshape(-1, 1, 1) * (cache_data['reactant1_raman'] + cache_data['reactant2_raman']) + yields.reshape(-1, 1, 1) * cache_data['product_raman']
+        
+        if 'formula' in batch[0]:
+            batch_data['formula'] = self.process_formula(batch)
+            
         return {'batch_size':batch_size, 'target':None, 'data': batch_data}
 
 
@@ -59,7 +55,8 @@ class Engine(BaseEngine):
     def eval_epoch(self, epoch):
 
         eval_losses = AverageMeter()
-        eval_losses_clip = AverageMeter()
+        eval_losses_cl = AverageMeter()
+        eval_losses_match = AverageMeter()
         eval_losses_mlm = AverageMeter()
         eval_losses_lm = AverageMeter()
         eval_acc = AverageMeter()
@@ -77,15 +74,20 @@ class Engine(BaseEngine):
 
             if self.phase == 1:
                 output = self.model(data, return_proj_output=True)
-                eval_losses_clip.update(output['clip_loss'].item(), batch['batch_size'])
+                eval_losses_cl.update(output['cl_loss'].item(), batch['batch_size'])
                 eval_losses.update(output['loss'].item(), batch['batch_size'])
+                eval_losses_match.update(output['matching_loss'].item(), batch['batch_size'])
+                
                 all_smiles_embeddings.append(output['molecular_proj_output'].detach().cpu())
                 all_spectra_embeddings.append(output['spectral_proj_output'].detach().cpu())
 
+                matching_accuracy = output['matching_accuracy'].cpu().numpy()
+                eval_acc.update(matching_accuracy, batch['batch_size'])
+                
                 if self.device_rank == 0:
                     bar.set_description(
-                        f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}')
-                    
+                    f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{eval_acc.avg:6f}')
+                
             elif self.phase == 2:
                 output = self.model(data, return_proj_output=False)
                 eval_losses_mlm.update(output['mlm_loss'].item(), batch['batch_size'])
@@ -118,7 +120,7 @@ class Engine(BaseEngine):
             if self.device_rank == 0:    
                 logging.info(
                     f'Epoch{epoch:4d}, eval loss:{eval_losses.avg:6f}, smiles_to_spectrum_recall:{smiles_to_spectrum_recall:6f}, spectrum_to_smiles_recall:{spectrum_to_smiles_recall:6f}')  
-            return {'loss':eval_losses.avg, 'clip_loss':eval_losses_clip.avg, 'metrics':spectrum_to_smiles_recall}
+            return {'loss':eval_losses.avg, 'cl_loss':eval_losses_cl.avg, 'metrics':spectrum_to_smiles_recall, 'matching_loss':eval_losses_match.avg, 'acc':eval_acc.avg}
 
         elif self.phase == 2:
             if self.device_rank == 0:    
@@ -130,8 +132,8 @@ class Engine(BaseEngine):
 class Trainer(BaseTrainer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.mix_ratio = kwargs['mix_ratio']
         self.phase = kwargs['phase']
+        self.use_yield = kwargs['use_yield']
         
     def init_dataset(self, Collator=None):
         if Collator is not None:
@@ -139,10 +141,11 @@ class Trainer(BaseTrainer):
         if self.rank == 0:
             self.writer = SummaryWriter(self.model_save_path.replace('checkpoints', 'runs'))
 
-        split_delimiter = '-' if '-' in self.task else '_'
         target_keys = ['reactant1_kekule_smiles','reactant1_raman',
                    'reactant2_kekule_smiles','reactant2_raman',
                    'product_kekule_smiles','product_raman','Yield']
+        if 'formula' in self.task:
+            target_keys += ['formula']
         spectral_types = ['reactant1_raman', 'reactant2_raman', 'product_raman']
         smiles_types = ['product_kekule_smiles']
     
@@ -151,7 +154,7 @@ class Trainer(BaseTrainer):
         dataloader = Dataloader(lmdb_path=self.lmdb_path, 
                                 data_dir=self.data_dir, 
                                 target_keys=target_keys, 
-                                collate_fn=self.collator(spectral_types=spectral_types, tokenizer_path=self.tokenizer_path, mix_ratio=self.mix_ratio), 
+                                collate_fn=self.collator(spectral_types=spectral_types, tokenizer_path=self.tokenizer_path, use_yield=self.use_yield), 
                                 device=self.device)
         
         if self.ddp:
@@ -179,7 +182,9 @@ class Trainer(BaseTrainer):
                 
                 if self.phase == 1:
                     self.writer.add_scalar('eval_recall', eval_output['metrics'], epoch)
-                    self.writer.add_scalar('eval_clip_loss', eval_output['clip_loss'], epoch)
+                    self.writer.add_scalar('eval_cl_loss', eval_output['cl_loss'], epoch)
+                    self.writer.add_scalar('eval_matching_loss', eval_output['matching_loss'], epoch)
+                    self.writer.add_scalar('eval_match_accuracy', eval_output['acc'], epoch)
                     save_path = f"{self.model_save_path}/epoch{epoch}_recall{eval_output['metrics']*100:.0f}.pth"
                 
                 elif self.phase == 2:

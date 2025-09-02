@@ -46,14 +46,16 @@ class Engine(BaseEngine):
                 eval_acc.update(acc, batch['batch_size'])
             
             if self.device_rank == 0:
+                current_acc_avg = eval_acc.avg if epoch % 5 == 0 else float('nan') 
                 bar.set_description(
-                    f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{eval_acc.avg:6f}')
+                    f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{current_acc_avg:6f}')
 
 
         if self.device_rank == 0:    
+            current_acc_avg = eval_acc.avg if epoch % 5 == 0 else float('nan')
             logging.info(
-                f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{eval_acc.avg:6f}')
-        return {'loss':eval_losses.avg, 'mlm_loss':eval_losses_mlm.avg, 'lm_loss':eval_losses_lm.avg, 'metrics':eval_acc.avg}
+                f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{current_acc_avg:6f}')
+        return {'loss':eval_losses.avg, 'mlm_loss':eval_losses_mlm.avg, 'lm_loss':eval_losses_lm.avg, 'metrics':eval_acc.avg if epoch % 5 == 0 else 0.0}
     
 
 class Trainer(BaseTrainer):
@@ -70,10 +72,14 @@ class Trainer(BaseTrainer):
             if self.engine.device_rank == 0:
                 self.writer.add_scalar('train_loss', train_loss, epoch)
                 self.writer.add_scalar('eval_loss', eval_output['loss'], epoch)                
-                self.writer.add_scalar('eval_accuracy', eval_output['metrics'], epoch)            
                 self.writer.add_scalar('eval_lm_loss', eval_output['lm_loss'], epoch)
                 self.writer.add_scalar('eval_mlm_loss', eval_output['mlm_loss'], epoch)
+
+                if epoch % 5 == 0:
+                    self.writer.add_scalar('eval_accuracy', eval_output['metrics'], epoch)            
+                
                 save_path = f"{self.model_save_path}/epoch{epoch}_acc{eval_output['metrics']*100:.0f}.pth"
+
                 if 'metrics' in eval_output:
                     self.es(eval_output['metrics'], self. model,save_path)
                 else:
@@ -81,7 +87,8 @@ class Trainer(BaseTrainer):
             if self.es.early_stop:
                 break
         print(self.es.val_score)
-        torch.save(self.model.state_dict(), f'{self.model_save_path}/epoch{epoch}.pth')
+        if self.rank == 0:
+            torch.save(self.model.state_dict(), f'{self.model_save_path}/epoch{epoch}.pth')
 
         if self.rank == 0:
             self.writer.close()
