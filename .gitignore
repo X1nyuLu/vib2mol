@@ -19,9 +19,6 @@ tmp.*
 # ignore npy files
 *.npy
 
-# ignore log files
-logs/
-runs/
 hostfile
 
 # ignore __pycache__ directories
