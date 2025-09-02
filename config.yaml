@@ -1,0 +1,28 @@
+# config.yaml
+
+defaults:
+  epoch: 1000
+  patience: 1000
+  lr: 1e-4
+  lr_sched: 'cosine'
+  min_lr: 1e-6
+  warmup_lr: 1e-6
+  warmup_epochs: 0
+
+matching:
+  batch_size: 256
+
+cl:
+  batch_size: 256
+
+spt:
+  batch_size: 32
+
+mlm:
+  batch_size: 32
+
+lm:
+  batch_size: 32
+
+rxn:
+  batch_size: 16
