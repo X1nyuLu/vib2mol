@@ -1,6 +1,7 @@
 import os
 import random
 import logging
+from copy import copy
 
 from functools import lru_cache
 from tqdm import tqdm
@@ -17,6 +18,7 @@ from torch.utils.tensorboard import SummaryWriter
 from torch.utils.data import Dataset, DataLoader
 from torch.utils.data.distributed import DistributedSampler
 from transformers import AutoTokenizer
+
 
 
 class lmdbDataset(Dataset):
@@ -44,27 +46,31 @@ class lmdbDataset(Dataset):
     def __len__(self):
         return len(self._keys)
 
-    @lru_cache(maxsize=16)
+    @lru_cache(maxsize=64)
     def __getitem__(self, idx):
         if not hasattr(self, "env"):
             self._connect_db(self.lmdb_path, save_to_self=True)
         key = self._keys[idx]
         pickled_data = self.env.begin().get(key)
         data = pickle.loads(pickled_data)
+        
         output = {}
         for k in self.target_keys:
-            if k == 'kekule_smiles':
-                output['smiles'] = data[k]
-            elif 'kekule_smiles' in k:
-                output[k] = data[k]
-            elif 'sequence' in k:
-                output['sequence'] = data[k]
-            elif k in ('spectra', 'ir', 'nmr', 'mass', 'raman', 'uv', 'exp_ir'):
-                output[k] = torch.as_tensor(data[k])
-            elif 'raman' in k:
-                output[k] = torch.as_tensor(data[k])
-            elif k == 'Yield':
-                output[k] = torch.as_tensor(data[k])
+            if k in data:  
+                if 'kekule_smiles' in k:
+                    output['smiles' if k == 'kekule_smiles' else k] = data[k]
+                elif 'norm_smiles' in k:
+                    output['smiles' if k == 'norm_smiles' else k] = data[k]
+                elif 'sequence' in k:
+                    output['sequence'] = data[k]
+                elif 'formula' in k:
+                    output['formula'] = data[k]
+                elif 'raman' in k or 'ir' in k: 
+                    output[k] = torch.as_tensor(data[k])
+                elif k == 'Yield':
+                    output[k] = torch.as_tensor(data[k])
+                else:
+                    pass 
         return output
 
     
@@ -102,13 +108,13 @@ class Dataloader:
         
         if ddp:
             data_sampler = DistributedSampler(self.dataset, shuffle=shuffle)
-            dataloader = DataLoader(self.dataset, batch_size=batch_size, collate_fn=self.collate_fn, sampler=data_sampler)
+            dataloader = DataLoader(self.dataset, batch_size=batch_size, collate_fn=copy(self.collate_fn), sampler=data_sampler)
             
             if self.mode == 'train':
                 return dataloader, data_sampler
             else: 
                 return dataloader
         else:
-            dataloader = DataLoader(self.dataset, batch_size=batch_size, collate_fn=self.collate_fn,
+            dataloader = DataLoader(self.dataset, batch_size=batch_size, collate_fn=copy(self.collate_fn),
                                 num_workers=num_workers, shuffle=shuffle)
             return dataloader

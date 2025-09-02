@@ -88,9 +88,9 @@ class EarlyStop:
         self.early_stop = False
         self.delta = delta
         if self.mode == 'min':
-            self.val_score = np.inf
+            self.val_score = np.Inf
         else:
-            self.val_score = -np.inf
+            self.val_score = -np.Inf
 
     def __call__(self, epoch_score, model, model_path):
         if self.mode == 'min':
@@ -136,7 +136,7 @@ class BaseEngine:
             for k, v in data.items():
                 if type(v) == torch.Tensor:
                     data[k] = v.to(self.device)
-                elif 'smiles' in k:
+                elif 'smiles' in k or 'formula' in k:
                     data[k]['input_ids'] = data[k]['input_ids'].to(self.device)
                     data[k]['attention_mask'] = data[k]['attention_mask'].to(self.device)
         else:
@@ -147,6 +147,9 @@ class BaseEngine:
         train_losses = AverageMeter()
         self.model.train()
 
+        if self.scheduler:
+            self.scheduler.step(epoch)
+            
         bar = tqdm(self.train_loader) if self.device_rank == 0 else self.train_loader
         for batch in bar:
             self.optimizer.zero_grad()
@@ -163,9 +166,6 @@ class BaseEngine:
             if self.device_rank == 0:
                 bar.set_description(
                     f'Epoch{epoch:4d}, train loss:{train_losses.avg:6f}')
-
-        if self.scheduler:
-            self.scheduler.step()
 
         if self.device_rank == 0:
             logging.info(f'Epoch{epoch:4d}, train loss:{train_losses.avg:6f}')
