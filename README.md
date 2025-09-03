@@ -22,7 +22,7 @@ You can download the datasets and checkpoints from the links above, or employ hu
 # download datasets
 hf download xinyulu/vibench --repo-type=dataset --local-dir ./datasets/vibench
 # download checkpoints
-hf download xinyulu/vib2mol --local-dir ./
+hf download xinyulu/vib2mol --local-dir ./checkpoints
 ```
 
 
@@ -53,13 +53,27 @@ main.py \
 --base_model_path 'path/to/your/checkpoint'
 ```
 
-## Evaluation
-```bash
-bash infer_retrieval.sh
-# or
-bash infer_lm.sh
-```
+## Evaluation and Reproducing
+You can reproduce our metrics by running the following commands:
 
+```bash
+# evaluating retrieval
+bash infer_retrieval.sh 
+# with re-ranking
+bash infer_retrieval.sh --rerank
+# with re-ranking and formula
+bash infer_retrieval.sh --rerank --use_formula
+
+# evaluating generation
+bash infer_generation.sh
+# with re-ranking
+bash infer_generation.sh --rerank
+# with re-ranking and formula
+bash infer_generation.sh --rerank --use_formula
+```
+**Note**: The de novo generation task can be very time-consuming.
+
+Within the `infer_retrieval.sh` and `infer_generation.sh`, you can set the `--base_model_path` to the path of your checkpoint.
 ## logs and tensorboard files
 All logs and tensorboard files are saved in the `logs` and `runs` directories, respectively.
 You can visualize the training process by tensorboard:
@@ -75,7 +89,7 @@ Cite our work as followes:
 ```
 @article{lu2025vib2mol,
       title={Vib2Mol: from vibrational spectra to molecular structures-a versatile deep learning model}, 
-      author={Xinyu Lu, Hao Ma, Hui Li, Jia Li, Tong Zhu, Guokun Liu, Bin Ren},
+      author={Xinyu Lu, Hao Ma, Hui Li, Jia Li, Yuqiang Li, Tong Zhu, Guokun Liu, Bin Ren},
       year={2025},
       url={https://arxiv.org/abs/2503.07014}, 
 }
