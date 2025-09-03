@@ -33,7 +33,7 @@ def get_args_parser() -> argparse.ArgumentParser:
                         help="Choose dataset name (e.g., 'qm9s').")
     parser.add_argument('--spectral_types', default='raman',
                         help="Comma-separated spectral types (e.g., 'raman', 'ir-raman').")
-    parser.add_argument('--device', default='cpu',
+    parser.add_argument('--device', default='cuda:0',
                         help="Choose GPU device (e.g., 'cuda:0', 'cpu').")
     parser.add_argument('--test_model_path', type=str,
                         help="Path to the checkpoint for retrieval/inference.")
@@ -41,7 +41,7 @@ def get_args_parser() -> argparse.ArgumentParser:
                         help="Enable re-ranking of retrieval results.")
     parser.add_argument('--topk', type=int, default=None,
                         help="Number of top-k results to consider for re-ranking.")
-    parser.add_argument('--use_formula', action='store_true', default=False,
+    parser.add_argument('--use_formula', '-use_formula', action='store_true', default=False,
                         help="introduce formula or not.")
     parser.add_argument('--rank_model_path', type=str, default=None,
                         help="Path to the checkpoint for the re-ranking model.")

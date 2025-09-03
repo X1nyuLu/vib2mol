@@ -28,7 +28,7 @@ def get_args_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser('vib2mol-inference', add_help=False)
 
     # Basic parameters
-    parser.add_argument('--model', default='vib2mol_matching_shared',
+    parser.add_argument('--model', default='vib2mol',
                         help="Choose network architecture.")
     parser.add_argument('--ds', default='qm9s',
                         help="Choose dataset name (e.g., 'qm9s').")
@@ -232,7 +232,7 @@ def molecular_generation(
             if not use_formula:
                 input_data.pop('formula')
 
-            pred_smiles_ids_list = model.beam_infer_lm_rewritten(input_data, max_len=max_len, beam_size=beam_size, temperature=3.5)['pred_ids']
+            pred_smiles_ids_list = model.beam_infer_lm(input_data, max_len=max_len, beam_size=beam_size, temperature=3.5)['pred_ids']
 
             batch_pred_smiles_for_topk = []
             for query_beam_ids in pred_smiles_ids_list:
@@ -420,7 +420,7 @@ if __name__ == "__main__":
     if args.rerank:
         rank_model = None # Initialize rank_model to None
         try:
-            rank_model = build_model('vib2mol_matching_shared', spectral_channel=spectral_channel).to(device)
+            rank_model = build_model('vib2mol', spectral_channel=spectral_channel).to(device)
             print(f"Loading re-ranking model from: {args.rank_model_path}")
             ckpt = torch.load(args.rank_model_path, map_location=device, weights_only=True)
             ckpt = {k.replace('module.', ''): v for k, v in ckpt.items()}
