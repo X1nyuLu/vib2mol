@@ -300,8 +300,9 @@
                         <a href="https://chem.xmu.edu.cn/info/1258/116465.htm">Hao Ma</a><sup>1,*</sup>,
                         <a href="https://lihui.info/">Hui Li</a><sup>3</sup>,
                         <a >Jia Li</a><sup>4</sup>,
-                        <a href="https://faculty.ecnu.edu.cn/_s34/zt2_en/main.psp">Tong Zhu</a><sup>2,5</sup>,
-                        <a href="https://team.xmu.edu.cn/liugkgroup/en/index.htm">Guokun Liu</a><sup>6,*</sup>,
+                        <a href="https://scholar.google.com/citations?user=RQqws5gAAAAJ&hl=zh-CN">Yuqiang Li</a><sup>2,5</sup>,
+                        <a href="https://faculty.ecnu.edu.cn/_s34/zt2_en/main.psp">Tong Zhu</a><sup>2,6</sup>,
+                        <a href="https://team.xmu.edu.cn/liugkgroup/en/index.htm">Guokun Liu</a><sup>7,*</sup>,
                         <a href="https://bren.xmu.edu.cn/">Bin Ren</a><sup>1,2,*</sup>
                     </div>
                     <div class="institution">
@@ -309,8 +310,9 @@
                         <sup>2</sup>Shanghai Innovation Institude &nbsp;&nbsp;
                         <sup>3</sup>School of Informatics, Xiamen University&nbsp;&nbsp;
                         <sup>4</sup>Institute of Artificial Intelligence, Xiamen University &nbsp;&nbsp;
-                        <sup>5</sup>School of Chemistry and Molecular Engineering, East China Normal University &nbsp;&nbsp;
-                        <sup>6</sup>College of the Environment and Ecology, Xiamen University &nbsp;&nbsp;
+                        <sup>5</sup>Shanghai Artificial Intelligence Laboratory &nbsp;&nbsp; 
+                        <sup>6</sup>School of Chemistry and Molecular Engineering, East China Normal University &nbsp;&nbsp;
+                        <sup>7</sup>College of the Environment and Ecology, Xiamen University &nbsp;&nbsp;
                         <br>
                         <br>
                         <sup>*</sup>Corresponding authors
@@ -333,7 +335,7 @@
                             </svg>
                             Code
                         </a>
-                        <a href="https://doi.org/10.6084/m9.figshare.28579832" class="button button-secondary">
+                        <a href="https://huggingface.co/datasets/xinyulu/vibench" class="button button-secondary">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -351,92 +353,61 @@
                     <div class="abstract fade-up" style="background-color: inherit;">
                         <h2 class="section-title fade-up">Abstract</h2>
                         <p>
-                        There will be a paradigm shift in chemical and biological research, to be enabled by autonomous, closed-loop, real-time self-directed decision-making experimentation. Spectrum-to-structure correlation, which is to elucidate molecular structures with spectral information, is the core step in understanding the experimental results and to close the loop. However, current approaches usually divide the task into either database-dependent retrieval and database-independent generation and neglect the inherent complementarity between them. In this study, we proposed Vib2Mol, a general deep learning model designed to flexibly handle diverse spectrum-to-structure tasks according to the available prior knowledge by bridging the retrieval and generation. It achieves state-of-the-art performance, even for the most demanding Raman spectra, over previous models in predicting reaction products and sequencing peptides as well as analyzing experimental spectra and integrating multi-modal spectral data. Vib2Mol enables vibrational spectroscopy a real-time guide for autonomous scientific discovery workflows.
+                        There will be a paradigm shift in chemical and biological research, to be enabled by autonomous, closed-loop, real-time self-directed decision-making experimentation. Spectrum-to-structure correlation, which is to elucidate molecular structures with spectral information, is the core step in understanding the experimental results and to close the loop. However, current approaches usually divide the task into either database-dependent retrieval and database-independent generation and neglect the inherent complementarity between them. In this study, we proposed Vib2Mol, a versatile deep learning model designed to flexibly handle diverse spectrum-to-structure tasks according to the available prior knowledge by bridging the retrieval and generation. It not only achieves state-of-the-art performance in analyzing theoretical Infrared and Raman spectra, but also outperform previous models at experimental data. Moreover, Vib2Mol demonstrates promising capabilities in predicting reaction products and sequencing peptides, enabling vibrational spectroscopy a real-time guide for autonomous scientific discovery workflows.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <!-- <section class="section">
+        <section class="section">
             <div class="container">
-                <h2 class="section-title fade-up">Workflow of Vib2Mol</h2>
+                <h2 class="section-title fade-up">Training framework of Vib2Mol</h2>
                 <div class="content fade-up">
-                    <img src="Figure 1.svg" alt="workflow" style="width: 100%; max-width: 800px; margin: 2rem auto; display: block; border-radius: 8px; box-shadow: 0 4px 12px rgba(255, 255, 255, 0);">
+                    <img src="Figure1.svg" alt="workflow" style="width: 100%; max-width: 800px; margin: 2rem auto; display: block; border-radius: 8px; box-shadow: 0 4px 12px rgba(255, 255, 255, 0);">
                     <p style="text-align: center; color: var(--secondary);">
-                        Figure 1. (A-B) The architecture of Vib2Mol for pretraining and (C-F) its application to four spectrum-to-structure tasks.
+                        Figure 1. The framework of Vib2Mol for pretraining. (A) The alignment phase: spectra and molecular structures are represented as patch tokens and SMILES tokens, respectively. After processed by their encoders, spectral and molecular information are aligned by CL. Subsequently, hard negative samples are selected and employed to guide model in learning the subtle distinctions between these highly similar spectra or molecule samples. (B) The generation phase: for conditional generation, molecules are randomly masked 45% and encoded by the same molecular encoder used for spectrum-structure alignment. The molecular decoder fuses spectral information with molecular features and predicts masked tokens. For de novo generation, molecule is sequentially masked and directed input into the same molecular decoder as conditional generation without the prior encoding. Then, the decoder predicts the next token on the basis of previous information, spectral features and chemical formulae (if given).
                     </p>
                 </div>
             </div>
-        </section> -->
+        </section>
 
-        <!-- Results Section -->
+
         <section class="section">
             <div class="container">
-                <!-- <h2 class="section-title fade-up">Sample Spectra</h2> -->
-                <div id="spectra-carousel" class="carousel fade-up">
-
-                </div>                
+                <h2 class="section-title fade-up">Inference workflow of Vib2Mol</h2>
+                <div class="content fade-up">
+                    <img src="Figure2.svg" alt="workflow" style="width: 100%; max-width: 800px; margin: 2rem auto; display: block; border-radius: 8px; box-shadow: 0 4px 12px rgba(255, 255, 255, 0);">
+                    <p style="text-align: center; color: var(--secondary);">
+                        Figure 2. The workflow of Vib2Mol for addressing different spectrum-to-structure tasks: (A) spectrum-spectrum retrieval, where only the spectral encoder is used to calculate the similarity between spectral pairs; (B) spectrum-structure retrieval, where spectra and molecules are encoded by their respective encoders to determine spectrum-structure similarity; (C) conditional generation, and (D) de novo generation, both following workflows during the stage of pretraining. (E) re-ranking module for refining retrieval and generation results. It initially filters candidates by chemical formula (if available), then uses a pre-trained molecular encoder to score them against the query spectrum. High-scoring candidates are finally selected as output.
+                    </p>
+                </div>
             </div>
         </section>
 
         <section class="section">
-                <div class="container fade-up">
-                    <h2 class="section-title fade-up">Overview of Datasets</h2>
-                    <div class="columns is-centered">
-                        <div class="content">
-                            <table>
-                                <!-- <caption>Overview of the vib-bench datasets.</caption> -->
-                                <thead>
-                                  <tr>
-                                    <th>Category</th>
-                                    <th>Datasize</th>
-                                    <th>Description</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>qm9</td>
-                                    <td>133,434</td>
-                                    <td>Contains organic small molecules extracted from QM9 composed of C, H, O, N, F atoms with less than 10 heavy atoms. Each molecule has only one stable conformation.</td>
-                                  </tr>
-                                  <tr>
-                                    <td>zinc15</td>
-                                    <td>50,114</td>
-                                    <td>Includes drug molecules extracted from ZINC15 involving more elements including C, H, O, N, S, F, Cl, Br, P, Si with heavy atoms ranging from 4 to 45. 7,556 molecules have multiple stable conformations due to isomers.</td>
-                                  </tr>
-                                  <tr>
-                                    <td>geometry</td>
-                                    <td>7,227</td>
-                                    <td>Comprises organic small molecules extracted from GEOM each with two stable conformations. Constructed test set for model's spectral-spectral matching performance evaluation by assigning spectra of random conformations as query and reference.</td>
-                                  </tr>
-                                  <tr>
-                                    <td>PAHs</td>
-                                    <td>4,296</td>
-                                    <td>Includes 1,268 benzene derivatives, 1,853 naphthalene derivatives, and 1,175 anthracene derivatives. Substitution sites vary, and all contain two common substituents (see Table S).</td>
-                                  </tr>
-                                  <tr>
-                                    <td>RXN</td>
-                                    <td>15,639</td>
-                                    <td>Contains reaction records from the second World AI4S Prize-Material Science Track. Each record includes yield, reactants, products, and Raman spectra, with molecules containing up to 20 heavy atoms and specific elements.</td>
-                                  </tr>
-                                  <tr>
-                                    <td>peptide</td>
-                                    <td>25,955</td>
-                                    <td>Includes 273 dipeptides, 4,058 tripeptides, and 21,624 tetrapeptides generated by combinations of specific amino acids (A, N, D, C, Q, E, G, H, I, L, M, F, P, S, T, Y, V).</td>
-                                  </tr>
-                                  <tr>
-                                    <td white-space: nowrap>peptide-mod</td>
-                                    <td>12,554</td>
-                                    <td>Comprises 3,815 unmodified, 3,716 phosphorylated, and 5,023 sulfated peptides. All are tripeptides or tetrapeptides with modifications at O-phosphorylation sites on tyrosine/serine/threonine, O-sulfation, or N-phosphorylation on histidine.</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                        </div>
-                    </div>
-        
+            <div class="container">
+                <h2 class="section-title fade-up">SOTA performance on different benchmarks</h2>
+                <div class="content fade-up">
+                    <img src="Figure3.svg" alt="workflow" style="width: 100%; max-width: 800px; margin: 2rem auto; display: block; border-radius: 8px; box-shadow: 0 4px 12px rgba(255, 255, 255, 0);">
+                    <p style="text-align: center; color: var(--secondary);">
+                        Figure 3. Performance evaluation of advanced deep learning models. (A) and (B) present a performance comparison of various models on spectrum-to-structure retrieval and de novo molecular generation, respectively. These evaluations were conducted on both theoretical (VB, QM9S) and experimental (NIST, SDBS) benchmarks. The impact of multi-modal spectral input on performance of Vib2Mol is further detailed in (C) for retrieval and (D) for generation.
+                    </p>
                 </div>
+            </div>
+        </section>
+
+
+                <section class="section">
+            <div class="container">
+                <h2 class="section-title fade-up">Further applications on product prediction of chemical reactions</h2>
+                <div class="content fade-up">
+                    <img src="Figure4.svg" alt="workflow" style="width: 100%; max-width: 800px; margin: 2rem auto; display: block; border-radius: 8px; box-shadow: 0 4px 12px rgba(255, 255, 255, 0);">
+                    <p style="text-align: center; color: var(--secondary);">
+                        Figure 4. Workflow and performance of Vib2Mol in product elucidation and mixed-spectrum analysis. (A) Three scenarios for predicting products. (B) Benchmarking on PAH substitution reactions. (C) Retrieval and de novo generation results on unmixed and mixed spectra of general chemical reactions.
+                    </p>
+                </div>
+            </div>
         </section>
 
 
@@ -470,12 +441,12 @@
                     <div class="citation">
                         @article{lu2025vib2mol,<br>
                             title={Vib2Mol: from vibrational spectra to molecular structures-a versatile deep learning model}, <br>
-                            author={Xinyu Lu, Hao Ma, Hui Li, Jia Li, Tong Zhu, Guokun Liu, Bin Ren},<br>
+                            author={Xinyu Lu, Hao Ma, Hui Li, Jia Li, Yuqiang Li, Tong Zhu, Guokun Liu, Bin Ren},<br>
                             year={2025},<br>
                             url={https://arxiv.org/abs/2503.07014}, 
                       }
                 </div>
-                This work was supported by the National Natural Science Foundation (Grant No: 22227802, 22021001, 22474117, 22272139) of China and the Fundamental Research Funds for the Central Universities (20720220009) and Shanghai Innovation Institute.<br>
+                This work was supported by the National Natural Science Foundation (Grant No: 22227802, 22021001, 22474117 and 22272139) of China and the Fundamental Research Funds for the Central Universities (20720220009 and 20720250005) and Shanghai Innovation Institute.<br>
         </section>
 
         <!-- Footer -->
