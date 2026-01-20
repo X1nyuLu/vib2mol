@@ -33,7 +33,7 @@ def get_args_parser() -> argparse.ArgumentParser:
                         help="Choose dataset name (e.g., 'qm9s').")
     parser.add_argument('--spectral_types', default='raman',
                         help="Comma-separated spectral types (e.g., 'raman', 'ir-raman').")
-    parser.add_argument('--device', default='cuda:0',
+    parser.add_argument('--device', default="cuda:0" if torch.cuda.is_available() else "cpu",
                         help="Choose GPU device (e.g., 'cuda:0', 'cpu').")
     parser.add_argument('--test_model_path', type=str,
                         help="Path to the checkpoint for retrieval/inference.")
