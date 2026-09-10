@@ -1,0 +1,22 @@
+entrypoint: scripts/infer_mlm.py
+defaults:
+  --model: vib2mol
+  --ds: mols
+  --split: test
+  --spectral-types: raman
+  --mode: both
+  --batch-size: 64
+experiments:
+  mols_raman_vib2mol:
+    dataset: mols
+    options:
+      --model: vib2mol
+      --mask-prob: 0.45
+      --test-model-path: checkpoints/mols/raman-kekule_smiles/vib2mol/2025-07-10-07-46-68d484/epoch999.pth
+  mols_raman_formula_vib2mol:
+    dataset: mols
+    options:
+      --model: vib2mol
+      --mask-prob: 0.45
+      --use-formula: true
+      --test-model-path: checkpoints/mols/raman-kekule_smiles-formula/vib2mol/2025-07-14-07-06-8a587e/epoch999.pth

@@ -1,0 +1,68 @@
+entrypoint: scripts/infer_retrieval.py
+defaults:
+  --model: vib2mol_mmm
+  --spectral-types: ir-raman
+  --rerank: true
+  --topk: 5
+  --batch-size: 128
+experiments:
+  qm9s_ir:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --test-model-path: &qm9s_ckpt checkpoints/qm9s/ir-raman-kekule_smiles/vib2mol_mmm/2025-12-17-09-08-78b51d/epoch999.pth
+      --rank-model-path: *qm9s_ckpt
+      --ir-only: true
+  qm9s_raman:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --test-model-path: *qm9s_ckpt
+      --rank-model-path: *qm9s_ckpt
+      --raman-only: true
+  qm9s_ir_raman:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --test-model-path: *qm9s_ckpt
+      --rank-model-path: *qm9s_ckpt
+  mols_ir:
+    dataset: mols
+    options:
+      --ds: mols
+      --test-model-path: &mols_ckpt checkpoints/mols/ir-raman-kekule_smiles/vib2mol_mmm/2025-12-16-10-57-6c9c5d/epoch999.pth
+      --rank-model-path: *mols_ckpt
+      --ir-only: true
+  mols_raman:
+    dataset: mols
+    options:
+      --ds: mols
+      --test-model-path: *mols_ckpt
+      --rank-model-path: *mols_ckpt
+      --raman-only: true
+  mols_ir_raman:
+    dataset: mols
+    options:
+      --ds: mols
+      --test-model-path: *mols_ckpt
+      --rank-model-path: *mols_ckpt
+  sdbs_ir:
+    dataset: sdbs
+    options:
+      --ds: sdbs
+      --test-model-path: &sdbs_ckpt checkpoints/sdbs/ir-raman-kekule_smiles/vib2mol_mmm/2025-12-17-07-33-e24e06/epoch999.pth
+      --rank-model-path: *sdbs_ckpt
+      --ir-only: true
+  sdbs_raman:
+    dataset: sdbs
+    options:
+      --ds: sdbs
+      --test-model-path: *sdbs_ckpt
+      --rank-model-path: *sdbs_ckpt
+      --raman-only: true
+  sdbs_ir_raman:
+    dataset: sdbs
+    options:
+      --ds: sdbs
+      --test-model-path: *sdbs_ckpt
+      --rank-model-path: *sdbs_ckpt

@@ -1,0 +1,78 @@
+entrypoint: scripts/infer_retrieval.py
+defaults:
+  --model: vib2mol
+  --rerank: true
+  --topk: 5
+  --batch-size: 128
+experiments:
+  qm9s_ir:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --spectral-types: ir
+      --test-model-path: &qm9s_ir_ckpt checkpoints/qm9s/ir-kekule_smiles/vib2mol/2025-07-08-02-55-db43f7/epoch999.pth
+      --rank-model-path: *qm9s_ir_ckpt
+  qm9s_raman:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --spectral-types: raman
+      --test-model-path: &qm9s_raman_ckpt checkpoints/qm9s/raman-kekule_smiles/vib2mol/2025-07-06-12-15-bbe117/epoch999.pth
+      --rank-model-path: *qm9s_raman_ckpt
+  qm9s_ir_raman:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --spectral-types: raman-ir
+      --test-model-path: &qm9s_both_ckpt checkpoints/qm9s/ir-raman-kekule_smiles/vib2mol/2025-07-11-06-32-9005f4/epoch999.pth
+      --rank-model-path: *qm9s_both_ckpt
+  mols_ir:
+    dataset: mols
+    options:
+      --ds: mols
+      --spectral-types: ir
+      --test-model-path: &mols_ir_ckpt checkpoints/mols/ir-kekule_smiles/vib2mol/2025-07-08-02-55-6ac6f2/epoch999.pth
+      --rank-model-path: *mols_ir_ckpt
+  mols_raman:
+    dataset: mols
+    options:
+      --ds: mols
+      --spectral-types: raman
+      --test-model-path: &mols_raman_ckpt checkpoints/mols/raman-kekule_smiles/vib2mol/2025-07-08-02-56-69bd7e/epoch999.pth
+      --rank-model-path: *mols_raman_ckpt
+      --use-formula: true
+  mols_ir_raman:
+    dataset: mols
+    options:
+      --ds: mols
+      --spectral-types: raman-ir
+      --test-model-path: &mols_both_ckpt checkpoints/mols/ir-raman-kekule_smiles/vib2mol/2025-07-12-01-38-833d2d/epoch999.pth
+      --rank-model-path: *mols_both_ckpt
+  sdbs_ir:
+    dataset: sdbs
+    options:
+      --ds: sdbs
+      --spectral-types: ir
+      --test-model-path: &sdbs_ir_ckpt checkpoints/sdbs/ir-kekule_smiles/vib2mol/2025-07-16-15-32-ea6ef7/epoch999.pth
+      --rank-model-path: *sdbs_ir_ckpt
+  sdbs_raman:
+    dataset: sdbs
+    options:
+      --ds: sdbs
+      --spectral-types: raman
+      --test-model-path: &sdbs_raman_ckpt checkpoints/sdbs/raman-kekule_smiles/vib2mol/2025-07-16-15-33-d68938/epoch999.pth
+      --rank-model-path: *sdbs_raman_ckpt
+  sdbs_ir_raman:
+    dataset: sdbs
+    options:
+      --ds: sdbs
+      --spectral-types: raman-ir
+      --test-model-path: &sdbs_both_ckpt checkpoints/sdbs/ir-raman-kekule_smiles/vib2mol/2025-07-16-15-24-9a8d24/epoch999.pth
+      --rank-model-path: *sdbs_both_ckpt
+  nist_ir:
+    dataset: nist
+    options:
+      --ds: nist
+      --spectral-types: ir
+      --test-model-path: &nist_ir_ckpt checkpoints/nist/ir-kekule_smiles/vib2mol/2025-07-16-16-03-187b97/epoch999.pth
+      --rank-model-path: *nist_ir_ckpt

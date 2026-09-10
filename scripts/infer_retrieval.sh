@@ -13,6 +13,10 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
+# Keep dataset, tokenizer and checkpoint paths relative to the repository root.
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "$script_dir/.."
+
 # --- Common Parameters ---
 MODEL_NAME="vib2mol"
 RERANK_TOPK=5            # Number of top-k results to consider for re-ranking
@@ -35,7 +39,7 @@ run_evaluation() {
     local TEST_MODEL_PATH=$3
 
     # Construct the command dynamically
-    local command_base="python infer_retrieval.py \
+    local command_base="python scripts/infer_retrieval.py \
       --model \"${MODEL_NAME}\" \
       --ds \"${DATASET}\" \
       --spectral_types \"${SPECTRAL_TYPE}\" \

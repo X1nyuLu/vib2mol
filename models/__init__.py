@@ -22,5 +22,5 @@ def build_model(model, **kwargs):
     return get_model_class(model)(**kwargs)
 
 
-from .vib2mol import *
-
+from .vib2mol import vib2mol, vib2mol_matching_shared
+from .vib2mol_mmm import vib2mol_mmm, vib2mol_matching_shared_mask

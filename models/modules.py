@@ -144,6 +144,22 @@ class DecoderLayer(nn.Module):
         x = self.sublayer[1](x, lambda x: self.src_attn(x, m, m, src_mask))
         return self.sublayer[2](x, self.feed_forward)
 
+    def forward_step(self, x, memory, src_mask, cache=None):
+        cache = cache or {}
+        norm_x = self.sublayer[0].norm(x)
+        self_out, self_cache = self.self_attn.forward_cached(
+            norm_x, norm_x, norm_x, cache.get('self'), static_kv=False
+        )
+        x = x + self.sublayer[0].dropout(self_out)
+        norm_x = self.sublayer[1].norm(x)
+        src_out, src_cache = self.src_attn.forward_cached(
+            norm_x, memory, memory, cache.get('src'), mask=src_mask,
+            static_kv=True,
+        )
+        x = x + self.sublayer[1].dropout(src_out)
+        x = self.sublayer[2](x, self.feed_forward)
+        return x, {'self': self_cache, 'src': src_cache}
+
 
 def subsequent_mask(size):
     "Mask out subsequent positions."
@@ -199,6 +215,33 @@ class MultiHeadedAttention(nn.Module):
             nbatches, -1, self.h * self.d_k)
         return self.linears[-1](x)
 
+    def forward_cached(
+        self, query, key, value, cache=None, mask=None, static_kv=False
+    ):
+        if mask is not None:
+            mask = mask.unsqueeze(1)
+        batch_size = query.size(0)
+        query = self.linears[0](query).view(
+            batch_size, -1, self.h, self.d_k
+        ).transpose(1, 2)
+        if static_kv and cache is not None:
+            key, value = cache['key'], cache['value']
+        else:
+            key = self.linears[1](key).view(
+                batch_size, -1, self.h, self.d_k
+            ).transpose(1, 2)
+            value = self.linears[2](value).view(
+                batch_size, -1, self.h, self.d_k
+            ).transpose(1, 2)
+            if cache is not None and not static_kv:
+                key = torch.cat([cache['key'], key], dim=2)
+                value = torch.cat([cache['value'], value], dim=2)
+        x, self.attn = attention(query, key, value, mask=mask, dropout=self.dropout)
+        x = x.transpose(1, 2).contiguous().view(
+            batch_size, -1, self.h * self.d_k
+        )
+        return self.linears[-1](x), {'key': key, 'value': value}
+
 
 class PositionwiseFeedForward(nn.Module):
     "Implements FFN equation."
@@ -240,8 +283,9 @@ class PositionalEncoding(nn.Module):
         pe = pe.unsqueeze(0)
         self.register_buffer('pe', pe)
 
-    def forward(self, x):
-        x = x + Variable(self.pe[:, :x.size(1)],
+    def forward(self, x, position_offset=0):
+        end = position_offset + x.size(1)
+        x = x + Variable(self.pe[:, position_offset:end],
                          requires_grad=False)
         return self.dropout(x)
 
@@ -504,4 +548,3 @@ def cl_loss(similarity: torch.Tensor) -> torch.Tensor:
     caption_loss = contrastive_loss(similarity)
     image_loss = contrastive_loss(similarity.t())
     return (caption_loss + image_loss) / 2.0
-

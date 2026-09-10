@@ -6,7 +6,16 @@ from torch.utils.tensorboard import SummaryWriter
 
 from trainers import register_function
 from trainers.base import BaseTrainer, train_model
-from utils.base import BaseEngine, AverageMeter, compute_recall
+from utils.base import (
+    PHASE_ALIGN,
+    PHASE_GENERATE,
+    BaseEngine,
+    AverageMeter,
+    compute_recall,
+    gather_embeddings,
+    normalize_phase,
+    synchronize_meters,
+)
 
 from utils.collators import BaseCollator
 from utils.dataloader import Dataloader
@@ -49,7 +58,7 @@ class RXNCollator(BaseCollator):
 class Engine(BaseEngine):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.phase = kwargs['phase']
+        self.phase = normalize_phase(kwargs['phase'])
         
     @torch.no_grad()
     def eval_epoch(self, epoch):
@@ -72,7 +81,7 @@ class Engine(BaseEngine):
             data = batch['data']
             data = self._put_on_device(data)
 
-            if self.phase == 1:
+            if self.phase == PHASE_ALIGN:
                 output = self.model(data, return_proj_output=True)
                 eval_losses_cl.update(output['cl_loss'].item(), batch['batch_size'])
                 eval_losses.update(output['loss'].item(), batch['batch_size'])
@@ -88,7 +97,7 @@ class Engine(BaseEngine):
                     bar.set_description(
                     f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{eval_acc.avg:6f}')
                 
-            elif self.phase == 2:
+            elif self.phase == PHASE_GENERATE:
                 output = self.model(data, return_proj_output=False)
                 eval_losses_mlm.update(output['mlm_loss'].item(), batch['batch_size'])
                 eval_losses_lm.update(output['lm_loss'].item(), batch['batch_size'])
@@ -108,9 +117,15 @@ class Engine(BaseEngine):
                     bar.set_description(
                     f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{eval_acc.avg:6f}')
 
-        if self.phase == 1:
-            all_smiles_embeddings = torch.cat(all_smiles_embeddings, dim=0)
-            all_spectra_embeddings = torch.cat(all_spectra_embeddings, dim=0)
+        if self.phase == PHASE_ALIGN:
+            synchronize_meters(
+                eval_losses, eval_losses_cl, eval_losses_match, eval_acc,
+                device=self.device,
+            )
+            all_smiles_embeddings = gather_embeddings(
+                torch.cat(all_smiles_embeddings, dim=0), self.device)
+            all_spectra_embeddings = gather_embeddings(
+                torch.cat(all_spectra_embeddings, dim=0), self.device)
             simi_matrix = torch.mm(
                 all_smiles_embeddings, all_spectra_embeddings.T)
             smiles_to_spectrum_recall = compute_recall(
@@ -122,7 +137,11 @@ class Engine(BaseEngine):
                     f'Epoch{epoch:4d}, eval loss:{eval_losses.avg:6f}, smiles_to_spectrum_recall:{smiles_to_spectrum_recall:6f}, spectrum_to_smiles_recall:{spectrum_to_smiles_recall:6f}')  
             return {'loss':eval_losses.avg, 'cl_loss':eval_losses_cl.avg, 'metrics':spectrum_to_smiles_recall, 'matching_loss':eval_losses_match.avg, 'acc':eval_acc.avg}
 
-        elif self.phase == 2:
+        elif self.phase == PHASE_GENERATE:
+            synchronize_meters(
+                eval_losses, eval_losses_mlm, eval_losses_lm, eval_acc,
+                device=self.device,
+            )
             if self.device_rank == 0:    
                 logging.info(
                     f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{eval_acc.avg:6f}')
@@ -132,7 +151,7 @@ class Engine(BaseEngine):
 class Trainer(BaseTrainer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.phase = kwargs['phase']
+        self.phase = normalize_phase(kwargs['phase'])
         self.use_yield = kwargs['use_yield']
         
     def init_dataset(self, Collator=None):
@@ -157,16 +176,29 @@ class Trainer(BaseTrainer):
                                 collate_fn=self.collator(spectral_types=spectral_types, tokenizer_path=self.tokenizer_path, use_yield=self.use_yield), 
                                 device=self.device)
         
+        global_batch_size = self.config['batch_size']
+        num_workers = self.config.get('num_workers', 8)
         if self.ddp:
+            world_size = torch.distributed.get_world_size()
+            if global_batch_size % world_size:
+                raise ValueError(
+                    f'Global batch size ({global_batch_size}) must be divisible '
+                    f'by DDP world size ({world_size}).'
+                )
+            per_device_batch_size = global_batch_size // world_size
             self.train_loader, self.train_sampler = dataloader.generate_dataloader(mode='train',
-                                                                                   batch_size=self.config['batch_size'],
-                                                                                   num_workers=12, ddp=ddp)
+                                                                                   batch_size=per_device_batch_size,
+                                                                                   num_workers=num_workers, ddp=self.ddp)
         else:
             self.train_loader = dataloader.generate_dataloader(mode='train',
-                                                               batch_size=self.config['batch_size'], 
-                                                               num_workers=12)
+                                                               batch_size=global_batch_size,
+                                                               num_workers=num_workers)
             
-        self.eval_loader = dataloader.generate_dataloader(mode='eval', batch_size=64)
+        eval_batch_size = min(64, per_device_batch_size) if self.ddp else 64
+        self.eval_loader = dataloader.generate_dataloader(
+            mode='eval', batch_size=eval_batch_size, num_workers=num_workers,
+            ddp=self.ddp,
+        )
         
     
     def train(self):
@@ -180,14 +212,14 @@ class Trainer(BaseTrainer):
                 self.writer.add_scalar('train_loss', train_loss, epoch)
                 self.writer.add_scalar('eval_loss', eval_output['loss'], epoch)  
                 
-                if self.phase == 1:
+                if self.phase == PHASE_ALIGN:
                     self.writer.add_scalar('eval_recall', eval_output['metrics'], epoch)
                     self.writer.add_scalar('eval_cl_loss', eval_output['cl_loss'], epoch)
                     self.writer.add_scalar('eval_matching_loss', eval_output['matching_loss'], epoch)
                     self.writer.add_scalar('eval_match_accuracy', eval_output['acc'], epoch)
                     save_path = f"{self.model_save_path}/epoch{epoch}_recall{eval_output['metrics']*100:.0f}.pth"
                 
-                elif self.phase == 2:
+                elif self.phase == PHASE_GENERATE:
                     self.writer.add_scalar('eval_accuracy', eval_output['metrics'], epoch)            
                     self.writer.add_scalar('eval_lm_loss', eval_output['lm_loss'], epoch)
                     self.writer.add_scalar('eval_mlm_loss', eval_output['mlm_loss'], epoch)
@@ -197,12 +229,11 @@ class Trainer(BaseTrainer):
                     self.es(eval_output['metrics'], self. model,save_path)
                 else:
                     assert False, 'No eval metrics'
-            if self.es.early_stop:
+            if self.should_stop():
                 break
-        print(self.es.val_score)
-        torch.save(self.model.state_dict(), f'{self.model_save_path}/epoch{epoch}.pth')
-
         if self.rank == 0:
+            print(self.es.val_score)
+            torch.save(self.model.state_dict(), f'{self.model_save_path}/epoch{epoch}.pth')
             self.writer.close()
             
         

@@ -1,0 +1,14 @@
+entrypoint: scripts/infer_retrieval_pubchem.py
+defaults:
+  --model: vib2mol_mmm
+  --dataset-path: datasets/vibench/sdbs/sdbs_test.lmdb
+  --pubchem-embeds: datasets/pubchem/unique_pubchem.pt
+  --pubchem-dataframe: datasets/pubchem/unique_pubchem_df.pickle
+  --batch-size: 64
+  --retrieval-topk: 20
+  --rerank-topk: 10
+experiments:
+  sdbs_pubchem:
+    dataset: sdbs
+    options:
+      --test-model-path: checkpoints/sdbs/ir-raman-kekule_smiles/vib2mol_mmm/2025-12-17-07-33-e24e06/epoch999.pth

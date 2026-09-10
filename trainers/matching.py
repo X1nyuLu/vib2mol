@@ -4,7 +4,8 @@ from tqdm import tqdm
 import torch
 from trainers import register_function
 from trainers.base import BaseTrainer, train_model
-from utils.base import BaseEngine, AverageMeter, compute_recall
+from utils.base import (BaseEngine, AverageMeter, compute_recall,
+                        gather_embeddings, synchronize_meters)
 
 
 class Engine(BaseEngine):
@@ -20,7 +21,7 @@ class Engine(BaseEngine):
         eval_acc = AverageMeter()
 
         self.model.eval()
-        
+
         all_smiles_embeddings = []
         all_spectra_embeddings = []
 
@@ -45,8 +46,18 @@ class Engine(BaseEngine):
                 bar.set_description(
                     f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{eval_acc.avg:6f}')
                 
-        all_smiles_embeddings = torch.cat(all_smiles_embeddings, dim=0)
-        all_spectra_embeddings = torch.cat(all_spectra_embeddings, dim=0)
+        synchronize_meters(
+            eval_losses, eval_losses_cl, eval_losses_match, eval_acc,
+            device=self.device,
+        )
+        all_smiles_embeddings = gather_embeddings(
+            torch.cat(all_smiles_embeddings, dim=0), self.device)
+        all_spectra_embeddings = gather_embeddings(
+            torch.cat(all_spectra_embeddings, dim=0), self.device)
+
+        all_smiles_embeddings = torch.nn.functional.normalize(all_smiles_embeddings, p=2, dim=1)
+        all_spectra_embeddings = torch.nn.functional.normalize(all_spectra_embeddings, p=2, dim=1)
+
         simi_matrix = torch.mm(all_smiles_embeddings, all_spectra_embeddings.T)
         smiles_to_spectrum_recall = compute_recall(simi_matrix, k=1)
         spectrum_to_smiles_recall = compute_recall(simi_matrix.T, k=1)
@@ -82,10 +93,10 @@ class Trainer(BaseTrainer):
                     f"{self.model_save_path}/epoch{epoch}_recall{eval_output['recall']*100:.0f}.pth")
                 else:
                     assert False, 'No eval metrics'
-            if self.es.early_stop:
+            if self.should_stop():
                 break
-        print(self.es.val_score)
         if self.rank == 0:
+            print(self.es.val_score)
             torch.save(self.model.state_dict(), f'{self.model_save_path}/epoch{epoch}.pth')
 
         if self.rank == 0:

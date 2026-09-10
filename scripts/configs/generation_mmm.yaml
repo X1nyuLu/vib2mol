@@ -1,0 +1,22 @@
+entrypoint: scripts/infer_generation.py
+defaults:
+  --model: vib2mol_mmm
+  --spectral-types: ir-raman
+  --beam-size: 10
+  --batch-size: 128
+  --rerank: true
+  --topk: 5
+  --use-formula: true
+experiments:
+  qm9s_ir_raman_formula:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --test-model-path: checkpoints/qm9s/ir-raman-kekule_smiles-formula/vib2mol_mmm/2025-12-19-05-56-ac5303/epoch999.pth
+      --rank-model-path: checkpoints/qm9s/ir-raman-kekule_smiles/vib2mol_mmm/2025-12-17-09-08-78b51d/epoch999.pth
+  mols_ir_raman_formula:
+    dataset: mols
+    options:
+      --ds: mols
+      --test-model-path: checkpoints/mols/ir-raman-kekule_smiles-formula/vib2mol_mmm/2025-12-19-05-56-1b87e2/epoch999.pth
+      --rank-model-path: checkpoints/mols/ir-raman-kekule_smiles/vib2mol_mmm/2025-12-16-10-57-6c9c5d/epoch999.pth

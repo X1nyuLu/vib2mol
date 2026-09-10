@@ -1,0 +1,82 @@
+entrypoint: scripts/infer_generation.py
+defaults:
+  --model: vib2mol
+  --spectral-types: ir-raman
+  --beam-size: 10
+  --batch-size: 128
+  --rerank: true
+  --topk: 5
+  --use-formula: true
+experiments:
+  qm9s_ir:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --spectral-types: ir
+      --use-formula: false
+      --test-model-path: checkpoints/qm9s/ir-kekule_smiles/vib2mol/2025-07-10-01-45-46b8b6/epoch999.pth
+      --rank-model-path: checkpoints/qm9s/ir-kekule_smiles/vib2mol/2025-07-08-02-55-db43f7/epoch999.pth
+  qm9s_ir_formula:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --spectral-types: ir
+      --test-model-path: checkpoints/qm9s/ir-kekule_smiles-formula/vib2mol/2025-07-12-02-02-4afc55/epoch999.pth
+      --rank-model-path: checkpoints/qm9s/ir-kekule_smiles/vib2mol/2025-07-08-02-55-db43f7/epoch999.pth
+  qm9s_raman:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --spectral-types: raman
+      --use-formula: false
+      --test-model-path: checkpoints/qm9s/raman-kekule_smiles/vib2mol/2025-07-07-07-51-af1552/epoch999.pth
+      --rank-model-path: checkpoints/qm9s/raman-kekule_smiles/vib2mol/2025-07-06-12-15-bbe117/epoch999.pth
+  qm9s_raman_formula:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --spectral-types: raman
+      --test-model-path: checkpoints/qm9s/raman-kekule_smiles-formula/vib2mol/2025-07-19-03-49-370cd1/epoch999.pth
+      --rank-model-path: checkpoints/qm9s/raman-kekule_smiles/vib2mol/2025-07-06-12-15-bbe117/epoch999.pth
+  qm9s_ir_raman_formula:
+    dataset: qm9s
+    options:
+      --ds: qm9s
+      --test-model-path: checkpoints/qm9s/ir-raman-kekule_smiles-formula/vib2mol/2025-07-19-03-47-7c9f30/epoch999.pth
+      --rank-model-path: checkpoints/qm9s/ir-raman-kekule_smiles/vib2mol/2025-07-11-06-32-9005f4/epoch999.pth
+  mols_ir:
+    dataset: mols
+    options:
+      --ds: mols
+      --spectral-types: ir
+      --use-formula: false
+      --test-model-path: checkpoints/mols/ir-kekule_smiles/vib2mol/2025-07-10-07-42-dde12a/epoch999.pth
+      --rank-model-path: checkpoints/mols/ir-kekule_smiles/vib2mol/2025-07-08-02-55-6ac6f2/epoch999.pth
+  mols_ir_formula:
+    dataset: mols
+    options:
+      --ds: mols
+      --spectral-types: ir
+      --test-model-path: checkpoints/mols/ir-kekule_smiles-formula/vib2mol/2025-07-14-07-06-e44b51/epoch999.pth
+      --rank-model-path: checkpoints/mols/ir-kekule_smiles/vib2mol/2025-07-08-02-55-6ac6f2/epoch999.pth
+  mols_raman:
+    dataset: mols
+    options:
+      --ds: mols
+      --spectral-types: raman
+      --use-formula: false
+      --test-model-path: checkpoints/mols/raman-kekule_smiles/vib2mol/2025-07-10-07-46-68d484/epoch999.pth
+      --rank-model-path: checkpoints/mols/raman-kekule_smiles/vib2mol/2025-07-08-02-56-69bd7e/epoch999.pth
+  mols_raman_formula:
+    dataset: mols
+    options:
+      --ds: mols
+      --spectral-types: raman
+      --test-model-path: checkpoints/mols/raman-kekule_smiles-formula/vib2mol/2025-07-14-07-06-8a587e/epoch999.pth
+      --rank-model-path: checkpoints/mols/raman-kekule_smiles/vib2mol/2025-07-08-02-56-69bd7e/epoch999.pth
+  mols_ir_raman_formula:
+    dataset: mols
+    options:
+      --ds: mols
+      --test-model-path: checkpoints/mols/ir-raman-kekule_smiles-formula/vib2mol/2025-07-14-07-07-e1c1f4/epoch999.pth
+      --rank-model-path: checkpoints/mols/ir-raman-kekule_smiles/vib2mol/2025-07-12-01-38-833d2d/epoch999.pth

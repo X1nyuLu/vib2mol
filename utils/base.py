@@ -13,6 +13,25 @@ from sklearn import metrics
 import torch
 
 
+PHASE_ALIGN = 'align'
+PHASE_GENERATE = 'generate'
+
+
+def normalize_phase(phase):
+    """Return the canonical training phase while accepting legacy 1/2 values."""
+    aliases = {
+        1: PHASE_ALIGN,
+        2: PHASE_GENERATE,
+        PHASE_ALIGN: PHASE_ALIGN,
+        PHASE_GENERATE: PHASE_GENERATE,
+    }
+    if isinstance(phase, bool) or phase not in aliases:
+        raise ValueError(
+            f'Unknown phase {phase!r}; expected "align" or "generate".'
+        )
+    return aliases[phase]
+
+
 def seed_everything(seed):
     random.seed(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
@@ -73,10 +92,42 @@ class AverageMeter:
         self.count = 0
 
     def update(self, val, n=1):
+        if torch.is_tensor(val):
+            if val.numel() != 1:
+                raise ValueError('AverageMeter only accepts scalar tensors')
+            val = val.detach().item()
         self.val = val
         self.sum += val * n
         self.count += n
         self.avg = self.sum/self.count
+
+    def synchronize(self, device):
+        """Combine weighted sum and count across all DDP processes."""
+        if not (torch.distributed.is_available()
+                and torch.distributed.is_initialized()):
+            return
+        totals = torch.tensor(
+            [self.sum, self.count], dtype=torch.float64, device=device
+        )
+        torch.distributed.all_reduce(totals, op=torch.distributed.ReduceOp.SUM)
+        self.sum, self.count = totals.tolist()
+        self.avg = self.sum / self.count if self.count else 0
+
+
+def synchronize_meters(*meters, device):
+    for meter in meters:
+        meter.synchronize(device)
+
+
+def gather_embeddings(tensor, device):
+    """Gather variable-length evaluation embeddings from every DDP rank."""
+    if not (torch.distributed.is_available()
+            and torch.distributed.is_initialized()):
+        return tensor
+    local = tensor.to(device)
+    gathered = [None] * torch.distributed.get_world_size()
+    torch.distributed.all_gather_object(gathered, local.cpu())
+    return torch.cat(gathered, dim=0)
 
 
 class EarlyStop:
@@ -162,11 +213,12 @@ class BaseEngine:
             loss.backward()
             self.optimizer.step()
 
-            train_losses.update(loss.item(), batch['batch_size'])
+            train_losses.update(loss.detach().item(), batch['batch_size'])
             if self.device_rank == 0:
                 bar.set_description(
                     f'Epoch{epoch:4d}, train loss:{train_losses.avg:6f}')
 
+        train_losses.synchronize(self.device)
         if self.device_rank == 0:
             logging.info(f'Epoch{epoch:4d}, train loss:{train_losses.avg:6f}')
         return train_losses.avg
@@ -179,7 +231,7 @@ class BaseEngine:
         '''        
         pass
 
-    def infer(self):
+    def infer(self, raman_only=False, ir_only=False):
         self.model.eval()
         
         all_smiles_embeddings = []
@@ -192,7 +244,7 @@ class BaseEngine:
                 data = batch['data']
                 
                 data = self._put_on_device(data)
-                spectra_output = self.model.get_spectral_embeddings(data)
+                spectra_output = self.model.get_spectral_embeddings(data, raman_only=raman_only, ir_only=ir_only)
                 molecular_output = self.model.get_molecular_embeddings(data, use_cls_token=True)      
                 
                 all_spectra_embeddings.append(spectra_output['proj_output'].detach().cpu())

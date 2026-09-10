@@ -51,17 +51,41 @@ class BaseTrainer:
         
         dataloader.collate_fn.smiles_augment = self.smiles_augment
         dataloader.collate_fn.spectra_augment = self.spectra_augment
+        global_batch_size = self.config['batch_size']
+        num_workers = self.config.get('num_workers', 8)
         if self.ddp:
+            import torch.distributed as dist
+            world_size = dist.get_world_size()
+            if global_batch_size < world_size:
+                raise ValueError(
+                    f'Global batch size ({global_batch_size}) must be at least '
+                    f'the DDP world size ({world_size}).'
+                )
+            if global_batch_size % world_size:
+                raise ValueError(
+                    f'Global batch size ({global_batch_size}) must be divisible '
+                    f'by the DDP world size ({world_size}).'
+                )
+            per_device_batch_size = global_batch_size // world_size
+            if self.rank == 0:
+                print(
+                    f'DDP batch size: global={global_batch_size}, '
+                    f'per-device={per_device_batch_size}, world-size={world_size}'
+                )
             self.train_loader, self.train_sampler = dataloader.generate_dataloader(mode='train',
-                                                                                   batch_size=self.config['batch_size'],
-                                                                                   num_workers=0, ddp=self.ddp)
+                                                                                   batch_size=per_device_batch_size,
+                                                                                   num_workers=num_workers, ddp=self.ddp)
         else:
             self.train_loader = dataloader.generate_dataloader(mode='train',
-                                                               batch_size=self.config['batch_size'], 
-                                                               num_workers=0)
+                                                               batch_size=global_batch_size,
+                                                               num_workers=num_workers)
         dataloader.collate_fn.smiles_augment = False
         dataloader.collate_fn.spectra_augment = False
-        self.eval_loader = dataloader.generate_dataloader(mode='eval', batch_size=64)
+        eval_batch_size = min(64, per_device_batch_size) if self.ddp else 64
+        self.eval_loader = dataloader.generate_dataloader(
+            mode='eval', batch_size=eval_batch_size, num_workers=num_workers,
+            ddp=self.ddp,
+        )
         
     def init_engine(self, Engine, **kwargs):
         optimizer = torch.optim.AdamW(self.model.parameters(), lr=float(self.config['lr']))
@@ -73,6 +97,17 @@ class BaseTrainer:
 
         self.engine = Engine(train_loader=self.train_loader, eval_loader=self.eval_loader, optimizer=optimizer, 
                              scheduler=scheduler, model=self.model, device=self.device, device_rank=self.rank, ddp=self.ddp, **kwargs)
+
+    def should_stop(self):
+        """Broadcast rank-0 early-stopping decision to every DDP process."""
+        if not self.ddp:
+            return self.es.early_stop
+        stop = torch.tensor(
+            int(self.es.early_stop) if self.rank == 0 else 0,
+            device=self.device,
+        )
+        torch.distributed.broadcast(stop, src=0)
+        return bool(stop.item())
         
     def train(self):
         '''

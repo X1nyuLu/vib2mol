@@ -17,6 +17,24 @@ import torch
 from torch.utils.tensorboard import SummaryWriter
 from torch.utils.data import Dataset, DataLoader
 from torch.utils.data.distributed import DistributedSampler
+from torch.utils.data import Sampler
+from utils.lmdb_utils import read_lmdb_length
+
+
+class DistributedEvalSampler(Sampler):
+    """Shard evaluation data without padding or duplicating samples."""
+
+    def __init__(self, dataset):
+        import torch.distributed as dist
+        self.dataset = dataset
+        self.rank = dist.get_rank()
+        self.world_size = dist.get_world_size()
+
+    def __iter__(self):
+        return iter(range(self.rank, len(self.dataset), self.world_size))
+
+    def __len__(self):
+        return (len(self.dataset) - self.rank + self.world_size - 1) // self.world_size
 from transformers import AutoTokenizer
 
 
@@ -30,9 +48,22 @@ class lmdbDataset(Dataset):
         assert os.path.isfile(
             self.lmdb_path), "{} not found".format(self.lmdb_path)
 
-        self.env = self._connect_db()
-        with self.env.begin() as txn:
-            self._keys = list(txn.cursor().iternext(values=False))
+        env = self._connect_db()
+        with env.begin() as txn:
+            self.num_samples = read_lmdb_length(txn)
+        env.close()
+        self.env = None
+
+    def __getstate__(self):
+        """Exclude the unpickleable LMDB handle from spawned workers."""
+        state = self.__dict__.copy()
+        state['env'] = None
+        return state
+
+    def __del__(self):
+        env = getattr(self, 'env', None)
+        if env is not None:
+            env.close()
 
     def _connect_db(self):
         env = lmdb.open(
@@ -44,14 +75,17 @@ class lmdbDataset(Dataset):
         return env
 
     def __len__(self):
-        return len(self._keys)
+        return self.num_samples
 
     @lru_cache(maxsize=64)
     def __getitem__(self, idx):
-        if not hasattr(self, "env"):
-            self._connect_db(self.lmdb_path, save_to_self=True)
-        key = self._keys[idx]
-        pickled_data = self.env.begin().get(key)
+        if self.env is None:
+            self.env = self._connect_db()
+        key = str(idx).encode('ascii')
+        with self.env.begin() as txn:
+            pickled_data = txn.get(key)
+        if pickled_data is None:
+            raise IndexError(f'Index {idx} not found in {self.lmdb_path}')
         data = pickle.loads(pickled_data)
         
         output = {}
@@ -107,14 +141,27 @@ class Dataloader:
         shuffle = True if mode == 'train' else False
         
         if ddp:
-            data_sampler = DistributedSampler(self.dataset, shuffle=shuffle)
-            dataloader = DataLoader(self.dataset, batch_size=batch_size, collate_fn=copy(self.collate_fn), sampler=data_sampler)
+            data_sampler = (
+                DistributedSampler(self.dataset, shuffle=True)
+                if mode == 'train'
+                else DistributedEvalSampler(self.dataset)
+            )
+            dataloader = DataLoader(
+                self.dataset, batch_size=batch_size,
+                collate_fn=copy(self.collate_fn), sampler=data_sampler,
+                num_workers=num_workers, pin_memory=True,
+                persistent_workers=(num_workers > 0),
+            )
             
             if self.mode == 'train':
                 return dataloader, data_sampler
             else: 
                 return dataloader
         else:
-            dataloader = DataLoader(self.dataset, batch_size=batch_size, collate_fn=copy(self.collate_fn),
-                                num_workers=num_workers, shuffle=shuffle)
+            dataloader = DataLoader(
+                self.dataset, batch_size=batch_size,
+                collate_fn=copy(self.collate_fn), num_workers=num_workers,
+                shuffle=shuffle, pin_memory=True,
+                persistent_workers=(num_workers > 0),
+            )
             return dataloader

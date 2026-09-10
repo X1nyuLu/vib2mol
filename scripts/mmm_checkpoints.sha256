@@ -1,0 +1,4 @@
+f4251003f9c5c70846908365a9db604e104fec0e3e8bde446e2ccfb08e352907  checkpoints/mols/ir-raman-kekule_smiles/vib2mol_mmm/2025-12-16-10-57-6c9c5d/epoch999.pth
+90f9b5e810a34fcb33cde2612e766c9302e45ea22aab79117fcdb9e1baa41c1d  checkpoints/mols/ir-raman-kekule_smiles-formula/vib2mol_mmm/2025-12-19-05-56-1b87e2/epoch999.pth
+0abd3fa775380df86630da95303aa37d7c078c29582b463da4186b17545bd590  checkpoints/qm9s/ir-raman-kekule_smiles/vib2mol_mmm/2025-12-17-09-08-78b51d/epoch999.pth
+fb5665d1b2e484fef1816a628ca3cae233d261c5dab5e8817e17808749731fcc  checkpoints/qm9s/ir-raman-kekule_smiles-formula/vib2mol_mmm/2025-12-19-05-56-ac5303/epoch999.pth

@@ -11,6 +11,10 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
+# Keep dataset, tokenizer and checkpoint paths relative to the repository root.
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "$script_dir/.."
+
 # --- Default Parameters ---
 MODEL_NAME="vib2mol"
 RERANK_ENABLED=""
@@ -50,7 +54,7 @@ run_generation_evaluation() {
     echo "Evaluating generation performance for ${DATASET}-${SPECTRAL_TYPE}..."
 
     # Dynamically build the command string
-    local command_base="python infer_generation.py \
+    local command_base="python scripts/infer_generation.py \
       --model \"${MODEL_NAME}\" \
       --ds \"${DATASET}\" \
       --spectral_types \"${SPECTRAL_TYPE}\" \
@@ -83,7 +87,7 @@ declare -a configs=(
     "qm9s ir checkpoints/qm9s/ir-kekule_smiles/vib2mol/2025-07-10-01-45-46b8b6/epoch999.pth checkpoints/qm9s/ir-kekule_smiles/vib2mol/2025-07-08-02-55-db43f7/epoch999.pth"
     "qm9s ir checkpoints/qm9s/ir-kekule_smiles-formula/vib2mol/2025-07-12-02-02-4afc55/epoch999.pth checkpoints/qm9s/ir-kekule_smiles/vib2mol/2025-07-08-02-55-db43f7/epoch999.pth"
     "qm9s raman checkpoints/qm9s/raman-kekule_smiles/vib2mol/2025-07-07-07-51-af1552/epoch999.pth checkpoints/qm9s/raman-kekule_smiles/vib2mol/2025-07-06-12-15-bbe117/epoch999.pth"
-    "qm9s raman checkpoints/qm9s/raman-kekule_smiles-formula/vib2mol/2025-07-12-02-01-7839c0/epoch999.pth checkpoints/qm9s/raman-kekule_smiles/vib2mol/2025-07-06-12-15-bbe117/epoch999.pth"
+    "qm9s raman checkpoints/qm9s/raman-kekule_smiles-formula/vib2mol/2025-07-19-03-49-370cd1/epoch999.pth checkpoints/qm9s/raman-kekule_smiles/vib2mol/2025-07-06-12-15-bbe117/epoch999.pth"
     "qm9s raman-ir checkpoints/qm9s/ir-raman-kekule_smiles-formula/vib2mol/2025-07-19-03-47-7c9f30/epoch999.pth checkpoints/qm9s/ir-raman-kekule_smiles/vib2mol/2025-07-11-06-32-9005f4/epoch999.pth"
 
     # --- VB-mols Dataset ---

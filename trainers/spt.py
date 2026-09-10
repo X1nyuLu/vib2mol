@@ -4,7 +4,7 @@ from tqdm import tqdm
 import torch
 from trainers import register_function
 from trainers.base import BaseTrainer, train_model
-from utils.base import BaseEngine, AverageMeter, compute_recall
+from utils.base import BaseEngine, AverageMeter, compute_recall, synchronize_meters
 
 
 class Engine(BaseEngine):
@@ -51,6 +51,10 @@ class Engine(BaseEngine):
                     f'Epoch{epoch:4d}, valid loss:{eval_losses.avg:6f}, valid acc:{current_acc_avg:6f}')
 
 
+        synchronize_meters(
+            eval_losses, eval_losses_mlm, eval_losses_lm, eval_acc,
+            device=self.device,
+        )
         if self.device_rank == 0:    
             current_acc_avg = eval_acc.avg if epoch % 5 == 0 else float('nan')
             logging.info(
@@ -84,10 +88,10 @@ class Trainer(BaseTrainer):
                     self.es(eval_output['metrics'], self. model,save_path)
                 else:
                     assert False, 'No eval metrics'
-            if self.es.early_stop:
+            if self.should_stop():
                 break
-        print(self.es.val_score)
         if self.rank == 0:
+            print(self.es.val_score)
             torch.save(self.model.state_dict(), f'{self.model_save_path}/epoch{epoch}.pth')
 
         if self.rank == 0:

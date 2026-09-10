@@ -6,7 +6,6 @@
 datasets/
 checkpoints/
 results/
-scripts/
 .vscode/
 SI/
 appendix/
@@ -27,3 +26,16 @@ __pycache__/
 
 # ignore DS_Store files
 *.DS_Store
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+test_outputs/
+*.tar.gz
+*.tgz
+*.zip
+.env
+.env.*
+!.env.example

@@ -1,3 +1,5 @@
+# import sys
+# sys.path.append('/inspire/hdd/project/chemicalreaction/luxinyu-240207020178/vib2mol')
 import os
 import numpy as np
 
@@ -80,9 +82,6 @@ class MolecularEncoder(nn.Module):
 
 
 class MultiModalEncoder(nn.Module):
-    '''
-    Fuse multi-modal prefix embeddings, including chemical formula, spectra, scaffold, et al.
-    '''
     def __init__(self, d_model=768, nhead=8, d_ff=2048, nlayer=3, dropout=0.1):
         super().__init__()
 
@@ -127,9 +126,7 @@ class MolecularDecoder(nn.Module):
         cache = cache or [None] * len(self.layers)
         output, new_cache = input_embed, []
         for layer, layer_cache in zip(self.layers, cache):
-            output, layer_cache = layer.forward_step(
-                output, memory, src_mask, layer_cache
-            )
+            output, layer_cache = layer.forward_step(output, memory, src_mask, layer_cache)
             new_cache.append(layer_cache)
         output = self.norm(output)
         return self.proj(output), new_cache
@@ -138,7 +135,7 @@ class MolecularDecoder(nn.Module):
 class Vib2Mol(BaseModel):
     def __init__(self,
                  d_proj=256,
-                 spectral_channel=1,
+                 spectral_channel=2,
                  d_model=768,
                  nhead=8,
                  d_ff=2048,
@@ -162,14 +159,35 @@ class Vib2Mol(BaseModel):
 
         self.multimodal_encoder = MultiModalEncoder(d_model=d_model, nhead=nhead, d_ff=d_ff, nlayer=multimodal_nlayer)
 
+        self.spectral_mask_token = nn.Parameter(torch.rand([]))
         self._init_weights()
+
+    def get_spectral_embeddings(self, input, raman_only=False, ir_only=False):
+
+        spectral_input = self.load_spectra(input)
+        if not self.training and raman_only:
+            masked_channel = 1
+            spectral_input[:, masked_channel, :] = self.spectral_mask_token
+        elif not self.training and ir_only:
+            masked_channel = 0
+            spectral_input[:, masked_channel, :] = self.spectral_mask_token
+
+        spectra_embeds = self.spectral_encoding(spectral_input)
+        spectral_output = self.spectral_encoder(spectra_embeds)
+        return spectral_output
 
     def forward(self, input,
                 return_loss=True,
-                return_proj_output=False
+                return_proj_output=False,
+                spectral_mask_prob=0.5,
                 ):
 
-        spectral_input = self.load_spectra(input)
+        spectral_input = self.load_spectra(input) # B, 2, L
+        if self.training and spectral_mask_prob > 0:
+            if torch.rand(1).item() < spectral_mask_prob:
+                masked_channel = 0 if torch.rand(1).item() < 0.5 else 1
+                spectral_input[:, masked_channel, :] = self.spectral_mask_token
+
         spectral_embeds = self.spectral_encoding(spectral_input)
         spectral_output = self.spectral_encoder(spectral_embeds)
 
@@ -266,26 +284,17 @@ class Vib2Mol(BaseModel):
 
         elif self.phase == PHASE_GENERATE:
             src_embeds = spectral_output['hidden_states']
-            src_mask = torch.ones(spectral_embeds.size(0), spectral_embeds.size(1)).type_as(molecular_attention_mask)
+            src_mask = None
 
-            # prefix context
             if 'formula' in input:
                 formula_input_ids = input['formula']['input_ids']
                 formula_attention_mask = input['formula']['attention_mask']
                 formula_embeds = self.formula_encoding(formula_input_ids)
 
-                src_embeds = torch.cat([src_embeds, formula_embeds], dim=1)
-                src_mask = torch.cat([src_mask, formula_attention_mask], dim=1)
+                src_embeds = torch.cat([spectral_output['hidden_states'], formula_embeds], dim=1)
+                src_mask = torch.cat([torch.ones(spectral_embeds.size(0), spectral_embeds.size(1)).type_as(molecular_attention_mask),
+                                      formula_attention_mask], dim=1)
 
-            if 'scaffold' in input:
-                scaffold_input_ids = input['scaffold']['input_ids']
-                scaffold_attention_mask = input['scaffold']['attention_mask']
-                scaffold_embeds = self.molecular_encoding(scaffold_input_ids, use_cls_token=False)
-
-                src_embeds = torch.cat([src_embeds, scaffold_embeds], dim=1)
-                src_mask = torch.cat([src_mask, scaffold_attention_mask], dim=1)
-
-            if 'formula' in input or 'scaffold' in input:
                 src_embeds = self.multimodal_encoder(src_embeds, src_mask)
                 src_embeds = src_embeds['hidden_states']
 
@@ -324,16 +333,29 @@ class Vib2Mol(BaseModel):
             raise 'phase error'
 
         if return_proj_output:
-            molecular_embeds = self.molecular_encoding(molecular_input_ids, use_cls_token=True)
-            molecular_attention_mask_with_cls = torch.cat([torch.ones(molecular_embeds.size(0), 1).to(molecular_attention_mask.device), molecular_attention_mask], dim=1)
-            molecular_output = self.molecular_encoder(molecular_embeds, mask=molecular_attention_mask_with_cls)
-            result_dict['molecular_proj_output'] = molecular_output['proj_output']
-            result_dict['spectral_proj_output'] = spectral_output['proj_output']
+            if self.phase == PHASE_ALIGN:
+                result_dict['molecular_proj_output'] = molecular_output['proj_output']
 
+            elif self.phase == PHASE_GENERATE:
+                molecular_embeds = self.molecular_encoding(molecular_input_ids, use_cls_token=True)
+                molecular_attention_mask_with_cls = torch.cat([torch.ones(molecular_embeds.size(0), 1).to(molecular_attention_mask.device), molecular_attention_mask], dim=1)
+                molecular_output = self.molecular_encoder(molecular_embeds, mask=molecular_attention_mask_with_cls)
+                result_dict['molecular_proj_output'] = molecular_output['proj_output']
+
+            result_dict['spectral_proj_output'] = spectral_output['proj_output']
         return result_dict
 
-    def matching(self, inputs, **kwargs):
+    def matching(self, inputs, raman_only=False, ir_only=False):
+
         spectral_input = self.load_spectra(inputs)
+        if not self.training and raman_only:
+            masked_channel = 1
+            spectral_input[:, masked_channel, :] = self.spectral_mask_token
+        elif not self.training and ir_only:
+            masked_channel = 0
+            spectral_input[:, masked_channel, :] = self.spectral_mask_token
+
+
         spectral_embeds = self.spectral_encoding(spectral_input)
         spectral_output = self.spectral_encoder(spectral_embeds)
 
@@ -392,8 +414,17 @@ class Vib2Mol(BaseModel):
               max_len=256,
               return_metrics=False,
               target_ids=None,
+              raman_only=False, ir_only=False
               ):
+
         spectral_input = self.load_spectra(input)
+        if not self.training and raman_only:
+            masked_channel = 1
+            spectral_input[:, masked_channel, :] = self.spectral_mask_token
+        elif not self.training and ir_only:
+            masked_channel = 0
+            spectral_input[:, masked_channel, :] = self.spectral_mask_token
+
         spectral_embeds = self.spectral_encoding(spectral_input)
         spectral_output = self.spectral_encoder(spectral_embeds)
 
@@ -427,10 +458,21 @@ class Vib2Mol(BaseModel):
                                 input,
                                 max_len=256,
                                 beam_size=3,
-                      temperature=1.0, # Adjusted to 1.0 as typical for log_softmax without explicit temperature scaling for sampling
-                      ):
+                                temperature=1.0, # Adjusted to 1.0 as typical for log_softmax without explicit temperature scaling for sampling
+                                raman_only=False, ir_only=False
+                                ):
+
+
+
         # --- Initial Encoding (equivalent to the 'encode' part in the reference) ---
         spectral_input = self.load_spectra(input)
+        if not self.training and raman_only:
+            masked_channel = 1
+            spectral_input[:, masked_channel, :] = self.spectral_mask_token
+        elif not self.training and ir_only:
+            masked_channel = 0
+            spectral_input[:, masked_channel, :] = self.spectral_mask_token
+
         batch_size = spectral_input.size(0)
 
         # Encode spectral input
@@ -463,13 +505,12 @@ class Vib2Mol(BaseModel):
             memory, src_mask, batch_size, max_len, beam_size, temperature
         )
 
-
 @register_model
-def vib2mol(pretrained=False, **kwargs):
+def vib2mol_mmm(pretrained=False, **kwargs):
     return Vib2Mol(encoder_nlayer=6, decoder_nlayer=6, **kwargs)
 
 
 @register_model
-def vib2mol_matching_shared(pretrained=False, **kwargs):
-    """Backward-compatible alias for checkpoints/configs from vib2mol-alpha."""
-    return vib2mol(pretrained=pretrained, **kwargs)
+def vib2mol_matching_shared_mask(pretrained=False, **kwargs):
+    """Backward-compatible alias for the multi-modality masking model."""
+    return vib2mol_mmm(pretrained=pretrained, **kwargs)
